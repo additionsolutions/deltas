@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="addsol_sales_register_view" model="ir.ui.view">
+            <field name="name">addsol.sales.register.view</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree[@string='Invoice']" position="replace">
+                    <tree colors="blue:state == 'draft';black:state in ('proforma','proforma2','open');gray:state == 'cancel'" string="Invoice">
+                        <field name="date_invoice"/>
+                        <field name="partner_id" groups="base.group_user"/>
+                        <field name="commercial_partner_id" invisible="1"/>
+                        <field name="invoice_tally_no"/>
+                        <field name="reference" invisible="1"/>
+                        <field name="name" invisible="1"/>
+                        <field name="journal_id" invisible="1"/>
+                        <field name="period_id" invisible="1" groups="account.group_account_user"/>
+                        <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                        <field name="user_id" string="Responsible"/>
+                        <field name="date_due" invisible="1"/>
+                        <field name="origin" invisible="1"/>
+                        <field name="currency_id" groups="base.group_multi_currency"/>
+                        <field name="residual" sum="Residual Amount" invisible="1"/>
+                        <field name="amount_untaxed" sum="Untaxed Amount" invisible="1"/>
+                        <field name="amount_total" sum="Total Amount"/>
+                        <field name="state" invisible="1"/>
+                        <field name="type" invisible="context.get('type',True)"/>
+                    </tree>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+    {% load staticfiles %}
+    <title>DeltasPharma </title>
+    <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.structure.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/jquery-ui.theme.min.css" %}">
+    <link rel="stylesheet" href="{% static "js/rs-plugin/css/settings.css" %}">
+    <link rel="stylesheet" href="{% static "css/slick.css" %}">
+    <link rel="stylesheet" href="{% static "css/freeze.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/vertical-responsive-menu.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/demo.css" %}">
+    
+    <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    
+    <script src="{% static "js/vertical-responsive-menu.min.js" %}"></script>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body>
+<div class="container col-sm-12">
+    <div class="row" style="background-color: #bbb; ">
+        <div class="col-sm-4" style="text-align:left; font-size:15px; padding:10px; ">
+            DeltasPharma
+        </div>
+        <div class="col-sm-4" style="text-align:center; font-size:15px; padding:10px; ">
+            <b>Admin Screen</b>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="row col-sm-12">
+        {% block mainbody_block %}
+            This is base template 
+        {% endblock %}
+        </div>
+    </div>
+ 
+    
+    <div class="row" style="background-color: black; ">
+            <div class="row col-sm-12" style="text-align:center; color:white; font-size:15px; ">
+                <p>Copyright &copy; 2016-17</p>
+                <p>Service by <a href="http://www.aitspl.com" target="_blank">Addition IT Solutions Pvt. Ltd.</a></p>
+            </div>
+    </div>
+</div>
+
+    
+
+
+</body>
+</html>

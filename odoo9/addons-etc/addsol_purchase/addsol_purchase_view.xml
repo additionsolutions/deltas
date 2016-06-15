@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+			<!--Add fields in purchase Order-->
+
+        <record model="ir.ui.view" id="addsol_purchase_order_form">
+            <field name="name">addsol.purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+               <field name='partner_id' position="after">
+                        
+                        <field name="tin_no"/>
+                        <field name="dppl_tin"/>
+                        <field name="excise_control_code"/>
+                        
+                </field> 
+				 <field name='company_id' position="after">
+						<field name="order_ref_no"/>
+						<field name="product_id"/>
+						<field name="price_basis"/> 
+						<field name="transport_doc_no"/> 
+				 </field>		
+                <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+                    <field name="detail" />
+                </xpath>
+            </field>
+        </record>
+		
+		
+		<record id="view_partner_form" model="ir.ui.view">
+			<field name="name">res.partner.form.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+			<field name="arch" type="xml">
+				<field name="lang" position="after">
+					<field name="pan_no" />
+				</field>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_partner_property_form">
+			<field name="name">res.parrner.tax.config</field>
+			<field name="inherit_id" ref="account.view_partner_property_form" />
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook/page[@string='Accounting']/group"
+					position="after">
+					<group>
+						<group>
+							<field name="tin_no" />
+							<field name="tin_date" />
+
+							<field name="excise_no" />
+							<field name="excise_date" />
+							
+							<field name="vat_no"/>
+							<field name="vat_date" />
+						</group>
+
+						<group>
+							<field name="cst_no" />
+							<field name="cst_date" />
+
+							<field name="service_no"/>
+							<field name="service_date"/>
+						</group>
+					</group>
+				</xpath>
+			</field>
+		</record>
+		
+		
+		<!-- Product Category Form View -->
+        <record id="view_product_category_inherited_form" model="ir.ui.view">
+            <field name="name">product.category.inherited.form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="account.view_category_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@string='Account Properties']" position="after">
+                    <group string="Product Classification" colspan="2" name="Classification">
+                        <field name="hsn" />
+                        <field name="chapter_no" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+		
+		
+    </data>
+</openerp>

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+<div id="mpage">
+	<div id="menu">
+	</div>
+	<div id="toolbar">
+	</div>
+	<div id="contents">
+		<h2> Welcome <h2>
+		<b> {{ request.session.user_name }} </b>
+	</div>
+<hr/>
+<hr/>
+	<p>Use <b>'Contact Us'</b> button in toolbar above to contact head office.</p><p> Use appropriate department in the form and your query / message will be sent to right department.
+	</p>
+<hr/>
+</div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+                    
+
+  });
+</script>
+
+
+</style>
+{% endblock %}

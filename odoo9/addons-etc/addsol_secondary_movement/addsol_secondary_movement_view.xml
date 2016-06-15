@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="addsol_secondary_movement_view_form" model="ir.ui.view" >
+            <field name="name">addsol.secondary.movement.view.form</field>
+            <field name="model">addsol.secondary.movement</field>
+            <field name="arch" type="xml">
+                <form string="Secondary Movement">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" context="{'default_superstockist': 1}"
+                                        domain="[('superstockist', '=', True)]"/>
+                                <field name="stockist_partner_id" domain="[('stockist', '=', True)]"/>
+                            </group>
+                            <group>
+                                <field name="movement_date"/>
+                            </group>
+                            <group>
+                                <field name="sale_amount"/>
+                            </group>
+                            <group>
+                                <field name="collection_amount"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Secondary Movement">
+                                <field name="secondary_movement_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id" />
+                                        <field name="quantity" />
+                                        <field name="unit_price" />
+                                        <field name="amount" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="addsol_secondary_movement_view_tree" model="ir.ui.view" >
+            <field name="name">addsol.secondary.movement.view.tree</field>
+            <field name="model">addsol.secondary.movement</field>
+            <field name="arch" type="xml">
+                <tree string="Secondary Movement">
+                    <field name="movement_date"/>
+                    <field name="partner_id"/>
+                    <field name="stockist_partner_id"/>
+                    <field name="sale_amount"/>
+                    <field name="collection_amount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_addsol_secondary_movement" model="ir.actions.act_window">
+            <field name="name">Secondary Movement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.secondary.movement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Secondary Sales" parent="addsol_region_state.menu_pharma_root" id="menu_open_secondary_sales" sequence="25"/>
+        <menuitem action="open_view_addsol_secondary_movement" id="menu_open_view_addsol_secondary_movement" parent="menu_open_secondary_sales" sequence="1"/>
+
+    </data>
+</openerp>

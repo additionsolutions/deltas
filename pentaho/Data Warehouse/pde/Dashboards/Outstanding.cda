@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="zsmQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="rsmQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="customerQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="outstandingQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="old_customerQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="zsmQuery_MDX" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="rsmQuery_MDX" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="zsmQuery" id="zsmQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT DISTINCT zsm_name FROM dim_salesteam 
+WHERE to_date is Null]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="rsmQuery" id="rsmQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="zsmParam" name="zsm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT DISTINCT rsm_name FROM dim_salesteam 
+WHERE zsm_name = ${zsm} AND to_date is Null]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalQuery" id="totalQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.outstanding_amount FROM
+(SELECT sum(invoice_amount)-sum(payment_amount)+sum(credit_amount) as outstanding_amount FROM party_information WHERE partner_id IN (
+SELECT partner_id FROM dim_customer_location WHERE region_id in (
+  SELECT DISTINCT region_id FROM dim_salesteam WHERE rsm_name=${rsm} AND to_date is null))) p
+WHERE p.outstanding_amount <> 0]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="customerQuery" id="customerQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="startDateParam" type="String"/>
+         <Parameter default="" name="endDateParam" type="String"/>
+         <Parameter default="rsmParam" name="rsm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.partner_name, p.outstanding_amount FROM
+(SELECT partner_name, sum(invoice_amount)-sum(payment_amount)+sum(credit_amount) as outstanding_amount FROM party_information WHERE partner_id IN (
+SELECT partner_id FROM dim_customer_location WHERE region_id in (
+  SELECT DISTINCT region_id FROM dim_salesteam WHERE rsm_name=${rsm} AND to_date is null)) 
+GROUP BY partner_name) p
+WHERE p.outstanding_amount <> 0]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="outstandingQuery" id="outstandingQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="cust" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT DISTINCT to_char(finv.invoice_date,'dd-mm-yyyy'), dinv.invoice_tally_no,
+    finv.amount_total, finv.residual,
+    DATE_PART('day', (now() - finv.date_due)) as overdue
+FROM fact_invoice finv
+     JOIN dim_invoice dinv ON dinv.id = finv.id
+     JOIN dim_customer cust ON cust.id = finv.partner_id
+WHERE ((finv.residual != 0) AND (cust.name = ${cust}) AND dinv.salesorpurchase != 'out_refund')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="old_customerQuery" id="old_customerQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsm" type="String"/>
+         <Parameter default="timeRangeParam" name="timeRange" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+Member [Measures].[Outstanding] as '[Measures].[InvoiceAmount] - [Measures].[PaymentAmount]'
+SELECT
+NON EMPTY {[Measures].[Outstanding]} ON COLUMNS,
+NON EMPTY {[Customer].[Name].Members} ON ROWS
+FROM [Party Analysis] 
+WHERE
+CrossJoin({[SalesTeam].[RSM].&[${rsm}]}, ${timeRange})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="zsmQuery_MDX" id="zsmQuery_MDX" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="false"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="timeRangeParam" name="timeRange" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with member [Measures].[Outstanding] as '[Measures].[InvoiceAmount] - [Measures].[PaymentAmount]'
+select NON EMPTY {[Measures].[Outstanding]} ON COLUMNS,
+ NON EMPTY [SalesTeam].[ZSM].Members ON ROWS
+from [Party Analysis]
+Where ${timeRange}]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="rsmQuery_MDX" id="rsmQuery_MDX" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="false"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="zsmParam" name="zsm" type="String"/>
+         <Parameter default="timeRangeParam" name="timeRange" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with member [Measures].[Outstanding] as '[Measures].[InvoiceAmount] - [Measures].[PaymentAmount]'
+select {[Measures].[Outstanding]} ON COLUMNS,
+  {[SalesTeam].[ZSM].[${zsm}].CHILDREN} ON ROWS
+from [Party Analysis]
+Where ${timeRange}]]></Query>
+   </DataAccess>
+</CDADescriptor>

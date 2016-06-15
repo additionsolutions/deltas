@@ -1,0 +1,174 @@
+{% extends "hr_layout.html" %}
+
+{% block hr_content %}
+		<div id="example">
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box" >Code of Conduct :
+		</div>
+               
+                <div class="formain">                
+                   <b><p >1. <u>Private Trade and Employment</u></br></br>
+The employee shall devote his/her whole time to Company’s work. No employee shall except with the prior written permission of the Management, engage either directly or indirectly in any trade or business either with or without remuneration during the course of his/her employment with the Company.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspa) An employee may, however, undertake honorary work, which is social/ charitable/ religious and does not interfere with the employee’s performance of duties.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspb) Confidential matters</br></br>
+No employee shall be associated in any way with media to reveal business/technical information, unless authorized to do so, it is the responsibility of every employee to avoid actions that may have adverse reaction on any policy/action of the company.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspc) Gifts from Suppliers/Customers</br></br>
+No employee shall directly or indirectly accept from any suppliers or customers gifts in cash or kind including any pecuniary advantage/saving whether in India or abroad.</br></br>
+2. <u>Dealing with Company’s Suppliers/ Customers</u></br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(a) No employee will either directly or indirectly be associated with supplies of goods/ materials/services to the Company.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(b) No employee will have either directly or indirectly any business arrangement outside the ambit of company’s dealing with the company’s customers agents suppliers.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp(c) Concealment of information with regard to the above will be viewed very seriously by the management.</br></br>
+3. <u>Misconduct</u></br></br>
+The following acts will also be reacted as misconduct.</br></br> 
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspa) Willful insubordination/disobedience either alone/ in association with others.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspb) Taking bribes, causing sabotage and willful damage, theft or fraud in connection with company’s work or property.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspc) Giving to the company false information or concealing information at any point of time specially and information which would forewarn the company about any harm likely to come from individual or compactor.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspd) Habitual late attendance or absence from duty.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspe)  Habitual neglect of work or negligence.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspf) Smoking in prohibited areas.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspg) Refusal to accept any communication from the management.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsph) Acting in a manner intended to bring discredit to the company.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspi) Drinking/ gambling / creating nuisance in the premises.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspj) Spreading false rumors or other acts of indiscipline.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspk)  Money landing activities on premises of the company.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspl) Striking work / inciting others to strike or other acts subversive of discipline.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspm) Conviction in a court of law for any criminal offence involving moral turpitude.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspn) Habitual breach of laws of the land.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspo) Breach of instructions for the maintenance and operations of any plant/ machinery/ department. </br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspp) Unauthorized removal of company’s documents/ drawing/ property/ from place of work.</br></br>
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspq) Giving assurance to any person for providing employment in the company without proper authorization.</br></br>
+This list is only indicative and not exhaustive. All employees are advised to refrain from any acts of omission/ commission which could be viewed as misconduct by the management.</br></br>
+4. <u>Consumption of Intoxicating Drinks/ Drugs</u></br></br>
+Every employee shall ensure that the performance of his/her duties is not affected by the influence of intoxicating drugs/ drinks.</br></br>
+<u>Non Smoking</u></br></br>
+In order to ensure pollution free atmosphere in the office premises it is thought advisable that the staff members should refrain from smoking in the office premises.</br></br>
+<u>Company Property / Equipment</u></br></br>
+All property of the company entrusted to the employee during the course of is/her employment shall be returned in good condition, on separation from the company, as directed by the management.</br></br>
+<u>Personal Grooming & Dress Code</u></br></br>
+All employees are expected to maintain a high standard of personal grooming and observe proper dress norms. Informal clothes (jeans, T-shirts etc.) are unacceptable as office wear during weekdays. This is especially important when an employee is on official tour or is likely to come in contact with suppliers/customers/dealers.</br></br>
+The management reserves the right to add to or delete any or all of the above provision at any time without notice and without assigning any reason thereof. Such changes shall become effective immediately upon being notified to the employees concerned. Also company might ask you to leave without any reason/any time.</br></br>
+I,have read the CODE OF CONDUCT and agree to abide by its clauses.</br></br></b></p>
+       </div>
+		 <div id="val" align="center">
+                    <form id="Agree" method="post">
+                        {% csrf_token %}
+                    <div>
+                    <p>
+                       <table>
+                       <tr>
+                            <td>
+                            <input id="ischeck" type="checkbox" name="accept" onchange="document.getElementById('submit').disabled = !this.checked;"  required />
+
+                            <td> <p>I have read the terms of service. </p></td>
+
+                            <td><input type="submit" id="submit" value="Next" onclick="nextClick()" disabled/></td>
+                       </tr>
+                       </table>
+                    </p>
+                </div>
+                </form>
+                </div>
+
+        </div>
+               
+ </div>
+</div>      
+{% endblock %}
+            
+{% block scripts %}
+            <script type=text/javascript>
+           $(document).ready(function(){ 
+                function nextClick(e) {
+                        if(Agree.accept.checked == true)
+			{	
+				window.location="/hr/employee_create";
+			}
+                }
+               
+               
+                  }); 
+            </script>
+            <style>
+                .k-primary {
+                    min-width: 150px;
+                    height:100%;
+                }
+                #vertical {
+                    height: 380px;
+                    margin: 0 auto;
+                }
+
+                
+                #val { background-color: rgba(60, 70, 80, 0.15); 
+                		padding:5px}
+                
+
+                .box {
+                    margin-left:10%;
+                    margin-right:10%;
+                }
+                .box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+
+		#header_ {
+    			background-color:black;
+    			color:white;
+    			text-align:center;
+    			padding:5px;
+		}
+
+		#footer_ {
+    			background-color:black;
+    			color:white;
+    			clear:both;
+    			text-align:center;
+    			padding:5px; 
+		}
+		
+           	.center {
+    			margin:auto;
+    			width: 70%;
+    			border: 3px solid #d3d3d3;
+    			padding: 10px;
+			background-color: #fdfdfd;
+		}	 
+   		.formmain {
+			margin: auto;
+			width: 70%;
+			padding: 5px;
+			height: 850px;
+		}
+		
+		
+		.text {
+			float: left;
+			width: 80%;
+		}
+		
+		
+		
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+
+                
+            </style>
+        
+{% endblock %}
+            
+     
+

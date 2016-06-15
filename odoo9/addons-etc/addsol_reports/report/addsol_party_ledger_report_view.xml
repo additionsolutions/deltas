@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+            
+        <record id="view_addsol_party_ledger_report_graph" model="ir.ui.view">
+            <field name="name">addsol.party.ledger.report.graph</field>
+            <field name="model">party.ledger.report</field>
+            <field name="arch" type="xml">
+                <graph string="Party Ledger Report" type="pivot">
+                    <field name="party" type="row"/>
+                    <field name="mon" type="row"/>
+                    <field name="opening_balance" type="measure"/>
+                    <field name="invoice_amount" type="measure"/>
+                    <field name="payment_amount" type="measure"/>
+                    <field name="month_balance" type="measure"/>
+                    <field name="closing_balance" type="measure"/>
+                </graph>
+             </field>
+        </record>
+        
+        <record id="view_addsol_party_ledger_report" model="ir.ui.view">
+            <field name="name">addsol.party.ledger.report.search</field>
+            <field name="model">party.ledger.report</field>
+            <field name="arch" type="xml">
+                <search string="Party Ledger Report">
+                    <field name="party" />
+                    <field name="mon" />
+                    <field name="opening_balance"/>
+                    <field name="invoice_amount"/>
+                    <field name="payment_amount"/>
+                    <field name="month_balance"/>
+                    <field name="closing_balance"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="PartyName" name="PartyName" context="{'group_by':'party'}"/>
+                        <filter string="Month" name="Month" context="{'group_by':'mon'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_addsol_party_ledger_report_tree" model="ir.actions.act_window">
+            <field name="name">Party Ledger</field>
+            <field name="res_model">party.ledger.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_addsol_party_ledger_report"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_addsol_party_ledger_report_tree" id="menu_addsol_party_ledger_report_tree" parent="menu_sales_marketing" sequence="3" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>
+
+

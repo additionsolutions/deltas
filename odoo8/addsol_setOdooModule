@@ -1,0 +1,15 @@
+#
+# Addition IT Solutions Pvt. Ltd.
+#
+clear
+echo "Setting folder permissions and ownership"
+echo "****************************************"
+echo "First argument = User, Second Argument=Folder"
+echo "Setting ownership to => $1"
+sudo chown -R $1 $2
+echo "Setting group to => $1"
+sudo chgrp -R $1 $2
+echo "Setting permissions"
+sudo chmod -R 755 $2
+echo " Done"
+exit 0

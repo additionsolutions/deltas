@@ -1,0 +1,246 @@
+
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 45px;
+    color: #67462e;
+    background-image:url('../img/DeltasReport_Background.png');
+}
+
+ 
+.container {
+    width: 100%;
+}
+
+img {
+     margin-left: 45px;
+     margin-top: 30px;
+}
+
+p {
+    margin-left:30px;
+    margin-bottom:5px;
+}
+
+ .col-xs-12 {
+     padding-right:35px;
+     padding-left:40px;
+ }
+.buttonCol{
+          margin-top:8px;
+          margin-left:-4px;
+          background-color: transparent;
+       }
+       
+.zsmCol{
+       margin-left:20px;
+}    
+       
+       
+select {
+    margin-top: 10px;
+    height: 22px;
+    background-color: transparent;
+}     
+
+.totalCol{
+    padding-right:20px;
+    background-color: transparent;
+}
+       
+       
+/* ==============TableStyle===================*/
+
+.tableComponentCompactdataTable thead {
+      background-color: #fa8c1e;
+      display: none;
+}
+
+table .dataTable{
+     border:none;
+}
+
+.totalTableAnalysis thead {
+    background-color: #fa8c1e;
+    display: none;
+}
+
+.totalTableAnalysis table tr td {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.totalTableAnalysis table tbody {
+    text-align: left;
+} 
+
+.addsoltable thead {
+    background-color: #fa8c1e;
+    
+}
+
+.addsoltable table tr td {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.statetable thead {
+    background-image: url('../img/filter1.png');
+}
+
+.statetable table tr td {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.deltasTable table tbody {
+    text-align: center;
+} 
+
+.deltasTable table thead {
+    background-color: #fbb24a !important;
+    height:25px;
+}
+
+.deltasTable table thead tr th{
+    text-align: center;
+}
+
+
+.deltasTable table tr td {
+    background-color: transparent !important;
+}
+
+table.dataTable tbody tr {
+  background-color: transparent;
+
+}
+
+.table-bordered > tbody > tr {
+        border:1px solid gray;
+}
+
+.deltasTable > tbody > td {
+    border-bottom: 1px solid gray;
+}
+
+tr.selected > td {
+    background-color: #67462E !important;
+}
+
+.detailsRow .deltasTable tbody tr.selected > td {
+    background-color: #67462E !important;
+}
+
+
+.deltasTable table tr {
+    padding: 0px;
+}
+
+.table .table {
+     background-color:transparent !important;
+}
+
+
+.table .table > tbody > tr > td {
+         border:1px solid gray;
+}
+
+.table-bordered,
+.table-bordered > tbody > tr >td {
+     border:none;
+}
+
+.table > tbody > tr >td {
+    border-bottom:1px solid gray;
+}
+
+#deltasTableTable:hover {
+    cursor: pointer;
+}
+
+.btn-default {
+  color: white;
+  background-color: #fbb24a;
+  width:60px;
+  border:none;
+  height:23px;  
+}
+
+.exportCol {
+    margin-top: 10px;
+}
+
+.exportButton {
+    cursor: pointer;
+    background-color: #ccc;
+    padding: 8px 14px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.date-input-container
+.date-input {
+    width: 100px;
+    text-align: center;  
+    height: 22px;
+    border: none;
+    background-image: url('../img/filter1.png');
+    
+}
+
+.deltasSelect select {
+    background-color: white;
+    margin-top: 2px;
+}
+
+.drFilterRow {
+    margin-left: -40px;
+    margin-right: -40px;
+}
+
+.totalCol thead {
+    background-color: #fa8c1e;
+    
+}
+.totalCol table tr td {
+    background-color: transparent !important;
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+
+/*============ImageStyle==========*/
+
+
+.headerImg {
+     background-image:url('../img/title1.png');
+     background-repeat: no-repeat;
+}
+
+.dateImg {
+     background-image:url('../img/filter1.png');
+}
+
+.titleImg{
+     background-color:#67462E;
+}
+
+.rowImg{
+      background-image:url('../img/filter1.png');
+}
+
+/*============OtherStyle==========*/
+
+.deltasHide {
+     display: None;
+}

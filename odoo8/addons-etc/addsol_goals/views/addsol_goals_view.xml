@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem id="menu_open_view_addsol_target" name="Target" parent="addsol_region_state.menu_pharma_root" groups="base.group_addsol_gm,base.group_addsol_asm" sequence="7" />
+
+        <record model="ir.ui.view" id="addsol_date_periods_view_tree">
+            <field name="name">addsol.date.periods.view.tree</field>
+            <field name="model">addsol.date.periods</field>
+            <field name="arch" type="xml">
+                <tree string="Periods" >
+                    <field name="name"/>
+                    <field name="st_date"/>
+                    <field name="ed_date"/>
+                </tree>
+            </field>
+        </record> 
+
+
+        <record model="ir.ui.view" id="addsol_date_periods_view_form">
+            <field name="name">addsol.date.periods.view.form</field>
+            <field name="model">addsol.date.periods</field>
+            <field name="arch" type="xml">
+                <form string="Periods">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="st_date" class="oe_inline"/> - <field name="ed_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_view_addsol_date_periods" model="ir.actions.act_window">
+            <field name="name">Periods</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.date.periods</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_open_view_addsol_periods" name="Periods" action="open_view_addsol_date_periods" parent="menu_open_view_addsol_target" groups="base.group_sale_manager" sequence="2" />
+        
+        <record model="ir.ui.view" id="addsol_goals_view_tree">
+            <field name="name">addsol.goals.view.tree</field>
+            <field name="model">addsol.goals</field>
+            <field name="arch" type="xml">
+                <tree string="Target" >
+                    <field name="period_id"/>
+                </tree>
+            </field>
+        </record> 
+
+        <record model="ir.ui.view" id="view_addsol_goals_form">
+            <field name="name">view.addsol.goals.form</field>
+            <field name="model">addsol.goals</field>
+            <field name="arch" type="xml">
+                <form string="Target">
+                    <sheet>
+                        <group>
+                            <field name="period_id" />
+                        </group>
+                        <group>
+                            <field name="product_line_ids" nolabel="1">
+                                <tree string="Product" editable="bottom">
+                                    <field name="target_id" invisible="1"/>
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_view_addsol_goals" model="ir.actions.act_window">
+            <field name="name">Set Target</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.goals</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_open_view_addsol_goals" name="Target" action="open_view_addsol_goals" parent="menu_open_view_addsol_target" groups="base.group_sale_manager" sequence="1" />
+
+
+        <record id="view_projection_form" model="ir.ui.view" >
+            <field name="name">view.projection.form</field>
+            <field name="model">addsol.projection</field>
+            <field name="arch" type="xml">
+                <form string="Projection">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                        </group>
+                        <group>
+                            <field name="period_id" />
+                        </group>
+                        <notebook>
+                            <page>
+                                <field name="projection_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="projection_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="projection_view_tree" model="ir.ui.view" >
+            <field name="name">projection.view.tree</field>
+            <field name="model">addsol.projection</field>
+            <field name="arch" type="xml">
+                <tree string="Projection" >
+                    <field name="name"/>
+                    <field name="user_id"/>
+                    <field name="period_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_projection" model="ir.actions.act_window">
+            <field name="name">Projection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.projection</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_open_view_projection" action="open_view_projection" parent="menu_open_view_addsol_target" groups="base.group_addsol_asm" sequence="3" />
+
+			<record id="view_projection_collection_form" model="ir.ui.view" >
+			            <field name="name">view.projection.collection.form</field>
+			            <field name="model">addsol.projection.collection</field>
+			            <field name="arch" type="xml">
+			                <form string="Collection">
+			                    <sheet>
+			                        <group>
+			                            <field name="user_id"/>
+			                        </group>
+			                        <group>
+			                            <field name="period_id" />
+			                        </group>
+			                        <group>
+			                        	<field name="collection_amount" />
+			                        </group>
+			                    </sheet>
+			                </form>
+			            </field>
+			        </record>
+			        
+			 <record id="projection_collection_view_tree" model="ir.ui.view" >
+		            <field name="name">projection.collection.view.tree</field>
+		            <field name="model">addsol.projection.collection</field>
+		            <field name="arch" type="xml">
+		                <tree string="Collection" >
+		                    <field name="user_id"/>
+		                    <field name="period_id"/>
+		                    <field name="collection_amount"/>
+		                </tree>
+		            </field>
+		      </record>
+		      
+		<record id="open_view_projection_collection" model="ir.actions.act_window">
+            <field name="name">Collection</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.projection.collection</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+	 <menuitem id="menu_open_view_projection_collection" action="open_view_projection_collection" parent="menu_open_view_addsol_target" sequence="4" />
+
+    </data>
+</openerp>

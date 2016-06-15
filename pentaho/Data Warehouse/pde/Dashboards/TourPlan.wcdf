@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cdf><title>TourPlan</title><description>Analysis of MR tour plan and daily visits</description><author>Rahul Shinde</author><style>Clean</style><rendererType>bootstrap</rendererType><require>false</require><widget>false</widget><widgetName></widgetName><widgetParameters></widgetParameters></cdf>

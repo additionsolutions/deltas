@@ -1,0 +1,74 @@
+{% extends "mktg_layout.html" %}
+ 
+{% block mktg_content %}
+
+		<div id="example">
+    <div class="demo-section k-content wide">
+        <div id="chart"></div>
+    </div>
+	<div>
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+
+
+        function createChart() {
+            $("#chart").kendoChart({
+                dataSource: {
+                    transport: {
+                        read: {
+                            url: "/mktg/ppp-data",
+                            dataType: "json"
+                        }
+                    },
+                    sort: {
+                        field: "month_name",
+                        dir: "asc"
+                    }
+                },
+                title: {
+                    text: "Product Promotional Program Data"
+                },
+                legend: {
+                    position: "bottom"
+                },
+                seriesDefaults: {
+                    type: "column",
+		},
+                series:
+                [{
+                    field: "amount",
+                    name: "PPP Amount"
+                }],
+                categoryAxis: {
+                    field: "month_name",
+                    labels: {
+                        rotation: -45
+                    },
+                    majorGridLines: {
+                        visible: false
+                    }
+                },
+                valueAxis: {
+                    labels: {
+                        format: "N0"
+                    },
+                    majorUnit: 10000,
+                    line: {
+                        visible: false
+                    }
+                },
+                tooltip: {
+                    visible: true,
+                    template: "#= series.name #: #= value #"
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $(document).bind("kendo:skinChange", createChart);
+	
+
+</script>    
+{% endblock %}

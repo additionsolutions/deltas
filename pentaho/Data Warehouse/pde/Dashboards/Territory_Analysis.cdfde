@@ -1,0 +1,2989 @@
+{
+ "components": {
+  "rows": [
+   {
+    "id": "GENERIC",
+    "name": "Generic",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "Group",
+      "type": "Label",
+      "value": "Generic"
+     }
+    ],
+    "type": "Label",
+    "typeDesc": "<i>Group</i>"
+   },
+   {
+    "id": "3885d5d7-bbee-0f18-4004-9ddfe16e1cb2",
+    "parent": "GENERIC",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqParam"
+     },
+     {
+      "name": "propertyValue",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "parameterViewRole",
+      "type": "parameterViewRoleCustom",
+      "value": "unused"
+     },
+     {
+      "name": "bookmarkable",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "public",
+      "type": "Boolean",
+      "value": "false"
+     }
+    ],
+    "type": "ComponentsParameter",
+    "typeDesc": "Simple parameter"
+   },
+   {
+    "id": "2e65bcaa-99cf-e4d9-d58e-d5f941be6e82",
+    "parent": "GENERIC",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "stateParam"
+     },
+     {
+      "name": "propertyValue",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "parameterViewRole",
+      "type": "parameterViewRoleCustom",
+      "value": "unused"
+     },
+     {
+      "name": "bookmarkable",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "public",
+      "type": "Boolean",
+      "value": "false"
+     }
+    ],
+    "type": "ComponentsParameter",
+    "typeDesc": "Simple parameter"
+   },
+   {
+    "id": "OTHERCOMPONENTS",
+    "name": "Others",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "Group",
+      "type": "Label",
+      "value": "Others"
+     }
+    ],
+    "type": "Label",
+    "typeDesc": "<i>Group</i>"
+   },
+   {
+    "id": "5c06dc5a-3001-8bdb-101c-f4eb75045714",
+    "parent": "OTHERCOMPONENTS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "teamDetailTable"
+     },
+     {
+      "name": "expandContainerObject",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "['${p:hqParam}','${p:stateParam}']"
+     },
+     {
+      "name": "oLanguage",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "language",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "colFormats",
+      "type": "ColFormatsArray",
+      "value": "[null,null,null,null,null,null,null]"
+     },
+     {
+      "name": "colHeaders",
+      "type": "ColHeadersArray",
+      "value": "[\"Location\",\"MR\",\"ASM\",\"RSM\",\"ZSM\",\"DGM\",\"GM\"]"
+     },
+     {
+      "name": "colSortable",
+      "type": "ColSortableArray",
+      "value": "[]"
+     },
+     {
+      "name": "colTypes",
+      "type": "colTypesCustom",
+      "value": "[\"string\",\"string\",\"string\",\"string\",\"string\",\"string\",\"string\"]"
+     },
+     {
+      "name": "colWidths",
+      "type": "ColWidthsArray",
+      "value": "[\"10%\",\"15%\",\"15%\",\"15%\",\"15%\",\"15%\",\"15%\"]"
+     },
+     {
+      "name": "expandParameters",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[[\"region\",\"hqParam\"],[\"stateParam\",\"stateParam\"]]"
+     },
+     {
+      "name": "displayLength",
+      "type": "Integer",
+      "value": "20"
+     },
+     {
+      "name": "expandOnClick",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "filter",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "info",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "lengthChange",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "paginate",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "sort",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "colSearchable",
+      "type": "Array",
+      "value": "[]"
+     },
+     {
+      "name": "drawCallback",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "teamSQLQuery"
+     },
+     {
+      "name": "sDom",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "sortBy",
+      "type": "SortByArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "paginationType",
+      "type": "PaginationType",
+      "value": "simple_numbers"
+     },
+     {
+      "name": "tableStyle",
+      "type": "TableStyle",
+      "value": ""
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:teamCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "paginateServerside",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     },
+     {
+      "name": "clickAction",
+      "type": "JavaScript",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsTable",
+    "typeDesc": "table Component"
+   },
+   {
+    "id": "8338cfff-3dab-7ab3-bbe1-626fd9624f30",
+    "parent": "OTHERCOMPONENTS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqDetailTable"
+     },
+     {
+      "name": "expandContainerObject",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "['${p:hqParam}','${p:stateParam}']"
+     },
+     {
+      "name": "oLanguage",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "language",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "colFormats",
+      "type": "ColFormatsArray",
+      "value": "[null,\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\"]"
+     },
+     {
+      "name": "colHeaders",
+      "type": "ColHeadersArray",
+      "value": "[\"Month\",\"Sales \",\"Collection\",\"Salary\",\"Other Expenses\",\"Promotional Expenses\",\"PPP\",\"Sample Expenses\",\"Total Expenses\",\"Performance\"]"
+     },
+     {
+      "name": "colSortable",
+      "type": "ColSortableArray",
+      "value": "[]"
+     },
+     {
+      "name": "colTypes",
+      "type": "colTypesCustom",
+      "value": "[\"string\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"trendArrow\"]"
+     },
+     {
+      "name": "colWidths",
+      "type": "ColWidthsArray",
+      "value": "[\"10%\",\"15%\",\"15%\",\"10%\",\"10%\",\"10%\",\"15%\",\"15%\"]"
+     },
+     {
+      "name": "expandParameters",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[[\"region\",\"hqParam\"],[\"stateParam\",\"stateParam\"]]"
+     },
+     {
+      "name": "displayLength",
+      "type": "Integer",
+      "value": "20"
+     },
+     {
+      "name": "expandOnClick",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "filter",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "info",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "lengthChange",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "paginate",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "sort",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "colSearchable",
+      "type": "Array",
+      "value": "[]"
+     },
+     {
+      "name": "drawCallback",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "hqDetailsQuery"
+     },
+     {
+      "name": "sDom",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "sortBy",
+      "type": "SortByArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "paginationType",
+      "type": "PaginationType",
+      "value": "simple_numbers"
+     },
+     {
+      "name": "tableStyle",
+      "type": "TableStyle",
+      "value": "themeroller"
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:hqDetailsCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "paginateServerside",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": "function f(){\n\n// In the Pre Execution we are defining the options for this table and the dataBars\n\nthis.setAddInOptions(\"colType\",\"trendArrow\",function(state){\n\nreturn {\n\n// Set to true, this options includes the numeric value as well as the dataBar\n\nincludeValue:true,\n\n\n};\n});\n} "
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     },
+     {
+      "name": "clickAction",
+      "type": "JavaScript",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsTable",
+    "typeDesc": "table Component"
+   },
+   {
+    "id": "614a4628-2ff4-6625-0f17-e1fc066e1570",
+    "parent": "OTHERCOMPONENTS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "totalTable"
+     },
+     {
+      "name": "expandContainerObject",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "['${p:hqParam}','${p:stateParam}']"
+     },
+     {
+      "name": "oLanguage",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "language",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "colFormats",
+      "type": "ColFormatsArray",
+      "value": "[\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\"]"
+     },
+     {
+      "name": "colHeaders",
+      "type": "ColHeadersArray",
+      "value": "[\"Total Sales\",\"Total Collection\",\"Total Salary\",\"Total Other\",\"Total Promotional\",\"Total PPP\",\"Total Sample\",\"Total Expenses\",\"Total Performance\"]"
+     },
+     {
+      "name": "colSortable",
+      "type": "ColSortableArray",
+      "value": "[]"
+     },
+     {
+      "name": "colTypes",
+      "type": "colTypesCustom",
+      "value": "[\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"trendArrow\"]"
+     },
+     {
+      "name": "colWidths",
+      "type": "ColWidthsArray",
+      "value": "[\"15%\",\"15%\",\"10%\",\"10%\",\"10%\",\"15%\",\"15%\",\"10%\"]"
+     },
+     {
+      "name": "expandParameters",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[[\"hqParam\",\"hqParam\"],[\"stateParam\",\"stateParam\"]]"
+     },
+     {
+      "name": "displayLength",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "expandOnClick",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "filter",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "info",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "lengthChange",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "paginate",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "sort",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "colSearchable",
+      "type": "Array",
+      "value": "[]"
+     },
+     {
+      "name": "drawCallback",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "totalDetailsQuery"
+     },
+     {
+      "name": "sDom",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "sortBy",
+      "type": "SortByArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "paginationType",
+      "type": "PaginationType",
+      "value": "simple_numbers"
+     },
+     {
+      "name": "tableStyle",
+      "type": "TableStyle",
+      "value": "themeroller"
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:totalCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "paginateServerside",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": "function f(){\n\n// In the Pre Execution we are defining the options for this table and the dataBars\n\nthis.setAddInOptions(\"colType\",\"trendArrow\",function(state){\n\nreturn {\n\n// Set to true, this options includes the numeric value as well as the dataBar\n\nincludeValue:true,\n\n\n};\n});\n} "
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     },
+     {
+      "name": "clickAction",
+      "type": "JavaScript",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsTable",
+    "typeDesc": "table Component"
+   },
+   {
+    "id": "87726e72-c63f-8774-2262-b76014b59639",
+    "parent": "OTHERCOMPONENTS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "avgTable"
+     },
+     {
+      "name": "expandContainerObject",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "['${p:hqParam}','${p:stateParam}']"
+     },
+     {
+      "name": "oLanguage",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "language",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "colFormats",
+      "type": "ColFormatsArray",
+      "value": "[\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\",\"%.2f\"]"
+     },
+     {
+      "name": "colHeaders",
+      "type": "ColHeadersArray",
+      "value": "[\"Average Sales\",\"Average Collection\",\"Average Salary\",\"Average Other\",\"Average Promotional\",\"Average PPP\",\"Average Sample\",\"Average Total\",\"Average Performance\"]"
+     },
+     {
+      "name": "colSortable",
+      "type": "ColSortableArray",
+      "value": "[]"
+     },
+     {
+      "name": "colTypes",
+      "type": "colTypesCustom",
+      "value": "[\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\",\"numeric\"]"
+     },
+     {
+      "name": "colWidths",
+      "type": "ColWidthsArray",
+      "value": "[\"15%\",\"15%\",\"10%\",\"10%\",\"10%\",\"15%\",\"15%\"]"
+     },
+     {
+      "name": "expandParameters",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[[\"hqParam\",\"hqParam\"],[\"stateParam\",\"stateParam\"]]"
+     },
+     {
+      "name": "displayLength",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "expandOnClick",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "filter",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "info",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "lengthChange",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "paginate",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "sort",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "colSearchable",
+      "type": "Array",
+      "value": "[]"
+     },
+     {
+      "name": "drawCallback",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "avgDetailsQuery"
+     },
+     {
+      "name": "sDom",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "sortBy",
+      "type": "SortByArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "paginationType",
+      "type": "PaginationType",
+      "value": "simple_numbers"
+     },
+     {
+      "name": "tableStyle",
+      "type": "TableStyle",
+      "value": "themeroller"
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:avgCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "paginateServerside",
+      "type": "Boolean",
+      "value": "false"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     },
+     {
+      "name": "clickAction",
+      "type": "JavaScript",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsTable",
+    "typeDesc": "table Component"
+   },
+   {
+    "id": "SELECTORS",
+    "name": "Selects",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "Group",
+      "type": "Label",
+      "value": "Selects"
+     }
+    ],
+    "type": "Label",
+    "typeDesc": "<i>Group</i>"
+   },
+   {
+    "id": "eb39d73a-97a2-aed2-b3f3-f482cd5def3a",
+    "parent": "SELECTORS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "selHQ"
+     },
+     {
+      "name": "parameter",
+      "type": "Parameter",
+      "value": "${p:hqParam}"
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "['${p:stateParam}']"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[[\"stateParam\",\"stateParam\"]]"
+     },
+     {
+      "name": "externalPlugin",
+      "type": "externalPluginCustom",
+      "value": "select2"
+     },
+     {
+      "name": "valueAsId",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "hqSQLQuery"
+     },
+     {
+      "name": "valuesArray",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:filterTerritoryCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsSelect",
+    "typeDesc": "Select Component"
+   },
+   {
+    "id": "1861232d-720b-0c67-9da2-0b054584f9c0",
+    "parent": "SELECTORS",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "selState"
+     },
+     {
+      "name": "parameter",
+      "type": "Parameter",
+      "value": "${p:stateParam}"
+     },
+     {
+      "name": "listeners",
+      "type": "Listeners",
+      "value": "[]"
+     },
+     {
+      "name": "parameters",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "externalPlugin",
+      "type": "externalPluginCustom",
+      "value": "select2"
+     },
+     {
+      "name": "valueAsId",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "dataSource",
+      "type": "Datasource",
+      "value": "stateQuery"
+     },
+     {
+      "name": "valuesArray",
+      "type": "ValuesArray",
+      "value": "[]"
+     },
+     {
+      "name": "priority",
+      "type": "Integer",
+      "value": 5
+     },
+     {
+      "name": "refreshPeriod",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "htmlObject",
+      "type": "HtmlObject",
+      "value": "${h:filterStateCol}"
+     },
+     {
+      "name": "executeAtStart",
+      "type": "Boolean",
+      "value": "true"
+     },
+     {
+      "name": "preExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postExecution",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postFetch",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "preChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "postChange",
+      "type": "JavaScript",
+      "value": ""
+     },
+     {
+      "name": "extraOptions",
+      "type": "OptionArray",
+      "value": "[]"
+     },
+     {
+      "name": "tooltip",
+      "type": "Html",
+      "value": ""
+     }
+    ],
+    "type": "ComponentsSelect",
+    "typeDesc": "Select Component"
+   }
+  ]
+ },
+ "datasources": {
+  "rows": [
+   {
+    "id": "SQL",
+    "name": "SQL Queries",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "Group",
+      "type": "Label",
+      "value": "SQL Queries"
+     }
+    ],
+    "type": "Label",
+    "typeDesc": "<i>Group</i>"
+   },
+   {
+    "id": "e3a4eb4d-67b6-94f0-bba8-bb29d53ec821",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "stateQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "\nSELECT DISTINCT state from dim_location ORDER BY state"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "include"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   },
+   {
+    "id": "b724b176-b716-e046-b472-f2af52d65eb8",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqSQLQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "SELECT a.region FROM \n(SELECT region FROM dim_location\nWHERE state = ${stateParam}\nUNION\nSELECT '- All -' as region) a\nORDER BY convert_to(a.region, 'SQL_ASCII')"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[[\"stateParam\",\"stateParam\",\"String\",\"\"]]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "include"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   },
+   {
+    "id": "1073df92-bbab-0bc9-42cd-5fbd953201d2",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "teamSQLQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "SELECT loc.region, mr.mr_name, mr.asm_name, mr.rsm_name, mr.zsm_name, mr.dgm_name, mr.gm_name \r\n    FROM dim_mr mr \r\n    LEFT JOIN dim_location loc ON loc.id = mr.region_id\r\nWHERE (loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam})\r\nORDER BY loc.region"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[[\"region\",\"hqParam\",\"String\",\"\"],[\"stateParam\",\"stateParam\",\"String\",\"\"]]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "include"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   },
+   {
+    "id": "591b6ac6-e665-8393-fa8c-05f6f56ba06b",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqDetailsQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "SELECT details.month, cast(details.month_no as numeric), coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,\n    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,\n    coalesce(sum(details.sample),0) as sample\nFROM (SELECT mr.user_id as user_id, to_char(mr.expense_date, 'Month') as month, dt.fin_month_number as month_no, \n        sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,\n    \tsum(mr.sample_amount) as sample, 0 as sales, 0 as collection\n\t FROM mr_expenses mr \n\t\tJOIN dim_date dt ON dt.date_value = mr.expense_date\n\t WHERE mr.expense_date between '2015-04-01' and '2016-03-31'\n\t GROUP BY mr.user_id, dt.fin_month_number, to_char(mr.expense_date, 'Month')\n\tUNION ALL\n\tSELECT part.user_id as user_id, to_char(part.doc_date, 'Month') as month, dt.fin_month_number as month_no, \n\t\t0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,\n\t\tcoalesce (sum(part.invoice_amount),0) as sales,  \n\t\tcoalesce (sum(part.payment_amount),0) as collection\n\t FROM party_information part \n\t\tJOIN dim_date dt ON dt.date_key = part.date_key\n\t WHERE part.doc_date between '2015-04-01' and '2016-03-31'\n\tGROUP BY to_char(part.doc_date, 'Month') , dt.fin_month_number, part.user_id) details\n\tJOIN dim_mr mr ON mr.id = details.user_id\n\tLEFT JOIN dim_location loc ON loc.id = mr.region_id\nWHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}))\nGROUP BY details.month, details.month_no\nORDER BY cast(details.month_no as numeric)"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[[\"region\",\"#null\",\"String\",\"\"],[\"stateParam\",\"\",\"String\",\"\"]]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[[\"totalExpenses\",\"=[salary]+[other_expenses]+[promotional_expenses]+[ppp]+[sample]\"],[\"performance\",\"=[sales]-[totalExpenses]\"]]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[\"1\"]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "exclude"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   },
+   {
+    "id": "b02d2907-bb7a-f5b5-4559-65d79f76e4b8",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "totalDetailsQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "SELECT coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,\n    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,\n    coalesce(sum(details.sample),0) as sample\nFROM (SELECT mr.user_id as user_id, sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,\n    \tsum(mr.sample_amount) as sample, 0 as sales, 0 as collection\n\t FROM mr_expenses mr WHERE mr.expense_date between '2015-04-01' and '2016-03-31'\n\t GROUP BY mr.user_id\n\tUNION ALL\n\tSELECT part.user_id as user_id,\t0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,\n\t\tcoalesce (sum(part.invoice_amount),0) as sales,  \n\t\tcoalesce (sum(part.payment_amount),0) as collection\n\t FROM party_information part WHERE part.doc_date between '2015-04-01' and '2016-03-31'\n\tGROUP BY to_char(part.doc_date, 'Month') , DATE_PART('month',part.doc_date), part.user_id) details\n\tJOIN dim_mr mr ON mr.id = details.user_id\n\tJOIN dim_location loc ON loc.id = mr.region_id\nWHERE ((loc.region = ${hqParam} OR '- All -' = ${hqParam}) AND (loc.state = ${stateParam}))"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[[\"hqParam\",\"hqParam\",\"String\",\"\"],[\"stateParam\",\"stateParam\",\"String\",\"\"]]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[[\"total_expenses\",\"=[salary]+[other_expenses]+[promotional_expenses]+[ppp]+[sample]\"],[\"performance\",\"=[sales]-[total_expenses]\"]]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "include"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   },
+   {
+    "id": "e83acefd-5e99-b4b0-dda6-d30960d8e6df",
+    "meta": "CDA",
+    "meta_conntype": "sql.jndi",
+    "meta_datype": "sql",
+    "parent": "SQL",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "avgDetailsQuery"
+     },
+     {
+      "name": "access",
+      "type": "Access",
+      "value": "public"
+     },
+     {
+      "name": "jndi",
+      "type": "Jndi",
+      "value": "DeltasPharmaDataSource"
+     },
+     {
+      "name": "query",
+      "type": "SqlQuery",
+      "value": "SELECT avg(sales/12) as avg_sales, avg(collection/12) as avg_collection, avg(salary/12) as avg_salary, avg(other_expenses/12) avg_other, \n    avg(promotional_expenses/12) as avg_promotional, avg(ppp/12) as avg_ppp, avg(sample/12) as avg_sample\nFROM (SELECT coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,\n    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,\n    coalesce(sum(details.sample),0) as sample\nFROM (SELECT mr.user_id as user_id, sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,\n    \tsum(mr.sample_amount) as sample, 0 as sales, 0 as collection\n\t FROM mr_expenses mr WHERE mr.expense_date between '2015-04-01' and '2016-03-31'\n\t GROUP BY mr.user_id\n\tUNION ALL\n\tSELECT part.user_id as user_id,\t0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,\n\t\tcoalesce (sum(part.invoice_amount),0) as sales,  \n\t\tcoalesce (sum(part.payment_amount),0) as collection\n\t FROM party_information part WHERE part.doc_date between '2015-04-01' and '2016-03-31'\n\tGROUP BY to_char(part.doc_date, 'Month') , DATE_PART('month',part.doc_date), part.user_id) details\n\tJOIN dim_mr mr ON mr.id = details.user_id\n\tJOIN dim_location loc ON loc.id = mr.region_id\nWHERE ((loc.region = ${hqParam} OR '- All -' = ${hqParam}) AND (loc.state = ${stateParam}))) avg_info"
+     },
+     {
+      "name": "parameters",
+      "type": "CdaParameters",
+      "value": "[[\"hqParam\",\"hqParam\",\"String\",\"\"],[\"stateParam\",\"stateParam\",\"String\",\"\"]]"
+     },
+     {
+      "name": "cdacalculatedcolumns",
+      "type": "CdaCalculatedColumnsArray",
+      "value": "[[\"avg_total_expenses\",\"=[avg_salary]+[avg_other]+[avg_promotional]+[avg_ppp]+[avg_sample]\"],[\"avg_performance\",\"=[avg_sales]-[avg_total_expenses]\"]]"
+     },
+     {
+      "name": "cdacolumns",
+      "type": "CdaColumnsArray",
+      "value": "[]"
+     },
+     {
+      "name": "output",
+      "type": "IndexArray",
+      "value": "[]"
+     },
+     {
+      "name": "outputMode",
+      "type": "OutputMode",
+      "value": "include"
+     },
+     {
+      "name": "cacheKeys",
+      "type": "CacheKeysValues",
+      "value": "[]"
+     },
+     {
+      "name": "cacheDuration",
+      "type": "Integer",
+      "value": 3600
+     },
+     {
+      "name": "cache",
+      "type": "Boolean",
+      "value": "true"
+     }
+    ],
+    "type": "Componentssql_sqlJndi",
+    "typeDesc": "sql over sqlJndi"
+   }
+  ]
+ },
+ "filename": "/home/DeltasPharma/Dashboards/Territory_Analysis.cdfde",
+ "layout": {
+  "rows": [
+   {
+    "id": "27df2960-1238-2f72-93ff-5e9f4b09cde6",
+    "type": "LayoutResourceFile",
+    "typeDesc": "Resource",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "value": "",
+      "type": "Id"
+     },
+     {
+      "name": "resourceFile",
+      "value": "${solution:css/backgroundReport.css}",
+      "type": "ResourceFile"
+     },
+     {
+      "name": "resourceType",
+      "value": "Css",
+      "type": "Label"
+     }
+    ]
+   },
+   {
+    "id": "1bb31a02-c07b-5e01-df62-e1f82604abe3",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "header"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "bd2aee88-e27a-ee0b-8908-52ed9589cdae",
+    "parent": "1bb31a02-c07b-5e01-df62-e1f82604abe3",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "logo"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "6"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "610528b9-302f-9966-db15-0b39a4c4674e",
+    "parent": "bd2aee88-e27a-ee0b-8908-52ed9589cdae",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "logo"
+     },
+     {
+      "name": "html",
+      "type": "Html",
+      "value": "<img src=\"img/logo.png\" height=\"49\" width=\"150\"/> "
+     },
+     {
+      "name": "fontSize",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "color",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutHtml",
+    "typeDesc": "Html"
+   },
+   {
+    "id": "b35bfcf5-e09d-b70d-7361-4c0a880a4537",
+    "parent": "1bb31a02-c07b-5e01-df62-e1f82604abe3",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "name"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "6"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "369415b6-2738-3009-24a8-bd679657977d",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "title"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": "#67462e"
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "83196632-b98d-64b3-69f6-e768fbd6f99d",
+    "parent": "369415b6-2738-3009-24a8-bd679657977d",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "titleCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "12"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": "center"
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "d9e4151b-af8c-bbf6-37ff-fd489457cd10",
+    "parent": "83196632-b98d-64b3-69f6-e768fbd6f99d",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "title"
+     },
+     {
+      "name": "html",
+      "type": "Html",
+      "value": "<style>\nul {\n    list-style-type: none;\n    margin: 0;\n    padding: 0;\n    overflow: hidden;\n  \n}\n\nli {\n    float: left;\n    border-right: 1px solid #bbb;\n}\n\nli a {\n    display: inline-block;\n    color: white;\n    text-align: center;\n    padding: 2px 12px;\n    text-decoration: none;\n    margin-left: 15px;\n}\n\nli a:hover {\n    background-color: #fbb24a;\n}\n \n</style>\n<ul>\n        <li><a href=\"http://128.199.98.77:8080/pentaho/api/repos/%3Ahome%3ADeltasPharma%3ADashboards%3ADeltasPharma_Main%3Ahome.wcdf/generatedContent\">\n        HOME</a></li>\n\t\n</ul> "
+     },
+     {
+      "name": "fontSize",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "color",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutHtml",
+    "typeDesc": "Html"
+   },
+   {
+    "id": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "filter"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": "40"
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": "dateImg"
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "5ccd1257-c4ea-9d97-370e-a75ff3f78c2d",
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column",
+    "parent": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "properties": [
+     {
+      "name": "name",
+      "value": "",
+      "type": "Id"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "value": "3",
+      "type": "String"
+     },
+     {
+      "name": "bootstrapSmall",
+      "value": "",
+      "type": "String"
+     },
+     {
+      "name": "bootstrapMedium",
+      "value": "",
+      "type": "String"
+     },
+     {
+      "name": "bootstrapLarge",
+      "value": "",
+      "type": "String"
+     },
+     {
+      "name": "bootstrapCssClass",
+      "value": "",
+      "type": "String"
+     },
+     {
+      "name": "height",
+      "value": "",
+      "type": "Integer"
+     },
+     {
+      "name": "backgroundColor",
+      "value": "",
+      "type": "Color"
+     },
+     {
+      "name": "roundCorners",
+      "value": "",
+      "type": "RoundCorners"
+     },
+     {
+      "name": "textAlign",
+      "value": "",
+      "type": "TextAlign"
+     },
+     {
+      "name": "cssClass",
+      "value": "",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "id": "9edf5eed-c38b-21d7-8a2e-fd13162d1af6",
+    "type": "LayoutHtml",
+    "typeDesc": "Html",
+    "parent": "5ccd1257-c4ea-9d97-370e-a75ff3f78c2d",
+    "properties": [
+     {
+      "name": "name",
+      "value": "",
+      "type": "Id"
+     },
+     {
+      "name": "html",
+      "value": "<p>Territory Analysis</p> ",
+      "type": "Html"
+     },
+     {
+      "name": "fontSize",
+      "value": "30",
+      "type": "Integer"
+     },
+     {
+      "name": "color",
+      "value": "",
+      "type": "Color"
+     },
+     {
+      "name": "cssClass",
+      "value": "",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "id": "ea30dae2-1989-ab16-8e7a-c37d54e82178",
+    "parent": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "filterStateLabel"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "2"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": "right"
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "1483ae1f-50f6-3d9b-f0e0-d132d1c0da0d",
+    "parent": "ea30dae2-1989-ab16-8e7a-c37d54e82178",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": ""
+     },
+     {
+      "name": "html",
+      "type": "Html",
+      "value": "<h5>Select State</h5> "
+     },
+     {
+      "name": "fontSize",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "color",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutHtml",
+    "typeDesc": "Html"
+   },
+   {
+    "id": "2bea1fd8-cae5-d528-bf01-931252483366",
+    "parent": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "filterStateCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "2"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": "left"
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "9143bd7f-4e88-2292-dc57-80e4f6961be9",
+    "parent": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "filterTerritoryLabel"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "3"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": "right"
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "8f7f8e32-ecf6-3cd2-cf6d-ff91af5e54b3",
+    "parent": "9143bd7f-4e88-2292-dc57-80e4f6961be9",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": ""
+     },
+     {
+      "name": "html",
+      "type": "Html",
+      "value": "<h5>Select Territory</h5> "
+     },
+     {
+      "name": "fontSize",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "color",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutHtml",
+    "typeDesc": "Html"
+   },
+   {
+    "id": "b88cc20e-68c9-31c1-43c2-370c01cc9ccd",
+    "parent": "514b77d3-4507-b3f9-7dfb-f55dfe9edf64",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "filterTerritoryCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "2"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": "left"
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "8489784f-7068-ddc9-614a-46d06824aaf3",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "blank"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": "30"
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "e683a7f7-23f1-b428-d4ae-d9efe202ad9f",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "team"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": "20"
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "d1b5536b-c7a6-f04b-e1f5-e28f573201d0",
+    "parent": "e683a7f7-23f1-b428-d4ae-d9efe202ad9f",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "teamCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "12"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "a7e9f76a-79bd-4147-9800-61f53f1780d5",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqDetails"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "b9b3f407-f818-6d72-773d-0852200a8296",
+    "parent": "a7e9f76a-79bd-4147-9800-61f53f1780d5",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "hqDetailsCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "12"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "c09c8741-18eb-1c30-437b-a89be72afe6e",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "totalDetails"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "583d9cc4-0c7e-fd45-b515-d2b3acbb9451",
+    "parent": "c09c8741-18eb-1c30-437b-a89be72afe6e",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "blankCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "1"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "691e86e8-849b-81b7-eb1d-1825be95a8aa",
+    "parent": "583d9cc4-0c7e-fd45-b515-d2b3acbb9451",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": ""
+     },
+     {
+      "name": "html",
+      "type": "Html",
+      "value": ""
+     },
+     {
+      "name": "fontSize",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "color",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutHtml",
+    "typeDesc": "Html"
+   },
+   {
+    "id": "946730cc-e87c-dab4-714d-f941ff19b750",
+    "parent": "c09c8741-18eb-1c30-437b-a89be72afe6e",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "totalCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "11"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "d6f3dbf7-4944-4fbc-bef0-c10f42f9121b",
+    "parent": "UnIqEiD",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "avgDetails"
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutRow",
+    "typeDesc": "Row"
+   },
+   {
+    "id": "b2df04ac-3b1e-9c2d-7999-40b56d3adcb9",
+    "parent": "d6f3dbf7-4944-4fbc-bef0-c10f42f9121b",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "blankCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "1"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   },
+   {
+    "id": "6cf779d3-28a4-6ffc-1176-e38399175079",
+    "parent": "d6f3dbf7-4944-4fbc-bef0-c10f42f9121b",
+    "properties": [
+     {
+      "name": "name",
+      "type": "Id",
+      "value": "avgCol"
+     },
+     {
+      "name": "bootstrapExtraSmall",
+      "type": "String",
+      "value": "11"
+     },
+     {
+      "name": "bootstrapSmall",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapMedium",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapLarge",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "bootstrapCssClass",
+      "type": "String",
+      "value": ""
+     },
+     {
+      "name": "height",
+      "type": "Integer",
+      "value": ""
+     },
+     {
+      "name": "backgroundColor",
+      "type": "Color",
+      "value": ""
+     },
+     {
+      "name": "roundCorners",
+      "type": "RoundCorners",
+      "value": ""
+     },
+     {
+      "name": "textAlign",
+      "type": "TextAlign",
+      "value": ""
+     },
+     {
+      "name": "cssClass",
+      "type": "String",
+      "value": ""
+     }
+    ],
+    "type": "LayoutBootstrapColumn",
+    "typeDesc": "Column"
+   }
+  ],
+  "title": "CDF - Sample structure"
+ }
+}

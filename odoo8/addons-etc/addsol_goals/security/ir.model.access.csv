@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_addsol_goals,addsol_goals.addsol_goals,model_addsol_goals,base.group_addsol_gm,1,1,1,1
+access_addsol_date_periods,addsol_date_periods,model_addsol_date_periods,base.group_addsol_gm,1,1,1,1
+access_addsol_target_productsaddsol_target_products,addsol_target_products,model_addsol_target_products,base.group_addsol_gm,1,1,1,1
+access_addsol_projection,projection,model_addsol_projection,base.group_addsol_asm,1,1,1,1
+access_addsol_projection_line,Projection Line,model_addsol_projection_line,base.group_addsol_asm,1,1,1,1
+access_addsol_date_periods,Date period,model_addsol_date_periods,base.group_addsol_asm,1,0,0,0

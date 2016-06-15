@@ -1,0 +1,229 @@
+{% extends "mktg_layout.html" %}
+{% load staticfiles %}
+ 
+
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% block mktg_content %}
+<table width="100%">	
+	<tr>
+		<td width="50%"> <h2>PPP List</h2> </td> 
+		<td width="50%"align="right"> <button id="pppButton" class="k-primary">New PPP</button> </td>
+	<tr>
+</table>
+<div id='pppGrid'>
+</div>
+<div id='recordDetails'></div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+   
+    $('#message').delay(5000).fadeOut('slow');
+    var detailsTemplate;
+    var wnd = $('#recordDetails').kendoWindow({
+			title: "PPP Bill Record",
+			modal: true,
+			visible: false,
+			resizable: true,
+		}).data("kendoWindow");
+    detailsTemplate = kendo.template($('#recordTemplate').html());
+
+    $('#pppGrid').kendoGrid({
+      dataSource: {
+        transport: {
+                read: {
+                url: '/mktg/ppp-list/',
+                contentType: 'application/json; charset=utf-8',
+                type: 'GET',
+                dataType: 'json'
+                }
+        },
+        pageSize: 10
+      },
+      columns: [
+        {
+        field: 'date',
+	type: 'date',
+	format:"{0:d}",
+        title: 'Date'
+        },
+        {
+        field: 'hq',
+        title: 'HQ'
+        },
+        {
+        field: 'doctor',
+        title: 'Name',
+        },
+	{
+	field: 'payment_mode',
+	title: 'Mode',
+	attributes : {style:"text-align:center"}
+	},
+	{
+	field: 'status',
+	title: 'Status',
+	attributes : {style:"text-align:center"}
+	},
+	{
+    	field: 'amount',
+    	title: 'Amount',
+	type: 'number',
+	format: "{0:c2}", 
+	attributes :{style:"text-align:right"}
+    	},
+	{
+    	field: 'count',
+    	title: 'No of Bills',
+	attributes : {style:"text-align:center"}
+    	},
+	{ command:{ text:"Add", click: onClick}, title: "Bill", attributes : {style:"text-align:center"}}
+,
+      ],
+      height: 400,
+      sortable: true,
+      pageable: true
+   });
+
+
+    function onClick(e) {              
+                  	e.preventDefault();
+                    	var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+                     
+                    	wnd.content(detailsTemplate(dataItem));
+                    	wnd.center().open();
+                   }
+
+    function pppClick(e) {
+			 window.location="/mktg/ppp_new";
+                    }
+
+    $("#pppButton").kendoButton({
+                        click: pppClick
+                    });
+	
+
+	var notification = $("#notification").kendoNotification({
+                        position: {
+                            pinned: true,
+                            top: 150,
+                            right: 400
+                        },
+                        autoHideAfter: 4000,
+                        stacking: "down",
+                        templates: [{
+                            type: "error",
+                            template: $("#errorTemplate").html()
+                        }, {
+                            type: "success",
+                            template: $("#successTemplate").html()
+                        }]
+
+                    }).data("kendoNotification");
+
+	$(document).one("kendo:pageUnload", function(){ if (notification) { notification.hide(); } });
+
+});
+	function submitClick(e) {
+      
+                       window.location="/mktg/ppp_record_amount";
+               }
+        
+     	$("#submit").kendoButton({
+                           click: submitClick
+                   });
+
+</script>
+<script type="text/x-kendo-template"  id="recordTemplate">
+
+    <div>
+            <form id="PPPRecordAmount" action="{% url "ppp_record_amount" %}" method="post" enctype="multipart/form-data">
+                
+                <input id="pppId" name="pppId" type="text" value='#= id #' hidden="hidden"/>
+                <label for="amount">Amount:</label>
+
+                <input type="text"  id="id_amount" name="amount"  pattern="[0-9]+?.[0-9]{2}" class="k-textbox" />
+                </br></br>
+                <label for="files">Select File:</label>
+                <input name="files" id="files" type="file" />
+                <p style="padding-top: 1em; text-align: right">
+                <button id="submit" class="k-primary">Add</button></p>
+            </form>
+        </div>
+    </div>
+
+</script>
+<style>
+                .demo-section p {
+                    margin: 0 0 30px;
+                    line-height: 50px;
+                }
+                .demo-section p .k-button {
+                    margin: 0 10px 0 0;
+                }
+                .k-primary {
+                    min-width: 150px;
+		    min-height: 20px;		
+                }                
+
+		.k-notification {
+                    border: 0;
+                }
+
+		/* Error template */
+                .k-notification-error.k-group {
+                    background: rgba(100%,0%,0%,.7);
+                    color: #ffffff;
+                }
+                .wrong-pass {
+                    width: 300px;
+                    height: 100px;
+                }
+                .wrong-pass h3 {
+                    font-size: 1em;
+                    padding: 32px 10px 5px;
+                }
+                .wrong-pass img {
+                    float: left;
+                    margin: 30px 15px 30px 30px;
+                }
+
+                /* Success template */
+                .k-notification-success.k-group {
+                    background: rgba(0%,60%,0%,.7);
+                    color: #fff;
+                }
+                .inf1o {
+                    background: rgba(0%,60%,0%,.7);
+                    color: #fff;
+                    width: 600px;
+                    height: 60px;
+                    padding: 0 30px;
+                    line-height: 12px;
+                }
+                .success h3 {
+                    font-size: 1.7em;
+                    font-weight: normal;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+                .success img {
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+</style>
+
+
+{% endblock %}

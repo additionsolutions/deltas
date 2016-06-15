@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="addsol_product_division_view_form" model="ir.ui.view" >
+            <field name="name">addsol.product_division.view.form</field>
+            <field name="model">addsol.product.division</field>
+            <field name="arch" type="xml">
+                <form string="Product Division">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id"/>
+                            </group>
+                            <group>
+                                <field name="divide_no"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="addsol_product_division_view_tree" model="ir.ui.view" >
+            <field name="name">addsol.product.division.view.tree</field>
+            <field name="model">addsol.product.division</field>
+            <field name="arch" type="xml">
+                <tree string="Product Division">
+                    <field name="product_id"/>
+                    <field name="divide_no"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="open_view_addsol_product_division" model="ir.actions.act_window">
+            <field name="name">Product Division</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">addsol.product.division</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem action="open_view_addsol_product_division" id="menu_open_view_addsol_product_division" parent="addsol_region_state.menu_pharma_config" sequence="12"/>
+
+    </data>
+</openerp>

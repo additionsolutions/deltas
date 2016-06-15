@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Employee form 
+        <record id="addsol_users_view_form" model="ir.ui.view">
+            <field name="name">addsol.users.view</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@name='public']" position="after">
+					
+                </xpath>
+            </field>
+        </record>
+		-->
+		
+		
+    </data>
+</openerp>

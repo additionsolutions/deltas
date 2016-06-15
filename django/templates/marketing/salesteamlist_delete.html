@@ -1,0 +1,56 @@
+{% extends "marketing/layout.html" %}
+
+{% block content %}
+
+<h2>Salesteam </h2>
+<div id ="exmple">
+<div id ='salesteamGrid'>
+</div>
+
+{% endblock % }
+
+{ % block Scripts %}
+<script type= "text/javascript">
+$(document).ready( function() {
+	$('#salesteamGrid').kendoGrid({
+		datasource:{
+		transport:{
+		read:{
+			url:'/mktg/salesteamlist/',
+			contentType:'application/json;charset=utf-8',
+			type:'GET',
+			dataType:'json'
+		}
+	},
+      
+	pageSize:20
+	},
+
+columns:[
+ {
+  field:'id',
+  title:'ID',
+  },
+ {
+  field:'rsm',
+  title:'RSM',
+ },
+ {
+  field:'asm',
+  title:'ASM',
+ },
+ {
+  field:'mr',
+  title:'MR',
+ }
+],
+
+ height=500,  
+ sortable: true,
+ pageable: true,
+ });
+});
+
+</script>
+{% endblock %}
+</div>

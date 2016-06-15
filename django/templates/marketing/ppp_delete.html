@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+        <title>Welcome to Deltas - Kendo UI!</title>
+        <link rel="stylesheet" href="{% static "kendo/styles/kendo.common.min.css"%}" >
+        <link rel="stylesheet" href="{% static "kendo/styles/kendo.default.min.css"%}">
+        <script src="{% static "kendo/js/jquery.min.js"%}"></script>
+        <script src="{% static "kendo/js/kendo.all.min.js"%}"></script>
+    </head>
+    <body>
+        <input id="datepicker" />
+        <script>
+            $(function() {
+                $("#datepicker").kendoDatePicker();
+            });
+        </script>
+    </body>
+</html>

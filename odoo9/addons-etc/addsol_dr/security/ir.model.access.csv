@@ -1,0 +1,23 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_mr_tour_plan,MR Tour Plan,model_mr_tour_plan,base.group_addsol_mr,1,1,1,1
+access_mr_tour_plan_doctor,Tour Plan Doctor,model_mr_tour_plan_doctor,base.group_addsol_mr,1,1,1,1
+access_plan_doctor_work_with_line,Tour Plan Doctor Work With Line,model_plan_doctor_work_with_line,base.group_addsol_mr,1,1,1,1
+access_plan_doctor_product_line,Tour Plan Doctor Product,model_plan_doctor_product_line,base.group_addsol_mr,1,1,1,1
+access_plan_doctor_samples_line,Tour Plan Doctor Samples,model_plan_doctor_samples_line,base.group_addsol_mr,1,1,1,1
+access_plan_doctor_promotional_line,Tour Plan Doctor Promotional,model_plan_doctor_promotional_line,base.group_addsol_mr,1,1,1,1
+access_mr_tour_plan_chemist,Tour Plan Chemist,model_mr_tour_plan_chemist,base.group_addsol_mr,1,1,1,1
+access_plan_chemist_work_with_line,Tour Plan Chemist Work With Line,model_plan_chemist_work_with_line,base.group_addsol_mr,1,1,1,1
+access_mr_tour_plan_stockist,Tour Plan Stockist,model_mr_tour_plan_stockist,base.group_addsol_mr,1,1,1,1
+access_plan_stockist_work_with_line,Tour Plan Stockist Work With Line,model_plan_stockist_work_with_line,base.group_addsol_mr,1,1,1,1
+access_mr_daily_doctor_call,MR Daily Doctor Call,model_mr_daily_doctor_call,base.group_addsol_mr,1,1,1,1
+access_mr_daily_doctor_call_line,MR Daily Doctor Call Line,model_mr_daily_doctor_call_line,base.group_addsol_mr,1,1,1,1
+access_mr_daily_chemist_call,MR Daily Chemist Call,model_mr_daily_chemist_call,base.group_addsol_mr,1,1,1,1
+access_mr_daily_chemist_inventory,MR Daily Chemist Inventory,model_mr_daily_chemist_inventory,base.group_addsol_mr,1,1,1,1
+access_mr_daily_chemist_order,MR Daily Chemist Order,model_mr_daily_chemist_order,base.group_addsol_mr,1,1,1,1
+access_weekly_stockist_call,Weekly Stockist Call,model_weekly_stockist_call,base.group_addsol_mr,1,1,1,1
+access_weekly_stockist_call_inventory_line,Weekly Stockist Call Inventory Line,model_weekly_stockist_call_inventory_line,base.group_addsol_mr,1,1,1,1
+access_weekly_stockist_call_order_line,Weekly Stockist Call Order Line,model_weekly_stockist_call_order_line,base.group_addsol_mr,1,1,1,1
+access_weekly_stockist_chemistwise_product,Weekly Stockist Chemistwise Product,model_weekly_stockist_chemistwise_product,base.group_addsol_mr,1,1,1,1
+access_incentive_type,Incentive Type,model_incentive_type,base.group_addsol_director,1,1,1,1
+access_incentive,Incentive Lines,model_incentive,base.group_addsol_director,1,1,1,1
+access_disbursement,Disbursement,model_disbursement,base.group_addsol_director,1,1,1,1

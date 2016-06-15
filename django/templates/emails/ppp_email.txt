@@ -1,0 +1,8 @@
+Hello,
+
+New PPP created.
+
+ASM             : {{ asm }}
+Expected Amount : {{ amount }}
+Allowance       : {{ allowance }}
+Period          : {{ period }}

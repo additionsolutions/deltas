@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+<h2>Login</h2>
+<div id="login_form">
+	<form  action="/home/login_process/"  method="post" >         
+            <div id="credentials" class="demo-section k-content">
+            {% csrf_token %}
+                <p class="title">Enter Details:</p>
+		{% if auth_message %}
+			<p><b> {{ auth_message }} </b><p>
+		{% endif %}
+                <ul id="fieldlist">
+                    <li>
+                        <label for="user">User:</label>
+                        <input id="user" name="user" type="text" style="width: 100%;" />
+                    </li>
+                    <li>
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" style="width: 100%;" />
+                    </li>
+                </ul>
+		<input type="hidden" name="next" value="{{ request.GET.next }}" />
+		<button id="loginButton" class="k-primary">Submit</button>
+            </div>
+	</form>
+</div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+                    
+		    // create NumericTextBox from input HTML element
+                    $("#user").kendoMaskedTextBox();
+
+                    // create Curerncy NumericTextBox from input HTML element
+                    $("#password").kendoMaskedTextBox();
+
+    function login() {
+               window.location="/home/login_process";
+            }
+
+    $("#loginButton").kendoButton({
+                        click: login
+                    });
+
+  });
+</script>
+
+
+<style>
+                .demo-section {
+                    padding: 0;
+                }
+
+                #credentials .title {
+                    font-size: 16px;
+                    color: #fff;
+                    background-color: #1e88e5;
+                    padding: 20px 30px;
+                    margin: 0;
+               }
+
+               #fieldlist {
+                   margin: 0 0 -1.5em;
+                   padding: 30px;
+               }
+
+               #fieldlist li {
+                   list-style: none;
+                   padding-bottom: 1.5em;
+               }
+
+               #fieldlist label {
+                   display: block;
+                   padding-bottom: .6em;
+                   font-weight: bold;
+                   text-transform: uppercase;
+                   font-size: 12px;
+                   color: #444;
+               }
+
+</style>
+{% endblock %}

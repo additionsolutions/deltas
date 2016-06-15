@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+   
+        <!-- <menuitem
+            id="menu_sales_marketing"
+            name="Sales and Marketing"
+            parent="base.menu_reporting"
+            sequence="0" /> -->
+            
+        <record id="view_addsol_profitability_report_graph" model="ir.ui.view">
+            <field name="name">addsol.profitability.report.graph</field>
+            <field name="model">profitability.report</field>
+            <field name="arch" type="xml">
+                <graph string="Profitability" type="pivot">
+                    <field name="salesteam" type="row"/>
+                    <field name="income" type="measure"/>
+                    <field name="expense" type="measure"/>
+                    <field name="profit" type="measure"/>
+                </graph>
+             </field>
+        </record>
+        
+        <record id="view_addsol_profitability_report_search" model="ir.ui.view">
+            <field name="name">addsol.profitabiltiy.report.search</field>
+            <field name="model">profitability.report</field>
+            <field name="arch" type="xml">
+                <search string="Profitability">
+                    <field name="salesteam"/>
+                    <field name="salesperson"/>
+                    <field name="income"/>
+                    <field name="expense"/>
+                    <field name="profit"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="SalesTeam" name="SalesTeam" context="{'group_by':'salesteam'}"/>
+                        <filter string="Salesperson" name="Salesperson" context="{'group_by':'salesperson'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_addsol_profitability_report_tree" model="ir.actions.act_window">
+            <field name="name">Profitability</field>
+            <field name="res_model">profitability.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_addsol_profitability_report_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_addsol_profitability_report_tree" id="menu_addsol_profitability_report_tree" parent="menu_sales_marketing" sequence="5" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>
+
+

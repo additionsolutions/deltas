@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="rsmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="asmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="hqSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="dataQuery_mrwise" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="dataQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalMrExpenesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="asmExpenesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="rsmExpenesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrExpenesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalAllQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalAllQuery_mrwise" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="rsmSQLQuery" id="rsmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.rsm_name FROM 
+(SELECT rsm_name FROM dim_salesteam WHERE to_date is null
+UNION
+SELECT '- All -' as rsm_name) a
+WHERE a.rsm_name is NOT Null
+ORDER BY convert_to(a.rsm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="asmSQLQuery" id="asmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.asm_name FROM
+(SELECT asm_name from dim_salesteam 
+where (rsm_name = ${rsmParam} OR '- All -' = ${rsmParam}) and to_date is null
+UNION
+SELECT  '- All -' as asm_name) a
+ORDER BY convert_to(a.asm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="hqSQLQuery" id="hqSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.region FROM
+(SELECT region FROM dim_location loc
+WHERE loc.id in 
+    (SELECT DISTINCT region_id FROM dim_salesteam 
+    WHERE ((asm_name = ${asmParam} OR '- All -' = ${asmParam}) 
+    and rsm_name = ${rsmParam}) and to_date is null) 
+UNION 
+SELECT '- All -' as region) a
+ORDER BY convert_to(a.region, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrSQLQuery" id="mrSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.mr_name FROM
+(SELECT mr_name from dim_mr where ((asm_name = ${asmParam} OR '- All -' = ${asmParam}) 
+            AND rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+UNION
+SELECT  '- All -' as mr_name) a
+ORDER BY convert_to(a.mr_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="dataQuery_mrwise" id="dataQuery_mrwise" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>Total</Name>
+            <Formula>=[opening_balance]+[invoice_amount]+[debit_note_amount]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>Balance</Name>
+            <Formula>=[Total]-[payment_amount]-[credit_note_amount]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Output indexes="0,1,2,3,4,5,8,6,7,9" mode="include"/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.party_name, p.party_city, p.mr_name,
+    sum(p.opening_balance) as opening_balance, sum(p.invoice_amount) as invoice_amount, 
+    sum(p.debit_note_amount) as debit_note_amount, sum(p.payment_amount) as payment_amount, sum(p.credit_note_amount) as credit_note_amount
+FROM (( SELECT
+      bp.partner_name AS party_name,
+      bp.partner_city AS party_city,
+      mr.mr_name AS mr_name,
+      ((sum(bp.invoice_amount)+
+      sum(bp.debit_amount) )-
+      (sum(bp.payment_amount) - sum(bp.credit_amount))) AS opening_balance,
+      0.0 as invoice_amount,
+      0.0 as debit_note_amount,
+      0.0 as credit_note_amount,
+      0.0 as payment_amount
+ FROM party_information bp
+  LEFT JOIN dim_mr mr ON mr.id = bp.user_id
+ WHERE
+  (((mr.mr_name = ${mrParam} OR '- All -' = ${mrParam})
+  AND (mr.asm_name = ${asmParam} OR '- All -' = ${asmParam})
+  AND (mr.rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+  AND to_char(bp.doc_date, 'yyyy-MM-dd') < ${startDate}))
+ GROUP BY
+      bp.partner_name,
+      bp.partner_city,
+      mr.mr_name
+ )
+ UNION ALL
+ (
+ SELECT
+      bp.partner_name AS party_name,
+      bp.partner_city AS party_city,
+      mr.mr_name AS mr_name,
+      0.0 as opening_balance,
+      sum(bp.invoice_amount) AS invoice_amount,
+      sum(bp.debit_amount) AS debit_note_amount,
+      sum(bp.credit_amount) * -1.0 AS credit_note_amount,
+      sum(bp.payment_amount) AS payment_amount
+      
+ FROM party_information bp
+  LEFT JOIN dim_mr mr ON mr.id = bp.user_id
+ WHERE
+  ((mr.mr_name = ${mrParam} OR '- All -' = ${mrParam})
+    AND (mr.asm_name = ${asmParam} OR '- All -' = ${asmParam})
+    AND (mr.rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+    AND to_char(bp.doc_date, 'yyyy-MM-dd') between ${startDate} and ${endDate})
+ GROUP BY
+      bp.partner_name,
+      bp.partner_city,
+      mr.mr_name
+ )) p
+GROUP BY
+ p.party_name,
+ p.party_city,
+ p.mr_name
+ORDER BY
+ p.party_name ASC]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="dataQuery" id="dataQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>Total</Name>
+            <Formula>=[opening_balance]+[invoice_amount]+[debit_note_amount]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>Balance</Name>
+            <Formula>=[Total]-[payment_amount]-[credit_note_amount]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Output indexes="0,1,2,3,4,7,5,6,8" mode="include"/>
+      <Parameters>
+         <Parameter default="hqParam" name="hqParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.party_name, p.region,
+    sum(p.opening_balance) as opening_balance, sum(p.invoice_amount) as invoice_amount, 
+    sum(p.debit_note_amount) as debit_note_amount, sum(p.payment_amount) as payment_amount, sum(p.credit_note_amount) as credit_note_amount
+FROM ((SELECT
+      bp.partner_name AS party_name,
+      cl.region_id,
+      loc.region,
+      ((sum(bp.invoice_amount)+
+      sum(bp.debit_amount) )-
+      (sum(bp.payment_amount) - sum(bp.credit_amount))) AS opening_balance,
+      0.0 as invoice_amount,
+      0.0 as debit_note_amount,
+      0.0 as credit_note_amount,
+      0.0 as payment_amount
+ FROM party_information bp
+  LEFT JOIN dim_customer_location cl ON cl.partner_id = bp.partner_id
+  LEFT JOIN dim_location loc ON loc.id = cl.region_id
+ WHERE
+    ((loc.region in (${hqParam}) or '- All -' = ${hqParam})
+    AND (loc.region in (SELECT DISTINCT loc1.region FROM dim_salesteam st
+        		LEFT JOIN dim_location loc1 ON loc1.id = st.region_id 
+				WHERE (st.asm_name = ${asmParam} or '- All -' = ${asmParam} )
+					AND (st.rsm_name = ${rsmParam}  or '- All -' = ${rsmParam}))
+					))
+   AND (to_char(bp.doc_date, 'yyyy-MM-dd') < ${startDate})
+ GROUP BY
+      bp.partner_name, cl.region_id, loc.region)
+ UNION ALL
+(SELECT
+      bp.partner_name AS party_name,
+      cl.region_id,
+      loc.region,
+      0.0 as opening_balance,
+      sum(bp.invoice_amount) AS invoice_amount,
+      sum(bp.debit_amount) AS debit_note_amount,
+      sum(bp.credit_amount) * -1.0 AS credit_note_amount,
+      sum(bp.payment_amount) AS payment_amount
+FROM party_information bp
+  LEFT JOIN dim_customer_location cl ON cl.partner_id = bp.partner_id
+  LEFT JOIN dim_location loc ON loc.id = cl.region_id
+WHERE 
+    ((loc.region in (${hqParam}) or '- All -' = ${hqParam})
+        AND (loc.region in (SELECT DISTINCT loc1.region FROM dim_salesteam st
+    			LEFT JOIN dim_location loc1 ON loc1.id = st.region_id 
+				WHERE (st.asm_name = ${asmParam} or '- All -' = ${asmParam} )
+					AND (st.rsm_name = ${rsmParam}  or '- All -' = ${rsmParam}))
+					))
+     AND (to_char(bp.doc_date, 'yyyy-MM-dd') between ${startDate} and ${endDate})
+GROUP BY
+      bp.partner_name, cl.region_id, loc.region)) p
+GROUP BY
+ p.party_name,
+ p.region_id,
+ p.region
+ORDER BY
+ p.party_name ASC]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalMrExpenesQuery" id="totalMrExpenesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT
+     sum(mrexp.salary_amount) as salary_amount,
+     sum(mrexp.other_expenses) as expense_amount,
+     sum(mrexp.promotional_amount) as promotional_amount,
+     sum(mrexp.sample_amount) as sample_amount, 
+     sum(mrexp.ppp) as ppp
+FROM
+     mr_expenses mrexp
+     LEFT JOIN dim_mr mr ON mr.id = mrexp.user_id
+WHERE 
+    ((mr.mr_name = ${mrParam} OR '- All -' = ${mrParam})
+    AND (mr.asm_name = ${asmParam} OR '- All -' = ${asmParam})
+    AND (mr.rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+    AND to_char(mrexp.expense_date, 'yyyy-MM-dd') between ${startDate} and ${endDate})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="asmExpenesQuery" id="asmExpenesQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT
+(SELECT DISTINCT asm_name FROM dim_salesteam WHERE (asm_name=${asmParam}) AND (to_date IS Null))AS rsm_name,
+sum(mrexp.salary_amount) as salary_amount,
+sum(mrexp.other_expenses) as expense_amount,
+sum(mrexp.promotional_amount) as promotional_amount,
+sum(mrexp.sample_amount) as sample_amount, 
+sum(mrexp.ppp) as ppp
+FROM
+mr_expenses mrexp
+WHERE 
+ mrexp.user_id = (SELECT DISTINCT asm_id FROM dim_salesteam WHERE (asm_name=${asmParam}) AND (to_date IS Null))
+ AND to_char(mrexp.expense_date, 'yyyy-MM-dd') between ${startDate} and ${endDate}]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="rsmExpenesQuery" id="rsmExpenesQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT
+(SELECT DISTINCT rsm_name FROM dim_salesteam WHERE (rsm_name=${rsmParam}) AND (to_date IS Null))AS rsm_name,
+sum(mrexp.salary_amount) as salary_amount,
+sum(mrexp.other_expenses) as expense_amount,
+sum(mrexp.promotional_amount) as promotional_amount,
+sum(mrexp.sample_amount) as sample_amount, 
+sum(mrexp.ppp) as ppp
+FROM
+mr_expenses mrexp
+WHERE 
+ mrexp.user_id = (SELECT DISTINCT rsm_id FROM dim_salesteam WHERE (rsm_name=${rsmParam}) AND (to_date IS Null))
+ AND to_char(mrexp.expense_date, 'yyyy-MM-dd') between ${startDate} and ${endDate}]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrExpenesQuery" id="mrExpenesQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="hqParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT
+     mr.mr_name AS mr_name,
+     sum(mrexp.salary_amount) as salary_amount,
+     sum(mrexp.other_expenses) as expense_amount,
+     sum(mrexp.promotional_amount) as promotional_amount,
+     sum(mrexp.sample_amount) as sample_amount, 
+     sum(mrexp.ppp) as ppp
+FROM
+     mr_expenses mrexp
+     LEFT JOIN dim_salesteam mr ON mr.id = mrexp.user_id
+     JOIN dim_location loc ON loc.id = mr.region_id
+WHERE 
+    ((loc.region in (${hqParam}) or '- All -' = ${hqParam})
+    AND (loc.region in (SELECT DISTINCT loc1.region FROM dim_salesteam st
+            	LEFT JOIN dim_location loc1 ON loc1.id = st.region_id 
+				WHERE (st.asm_name = ${asmParam}  or '- All -' = ${asmParam})
+					AND (st.rsm_name = ${rsmParam} or '- All -' = ${rsmParam}))
+					))
+    AND to_char(mrexp.expense_date, 'yyyy-MM-dd') between ${startDate} and ${endDate}
+GROUP BY
+	mr_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalAllQuery" id="totalAllQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>Total</Name>
+            <Formula>=[opening_balance]+[invoice_amount]+[debit_note_amount]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>Balance</Name>
+            <Formula>=[Total]-[payment_amount]-[credit_note_amount]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Output indexes="0,1,2,5,3,4,6" mode="include"/>
+      <Parameters>
+         <Parameter default="hqParam" name="hqParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(p.opening_balance) as opening_balance, sum(p.invoice_amount) as invoice_amount, 
+    sum(p.debit_note_amount) as debit_note_amount, sum(p.payment_amount) as payment_amount, sum(p.credit_note_amount) as credit_note_amount
+FROM ((SELECT
+      
+      ((sum(bp.invoice_amount)+
+      sum(bp.debit_amount) )-
+      (sum(bp.payment_amount) - sum(bp.credit_amount))) AS opening_balance,
+      0.0 as invoice_amount,
+      0.0 as debit_note_amount,
+      0.0 as credit_note_amount,
+      0.0 as payment_amount
+ FROM party_information bp
+  LEFT JOIN dim_customer_location cl ON cl.partner_id = bp.partner_id
+  LEFT JOIN dim_location loc ON loc.id = cl.region_id
+ WHERE
+    ((loc.region in (${hqParam}) or '- All -' = ${hqParam})
+    AND (loc.region in (SELECT DISTINCT loc1.region FROM dim_salesteam st
+            	LEFT JOIN dim_location loc1 ON loc1.id = st.region_id 
+				WHERE (st.asm_name = ${asmParam} or '- All -' = ${asmParam} )
+					AND (st.rsm_name = ${rsmParam}  or '- All -' = ${rsmParam}))
+					))
+   AND (to_char(bp.doc_date, 'yyyy-MM-dd') < ${startDate})
+   )
+ UNION ALL
+(SELECT
+      0.0 as opening_balance,
+      sum(bp.invoice_amount) AS invoice_amount,
+      sum(bp.debit_amount) AS debit_note_amount,
+      sum(bp.credit_amount) * -1.0 AS credit_note_amount,
+      sum(bp.payment_amount) AS payment_amount
+FROM party_information bp
+  LEFT JOIN dim_customer_location cl ON cl.partner_id = bp.partner_id
+  LEFT JOIN dim_location loc ON loc.id = cl.region_id
+WHERE 
+    ((loc.region in (${hqParam}) or '- All -' = ${hqParam})
+        AND (loc.region in (SELECT DISTINCT loc1.region FROM dim_salesteam st
+    			LEFT JOIN dim_location loc1 ON loc1.id = st.region_id 
+				WHERE (st.asm_name = ${asmParam} or '- All -' = ${asmParam} )
+					AND (st.rsm_name = ${rsmParam}  or '- All -' = ${rsmParam}))
+					))
+     AND (to_char(bp.doc_date, 'yyyy-MM-dd') between ${startDate} and ${endDate})
+)) p]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalAllQuery_mrwise" id="totalAllQuery_mrwise"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>Total</Name>
+            <Formula>=[op_balance]+[inv_amount]+[db_note_amount]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>Balance</Name>
+            <Formula>=[Total]-[pmt_amount]-[credit_note_amount]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Output indexes="0,1,2,5,4,3,6" mode="include"/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="startDate" name="startDate" type="String"/>
+         <Parameter default="endDate" name="endDate" type="String"/>
+         <Parameter default="asmParam" name="asmParam" type="String"/>
+         <Parameter default="rsmParam" name="rsmParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(p.opening_balance) as op_balance, sum(p.invoice_amount) as inv_amount, 
+    sum(p.debit_note_amount) as db_note_amount, sum(p.credit_note_amount) as credit_note_amount,
+    sum(p.payment_amount) as pmt_amount
+FROM (( SELECT
+      ((sum(bp.invoice_amount)+
+      sum(bp.debit_amount) )-
+      sum(bp.payment_amount)) AS opening_balance,
+      0.0 as invoice_amount,
+      0.0 as debit_note_amount,
+      0.0 as credit_note_amount,
+      0.0 as payment_amount
+ FROM party_information bp
+  LEFT JOIN dim_mr mr ON mr.id = bp.user_id
+ WHERE
+  (((mr.mr_name = ${mrParam} OR '- All -' = ${mrParam})
+  AND (mr.asm_name = ${asmParam} OR '- All -' = ${asmParam})
+  AND (mr.rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+  AND to_char(bp.doc_date, 'yyyy-MM-dd') < ${startDate}))
+ )
+ UNION ALL
+ (
+ SELECT
+      0.0 as opening_balance,
+      sum(bp.invoice_amount) AS invoice_amount,
+      sum(bp.debit_amount) AS debit_note_amount,
+      sum(bp.credit_amount) * -1.0 AS credit_note_amount,
+      sum(bp.payment_amount) AS payment_amount
+      
+ FROM party_information bp
+  LEFT JOIN dim_mr mr ON mr.id = bp.user_id
+ WHERE
+  ((mr.mr_name = ${mrParam} OR '- All -' = ${mrParam})
+    AND (mr.asm_name = ${asmParam} OR '- All -' = ${asmParam})
+    AND (mr.rsm_name = ${rsmParam} OR '- All -' = ${rsmParam})
+    AND to_char(bp.doc_date, 'yyyy-MM-dd') between ${startDate} and ${endDate})
+ )) p]]></Query>
+   </DataAccess>
+</CDADescriptor>

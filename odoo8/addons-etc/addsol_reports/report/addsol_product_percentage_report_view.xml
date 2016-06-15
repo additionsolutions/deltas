@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+
+        <menuitem
+            id="menu_sales_marketing"
+            name="Sales and Marketing"
+            parent="base.menu_reporting"
+            sequence="0" groups="base.group_sale_manager" />
+        
+        <record id="view_product_percentage_report_graph" model="ir.ui.view">
+            <field name="name">product.percentage.report.graph</field>
+            <field name="model">product.percentage.report</field>
+            <field name="arch" type="xml">
+                <graph string="Product Percentage" type="pivot">
+                    <field name="product" type="row"/>
+                    <field name="month" type="col"/>
+                    <field name="quantity" type="measure"/>
+                    <field name="percentage" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+        
+        <record id="view_product_percentage_report_search" model="ir.ui.view">
+            <field name="name">product.percentage.report.search</field>
+            <field name="model">product.percentage.report</field>
+            <field name="arch" type="xml">
+                <search string="Product Percentage">
+                    <field name="product"/>
+                    <field name="percentage"/>
+                    <field name="quantity"/>
+                    <field name="month"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="Month" name="Month" context="{'group_by':'month'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_product_percentage_report_tree" model="ir.actions.act_window">
+            <field name="name">Product Percentage</field>
+            <field name="res_model">product.percentage.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_product_percentage_report_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_product_percentage_report_tree" id="menu_product_percentage_report_tree" parent="menu_sales_marketing" sequence="2" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>

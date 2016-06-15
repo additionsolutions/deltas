@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+
+        <menuitem
+            id="menu_sales_marketing"
+            name="Sales and Marketing"
+            parent="base.menu_reporting"
+            sequence="0" groups="base.group_sale_manager" />
+        
+        <record id="view_top_product_report_graph" model="ir.ui.view">
+            <field name="name">top.product.report.graph</field>
+            <field name="model">top.product.report</field>
+            <field name="arch" type="xml">
+                <graph string="Top Products" type="pivot">
+                    <field name="categ_name" type="row"/>
+                    <field name="inv_month" type="col"/>
+                    <field name="amount_total" type="measure"/>
+                    <field name="quantity" type="measure"/>
+                 </graph>
+             </field>
+        </record>
+        
+        <record id="view_top_product_report_search" model="ir.ui.view">
+            <field name="name">top.product.report.search</field>
+            <field name="model">top.product.report</field>
+            <field name="arch" type="xml">
+                <search string="Top Products">
+                    <field name="name_template"/>
+                    <field name="amount_total"/>
+                    <field name="quantity"/>
+                    <field name="categ_name"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="ProductName" name="ProductName" context="{'group_by':'name_template'}"/>
+                        <filter string="CategoryName" name="CategoryName" context="{'group_by':'categ_name'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_top_product_report_tree" model="ir.actions.act_window">
+            <field name="name">Top Products</field>
+            <field name="res_model">top.product.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_top_product_report_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_top_product_report_tree" id="menu_top_product_report_tree" parent="menu_sales_marketing" sequence="1" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>

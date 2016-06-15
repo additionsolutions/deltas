@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="topProductQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="allProductQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="topMRQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalCollectionQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalCollectionProjectionQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalSalesProjectionQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalQuantityQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalOutstandingQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalAmountQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="rsmQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="stateQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="rsmChartQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="stateChartQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="yearQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="monthQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="paymentRSMDetail" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="paymentDetail" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="productMoreDetail" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="productDetail" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="paymentSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="topProductQuery" id="topProductQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="timeParam" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With
+member [Measures].PrevQuantity as (Measures.currentMember,Time.[All Calendar].currentMember.lag(1))
+member [Measures].Evolution as
+((Measures.currentMember,Time.[All Calendar].currentMember)/[Measures].PrevQuantity - 1)*100, FORMAT_STRING='#.#'
+SET [PRDGROUP] AS
+    {DESCENDANTS([Product].[product].[Ethical],2), DESCENDANTS([Product].[product].[OTC],2)}
+set [myset] as {
+    TopCount([PRDGROUP], 5, ([Measures].[Quantity]))
+}
+SELECT NON EMPTY {[Measures].[Quantity], Measures.Evolution} ON COLUMNS,
+ [myset] ON ROWS
+FROM [Sales Analysis]
+WHERE (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="allProductQuery" id="allProductQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="productParam" name="productParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With
+Member [Time].[Month] as [Time].parent.parent.Name || ' ' || 
+  [Time].currentMember.Name
+set [myset] as {
+([Product].[Product].&[${productParam}],([Measures].[Quantity]))
+}
+select NON EMPTY 
+Descendants([Time].[All Calendar],3) on ROWS,
+[myset] ON COLUMNS
+from [Sales Analysis]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="topMRQuery" id="topMRQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with
+set [myset] as {
+TopCount([Sales Team].[Region].Members, 5, ([Measures].[Quantity]))
+}
+
+select {[myset]} ON COLUMNS,
+{[Measures].[Quantity]} ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalCollectionQuery" id="totalCollectionQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With   
+member [Measures].PrevPayment as (Measures.PaymentAmount,[Time.Calendar].currentMember.lag(1))
+member [Measures].Evolution as 
+((Measures.PaymentAmount,[Time.Calendar].currentMember)/[Measures].PrevPayment - 1)*100, FORMAT_STRING='#.#'
+
+select  {[Measures].[PaymentAmount], Measures.Evolution} ON COLUMNS,
+[Customer].[All Customers] ON ROWS
+from [Party Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalCollectionProjectionQuery"
+               id="totalCollectionProjectionQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with 
+member [Measures].PrevAmount as (Measures.Collection_Projection,[Time.Calendar].currentMember.lag(1))
+member [Measures].Evolution as 
+((Measures.Collection_Projection,[Time.Calendar].currentMember)/[Measures].PrevAmount - 1)*100, FORMAT_STRING='#.#'
+select  {[Measures].[Collection_Projection], Measures.Evolution} ON COLUMNS,
+  [Sales Team.SalesTeam].[All Teams] ON ROWS
+from [Projection]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalSalesProjectionQuery"
+               id="totalSalesProjectionQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with 
+member [Measures].PrevAmount as (Measures.Sales_Projection,[Time.Calendar].currentMember.lag(1))
+member [Measures].Evolution as 
+((Measures.Sales_Projection,[Time.Calendar].currentMember)/[Measures].PrevAmount - 1)*100, FORMAT_STRING='#.#'
+select  {[Measures].[Sales_Projection], Measures.Evolution} ON COLUMNS,
+  [Sales Team.SalesTeam].[All Teams] ON ROWS
+from [Projection]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalQuantityQuery" id="totalQuantityQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With   
+member [Measures].PrevQuantity as (Measures.Quantity,[Time.Calendar].currentMember.lag(1))
+member [Measures].Evolution as 
+((Measures.Quantity,[Time.Calendar].currentMember)/[Measures].PrevQuantity - 1)*100, FORMAT_STRING='#.#'
+
+select  {[Measures].[Quantity],Measures.Evolution} ON COLUMNS,
+[Product].[All Product] ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalOutstandingQuery" id="totalOutstandingQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With   
+member [Measures].PrevPayment as (Measures.PaymentAmount,[Time.Calendar].currentMember.lag(1))
+member [Measures].PrevAmount as (Measures.InvoiceAmount,[Time.Calendar].currentMember.lag(1))
+member [Measures].PrevDebit as (Measures.DebitAmount,[Time.Calendar].currentMember.lag(1))
+member [Measures].PrevOutstanding as ([Measures].PrevAmount -([Measures].PrevPayment + [Measures].PrevDebit))
+member [Measures].Outstanding as ([Measures].InvoiceAmount -([Measures].PaymentAmount + [Measures].DebitAmount))
+member [Measures].Evolution as 
+((Measures.Outstanding,[Time.Calendar].currentMember)/[Measures].PrevOutstanding - 1)*100, FORMAT_STRING='#.#'
+
+select  {Measures.Outstanding, Measures.Evolution} ON COLUMNS,
+[Customer].[All Customers] ON ROWS
+from [Party Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalAmountQuery" id="totalAmountQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With   
+member [Measures].PrevAmount as (Measures.SubTotal,[Time.Calendar].currentMember.lag(1))
+member [Measures].Evolution as 
+((Measures.SubTotal,[Time.Calendar].currentMember)/[Measures].PrevAmount - 1)*100, FORMAT_STRING='#.#'
+
+select  {[Measures].[SubTotal],Measures.Evolution} ON COLUMNS,
+[Product].[All Product] ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrQuery" id="mrQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+SET [~ROWS_Location_Location.Location] AS
+    {[Location].[Region].Members}
+SET [~ROWS_SalesTeam_SalesTeam.SalesTeam] AS
+    {[SalesTeam].[MR].Members}
+SELECT
+NON EMPTY {[Measures].[Quantity]} ON COLUMNS,
+NON EMPTY NonEmptyCrossJoin([~ROWS_Location_Location.Location], [~ROWS_SalesTeam_SalesTeam.SalesTeam]) ON ROWS
+FROM [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="rsmQuery" id="rsmQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with 
+member [Measures].[Sales] as '((([SalesTeam].CurrentMember, [Measures].[Quantity]) / ([SalesTeam].[All Teams], [Measures].[Quantity])) * 100)'
+  set [myset] as '{TopCount([SalesTeam].[RSM].Members, 5, [Measures].[Quantity])}'
+  member [SalesTeam].[Others] as '([SalesTeam].[All Teams] - Sum([myset]))'
+select {[Measures].[Sales]} ON COLUMNS,
+  Union([myset], {[SalesTeam].[Others]}) ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="stateQuery" id="stateQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With
+member [Measures].Sales AS
+(([Location].currentMember,[Measures].[Quantity])/([Location].[All Locations],[Measures].[Quantity])) * 100
+set [myset] as {
+TopCount([Location].[State].Members, 5, ([Measures].[Quantity]))
+}
+member [Location].Others as [Location].[All Locations]-sum(myset)
+select  {[Measures].[Sales]} ON COLUMNS,
+Union([myset],{Location.[Others]})
+ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="rsmChartQuery" id="rsmChartQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="false"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with 
+member [Measures].[Sales] as '((([SalesTeam].CurrentMember, [Measures].[Quantity]) / ([SalesTeam].[All Teams], [Measures].[Quantity])) * 100)'
+  set [myset] as '{TopCount([SalesTeam].[RSM].Members, 5, [Measures].[Quantity])}'
+  member [SalesTeam].[Others] as '([SalesTeam].[All Teams] - Sum([myset]))'
+select {[Measures].[Sales]} ON COLUMNS,
+  Union([myset], {[SalesTeam].[Others]}) ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="stateChartQuery" id="stateChartQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="false"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With
+member [Measures].Sales AS
+(([Location].currentMember,[Measures].[Quantity])/([Location].[All Locations],[Measures].[Quantity])) * 100
+set [myset] as {
+TopCount([Location].[State].Members, 5, ([Measures].[Quantity]))
+}
+member [Location].Others as [Location].[All Locations]-sum(myset)
+select  {[Measures].[Sales]} ON COLUMNS,
+Union([myset],{Location.[Others]})
+ON ROWS
+from [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="yearQuery" id="yearQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters/>
+      <Query><![CDATA[with member [Measures].[Name] as '[Time].[All Calendar].CurrentMember.UniqueName'
+select TopCount( filter({Descendants([Time].[All Calendar], [Time].[Years])}, 
+not isempty(([Time].[All Calendar].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [Sales Analysis]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="monthQuery" id="monthQuery" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="1,0" mode="include"/>
+      <Parameters>
+         <Parameter default="[Time].[Year]" name="yearParameter" type="String"/>
+      </Parameters>
+      <Query><![CDATA[with member [Measures].[Name] as '[Time].[All Calendar].CurrentMember.UniqueName' 
+select TopCount( filter({Descendants(${yearParameter} ,[Time].[Months])}, not isempty(([Time].[All Calendar].CurrentMember)) ) , 50) on ROWS, 
+ {[Measures].[Name]} on Columns 
+ from [Sales Analysis]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="paymentRSMDetail" id="paymentRSMDetail" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[With
+Member [Measures].[Sales] as ([Measures].[InvoiceAmount]+[Measures].[DebitAmount])
+Member [Measures].[Outstanding] as ([Measures].[Sales]-[Measures].[PaymentAmount])
+select NON EMPTY {[Measures].[Sales], [Measures].[Outstanding], [Measures].[PaymentAmount]} ON COLUMNS,
+NON EMPTY [SalesTeam].[RSM].Members ON ROWS
+from [Party Analysis]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="paymentDetail" id="paymentDetail" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[With
+Member [Measures].[Sales] as ([Measures].[InvoiceAmount]+[Measures].[DebitAmount])
+Member [Measures].[Outstanding] as ([Measures].[Sales]-[Measures].[PaymentAmount])
+select NON EMPTY {[Measures].[Sales], [Measures].[Outstanding], [Measures].[PaymentAmount]} ON COLUMNS,
+NON EMPTY [SalesTeam].[MR].Members ON ROWS
+from [Party Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="productMoreDetail" id="productMoreDetail"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[WITH
+SET [~COLUMNS] AS
+    {[Time.Calendar].[Months].Members}
+SET [~ROWS_Product_Product] AS
+    {[Product].[Product].Members}
+SET [~ROWS_SalesTeam_SalesTeam.SalesTeam] AS
+    {[SalesTeam].[MR].Members}
+SET [~ROWS_Customer_Customer.Customer] AS
+    {[Customer].[Name].Members}
+SELECT
+NON EMPTY CrossJoin([~COLUMNS], {[Measures].[Quantity], [Measures].[Amount]}) ON COLUMNS,
+NON EMPTY CrossJoin(CrossJoin([~ROWS_Product_Product], [~ROWS_SalesTeam_SalesTeam.SalesTeam] ),[~ROWS_Customer_Customer.Customer]) ON ROWS
+FROM [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="productDetail" id="productDetail" type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="[Time.Calendar].[All Calendar]" name="timeParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+SET [~COLUMNS] AS
+    {[Time.Calendar].[Months].Members}
+SET [~ROWS] AS
+    Hierarchize({{[Product].[Category].Members}, {[Product].[Product].Members}})
+SELECT
+NON EMPTY CrossJoin([~COLUMNS], {[Measures].[Quantity], [Measures].[Amount]}) ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Sales Analysis]
+where (${timeParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="paymentSQLQuery" id="paymentSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT mr.rsm_name, sum(part.invoice_amount) as Sales, sum(part.invoice_amount)-sum(part.payment_amount)+sum(part.credit_amount) as outstanding_amount, sum(part.payment_amount) as Collection
+ FROM party_information part
+    JOIN dim_customer_location custloc ON custloc.partner_id = part.partner_id
+    JOIN dim_location loc ON loc.id = custloc.region_id
+    JOIN dim_salesteam mr ON mr.region_id = loc.id 
+   WHERE mr.to_date is null
+   GROUP BY mr.rsm_name]]></Query>
+   </DataAccess>
+</CDADescriptor>

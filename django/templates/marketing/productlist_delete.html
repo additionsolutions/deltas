@@ -1,0 +1,58 @@
+<html>
+<head>
+<link rel="stylesheet" href="{%static"kendo/styles/kendo.common.min.css"%}"/>
+<link rel="stylesheet" href="{%static"kendo/styles/kendo.default.min.css"%}"/>
+<script src="{%static"kendo/js/jquery.min.js"%}"></script>
+<script src="{%static"kendo/js/kendo.all.min.js"%}"></script>
+</head>
+<body>
+{% extends "marketing/layout.html" %}
+
+{% block content %}
+
+<div id ="product">
+<h2>Product List</h2>
+<div id ='productGrid'>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script type= "text/javascript">
+$(document).ready(function(){
+	$('#productGrid').kendoGrid({
+		datasource:{
+		transport:{
+		read:{
+			url:'/mktg/product-list/',
+			contentType:'application/json; charset=utf-8',
+			type:'GET',
+			dataType:'json'
+		}
+	},
+	pageSize:10
+	},
+columns:[
+ {
+  field:'id',
+  title:'ID',
+  },
+  {
+  field:'product',
+  title:'PRODUCT',
+ },
+ {
+  field:'product_name',
+  title:'PRODUCT NAME',
+ }
+],
+
+ height=500,  
+ sortable: true,
+ pageable: true
+ });
+});
+</script>
+{% endblock %} 
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Buisness Partner -->
+        <record id="addsol_res_partner_view" model="ir.ui.view">
+            <field name="name">addsol.res.partner.view.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page/group/group/field[@name='chemist']" position="after">
+                    <field name="chemist_type" attrs="{'invisible': [('chemist','!=',True)] }"/>
+                </xpath>
+                
+            </field>
+        </record>
+        <!--End-->
+
+        
+
+    </data>
+</openerp>

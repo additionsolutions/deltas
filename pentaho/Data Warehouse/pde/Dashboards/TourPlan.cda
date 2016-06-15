@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="rsmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="asmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="locationQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="doctor_visits" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+      <Connection id="chemist_visits" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+      <Connection id="stockist_visits" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+      <Connection id="stock_table" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+      <Connection id="chem_table" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+      <Connection id="dr_table" type="sql.jndi">
+         <Jndi>Deltas_Pharma_QA</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="rsmSQLQuery" id="rsmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT a.rsm_name FROM 
+(SELECT rsm_name FROM dim_salesteam WHERE to_date is null
+UNION
+SELECT '- All -' as rsm_name) a
+WHERE a.rsm_name is NOT Null
+ORDER BY convert_to(a.rsm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="asmSQLQuery" id="asmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.asm_name FROM
+(SELECT asm_name from dim_salesteam where (rsm_name = ${rsm} or '-All-'=${rsm}) and to_date is null
+UNION
+SELECT  '- All -' as asm_name) a
+ORDER BY convert_to(a.asm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrSQLQuery" id="mrSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="asmParam" name="asm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.mr_name FROM
+(SELECT mr_name from dim_salesteam WHERE (asm_name = ${asm} or '-All-'=${asm}) AND to_date is null
+UNION
+SELECT  '- All -' as mr_name) a
+ORDER BY convert_to(a.mr_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="locationQuery" id="locationQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="#null" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT loc.region FROM dim_location loc
+     LEFT JOIN dim_salesteam mr ON mr.region_id = loc.id
+WHERE mr_name = ${mr} and mr.to_date is null]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="doctor_visits" id="doctor_visits" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="3" mode="exclude"/>
+      <Parameters>
+         <Parameter default="mrParam" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT to_char(p.date_r, 'Month') as mnt, sum(p.plan_count) as Planned, sum(p.visit_count) as Visits,
+    CASE WHEN (date_part('month',p.date_r) - 4) <0 THEN date_part('month',p.date_r) + 8
+    ELSE date_part('month',p.date_r) - 4
+    END as mon
+FROM (
+    
+    SELECT 
+	tp.tour_date as date_r, count(tpd.tour_id) as plan_count, 0 as visit_count
+	FROM mr_tour_plan tp 
+		JOIN mr_tour_plan_doctor tpd ON tpd.tour_id = tp.id
+	WHERE tp.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE(part.name = ${mr} OR '- All -' = ${mr})
+  )
+	GROUP BY tp.tour_date
+	
+	UNION ALL
+    SELECT dcr.call_date as date_r, 0 as plan_count, count(dcr.id) as visit_count
+	FROM mr_daily_doctor_call dcr 
+	WHERE dcr.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE (part.name = ${mr} OR '- All -' = ${mr})
+  )
+	GROUP BY dcr.call_date
+	
+    )p
+GROUP BY to_char(p.date_r, 'Month'), date_part('month',p.date_r)
+ORDER BY mon]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="chemist_visits" id="chemist_visits" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="3" mode="exclude"/>
+      <Parameters>
+         <Parameter default="mrParam" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT to_char(p.date_r, 'Month') as mnt, sum(p.plan_count) as Planned, sum(p.visit_count) as Visits,
+    CASE WHEN (date_part('month',p.date_r) - 4) <0 THEN date_part('month',p.date_r) + 8
+    ELSE date_part('month',p.date_r) - 4
+    END as mon
+FROM (
+    
+    SELECT 
+    tp.tour_date as date_r, count(tpd.tour_id) as plan_count, 0 as visit_count
+	FROM mr_tour_plan tp 
+		JOIN mr_tour_plan_chemist tpd ON tpd.tour_id = tp.id
+	WHERE tp.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE (part.name = ${mr} OR '- All -' = ${mr}))
+                
+               
+	GROUP BY tp.tour_date
+	
+	UNION ALL
+    SELECT dcr.call_date as date_r, 0 as plan_count, count(dcr.id) as visit_count
+	FROM mr_daily_chemist_call dcr 
+	WHERE dcr.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE (part.name = ${mr} OR '- All -' = ${mr}))
+                
+	GROUP BY dcr.call_date
+    )p
+GROUP BY to_char(p.date_r, 'Month'), date_part('month',p.date_r)
+ORDER BY mon]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="stockist_visits" id="stockist_visits" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="3" mode="exclude"/>
+      <Parameters>
+         <Parameter default="mrParam" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT to_char(p.date_r, 'Month') as mnt, sum(p.plan_count) as Planned, sum(p.visit_count) as Visits,
+    CASE WHEN (date_part('month',p.date_r) - 4) <0 THEN date_part('month',p.date_r) + 8
+    ELSE date_part('month',p.date_r) - 4
+    END as mon
+FROM (
+    
+    SELECT 
+    tp.tour_date as date_r, count(tpd.tour_id) as plan_count, 0 as visit_count
+    FROM mr_tour_plan tp 
+        JOIN mr_tour_plan_stockist tpd ON tpd.tour_id = tp.id
+    WHERE tp.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE (part.name = ${mr} OR '- All -' = ${mr})
+  )
+                
+               
+	GROUP BY tp.tour_date
+	
+	UNION ALL
+    SELECT wsc.call_date as date_r, 0 as plan_count, count(wsc.id) as visit_count
+    FROM weekly_stockist_call wsc 
+	WHERE wsc.employee_id in (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE (part.name = ${mr} OR '- All -' = ${mr})
+  )
+                
+	GROUP BY wsc.call_date
+    )p
+GROUP BY to_char(p.date_r, 'Month'), date_part('month',p.date_r)
+ORDER BY mon]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="stock_table" id="stock_table" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="monthParamStock" name="monthParamStock" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT wsc.call_date as date_r,  part.name, wsc.telephonic_flag
+    FROM weekly_stockist_call wsc 
+    JOIN res_partner part ON part.id = wsc.partner_id
+    WHERE wsc.employee_id = (SELECT DISTINCT hr.id FROM hr_employee hr 
+					JOIN resource_resource res ON res.id = hr.resource_id
+					JOIN res_users usr ON usr.id = res.user_id
+					JOIN res_partner part ON part.id = usr.partner_id
+				WHERE part.name = ${mrParam})
+		AND to_char(wsc.call_date, 'Month') = ${monthParamstock}
+ORDER BY wsc.call_date]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="chem_table" id="chem_table" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="monthParamChem" name="monthParamChem" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.name as Chemist_Name, 
+ CASE WHEN p.plan_date IS NOT NULL THEN p.plan_date ELSE p.visit_date END as date_r, count(p.plan_date) as plan, count(p.visit_date) as visit
+FROM
+(SELECT  part.name, Null as plan_date, dcr.call_date as visit_date
+    FROM mr_daily_chemist_call dcr 
+ JOIN res_partner part ON part.id = dcr.partner_id
+ WHERE dcr.employee_id = (SELECT DISTINCT hr.id FROM hr_employee hr 
+     JOIN resource_resource res ON res.id = hr.resource_id
+     JOIN res_users usr ON usr.id = res.user_id
+     JOIN res_partner part ON part.id = usr.partner_id
+    WHERE part.name = ${mrParam}
+  AND to_char(dcr.call_date, 'Month') =${monthParamChem})
+UNION All
+SELECT part.name, tp.tour_date as plan_date, Null as visit_date
+    FROM mr_tour_plan tp 
+ JOIN mr_tour_plan_chemist tpd ON tpd.tour_id = tp.id 
+ JOIN res_partner part ON part.id = tpd.chemist_partner_id
+ WHERE tp.employee_id = (SELECT DISTINCT hr.id FROM hr_employee hr 
+     JOIN resource_resource res ON res.id = hr.resource_id
+     JOIN res_users usr ON usr.id = res.user_id
+     JOIN res_partner part ON part.id = usr.partner_id
+    WHERE part.name = ${mrParam}
+  AND to_char(tp.tour_date, 'Month') =${monthParamChem})
+)p
+GROUP BY p.name, date_r
+ORDER BY p.name, date_r]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="dr_table" id="dr_table" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="monthParamDoc" name="monthParamDoc" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT p.name as Doctor_Name, 
+ CASE WHEN p.plan_date IS NOT NULL THEN p.plan_date ELSE p.visit_date END as date_r, count(p.plan_date) as plan, count(p.visit_date) as visit
+FROM
+(SELECT  part.name, Null as plan_date, dcr.call_date as visit_date
+    FROM mr_daily_doctor_call dcr 
+ JOIN res_partner part ON part.id = dcr.dr_partner_id
+ WHERE dcr.employee_id = (SELECT DISTINCT hr.id FROM hr_employee hr 
+     JOIN resource_resource res ON res.id = hr.resource_id
+     JOIN res_users usr ON usr.id = res.user_id
+     JOIN res_partner part ON part.id = usr.partner_id
+    WHERE part.name = ${mrParam}
+  AND to_char(dcr.call_date, 'Month') = ${monthParamDoc})
+UNION All
+SELECT part.name, tp.tour_date as plan_date, Null as visit_date
+    FROM mr_tour_plan tp 
+ JOIN mr_tour_plan_doctor tpd ON tpd.tour_id = tp.id 
+ JOIN res_partner part ON part.id = tpd.dr_partner_id
+ WHERE tp.employee_id = (SELECT DISTINCT hr.id FROM hr_employee hr 
+     JOIN resource_resource res ON res.id = hr.resource_id
+     JOIN res_users usr ON usr.id = res.user_id
+     JOIN res_partner part ON part.id = usr.partner_id
+    WHERE part.name = ${mrParam}
+  AND to_char(tp.tour_date, 'Month') = ${monthParamDoc})
+)p
+GROUP BY p.name, date_r
+ORDER BY p.name, date_r]]></Query>
+   </DataAccess>
+</CDADescriptor>

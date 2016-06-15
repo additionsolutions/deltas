@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Employee form -->
+        <record id="addsol_hr_employee_view_form" model="ir.ui.view">
+            <field name="name">addsol.hr.employee.view</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page[@name='public']" position="after">
+					<page string="Employee Details">
+						<group>
+							<group>
+								<field name="date_join"/>
+								<field name="company_name"/>
+								<field name="religion"/>
+								<field name="nationality"/>
+							</group>
+							<group>
+								<field name="mother_tongue"/>
+								<field name="mobile_no"/>
+							</group>
+						</group>
+						<group string="Medical Details">
+							<group>
+								<field name="height"/>
+								<field name="bloodgroup"/>
+							</group>
+							<group>
+								<field name="weight"/>
+							</group>
+						</group>
+					</page>
+					<page string="Educational Details">
+						<field name="addsol_education_ids" nolabel="1">
+							<tree editable="bottom">
+								<field name="college_name"/>
+								<field name="degree"/>
+								<field name="from_date"/>
+								<field name="to_date"/>
+								<field name="university_name"/>
+								<field name="percentage"/>
+								<field name="branch"/>
+							</tree>
+						</field>
+					</page>
+					<page string="Previous Employer Details">
+						<field name="addsol_previous_details_ids" nolabel="1">
+							<tree editable="bottom">
+								<field name="from_date"/>
+								<field name="to_date"/>
+								<field name="company_name"/>
+								<field name="city"/>
+								<field name="industry"/>
+								<field name="job_title"/>
+								<field name="responsibilities"/>
+								<field name="previous_salary"/>
+							</tree>
+						</field>
+					</page>
+					<page string="Family Details">
+						<field name="addsol_employee_family_details_ids" nolabel="1">
+							<tree editable="bottom">
+								<field name="name"/>
+								<field name="relationship"/>
+								<field name="dob"/>
+								<field name="occupation"/>
+								<field name="personal_emailid"/>
+							</tree>
+						</field>
+					</page>
+                </xpath>
+		<xpath expr="//form/sheet/notebook/page/group/group/field[@name='birthday']" position="after">	
+			<field name="birth_state_id" on_change="onchange_state(birth_state_id)" options='{"no_open": True}'/>
+			<field name="birth_country_id" options='{"no_open": True, "no_create": True}'/>					
+		</xpath>
+		<xpath expr="//form/sheet/notebook/page/group/group/field[@name='marital']" position="after">					
+			<field name="marraige_date"/>
+	    	</xpath>
+            </field>
+        </record>
+		
+    </data>
+</openerp>

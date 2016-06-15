@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="collectionQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesRegisterQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesTotalQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesChartQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="fyearQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesSummaryMDXQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="collectionQuery" id="collectionQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="4" mode="exclude"/>
+      <Parameters>
+         <Parameter default="monthParam" name="monthParam" type="String"/>
+         <Parameter default="fyYearParam" name="fyYearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT DISTINCT to_char(part.doc_date,'dd-mm-yyyy'), cust.name, 
+CAST ((SELECT array_agg(loc.region)
+  FROM dim_customer_location cl JOIN dim_location loc ON loc.id = cl.region_id
+  WHERE cl.partner_id = cust.id
+ GROUP BY cl.partner_id) AS  text )as region_name, (part.payment_amount) as amount_total,
+ DATE_PART('MONTH',part.doc_date) as month_no, cust.comment
+FROM party_information part
+ JOIN dim_customer cust ON cust.id = part.partner_id
+ LEFT JOIN dim_customer_location cl ON cl.partner_id = part.partner_id
+ JOIN dim_date dt ON dt.date_value = part.doc_date
+WHERE ((rtrim(To_Char(part.doc_date,'Month')) = ${monthParam}) AND (dt.fin_year = ${fyYearParam}) AND part.payment_amount != 0)
+GROUP BY to_char(part.doc_date,'dd-mm-yyyy'),cust.name, amount_total, month_no,cust.comment, cust.id
+ORDER BY to_char(part.doc_date,'dd-mm-yyyy')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesRegisterQuery" id="salesRegisterQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="5" mode="exclude"/>
+      <Parameters>
+         <Parameter default="monthParam" name="monthParam" type="String"/>
+         <Parameter default="fyYearParam" name="fyYearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT DISTINCT to_char(part.doc_date,'dd-mm-yyyy'), cust.name, part.invoice_tally_no, 
+ CAST ((SELECT array_agg(loc.region)
+  FROM dim_customer_location cl JOIN dim_location loc ON loc.id = cl.region_id
+  WHERE cl.partner_id = cust.id
+ GROUP BY cl.partner_id) AS  text )as region_name, (part.invoice_amount) as amount_total,
+ DATE_PART('MONTH',part.doc_date) as month_no, cust.comment
+FROM party_information part
+ JOIN dim_customer cust ON cust.id = part.partner_id
+ LEFT JOIN dim_customer_location cl ON cl.partner_id = part.partner_id
+ JOIN dim_date dt ON dt.date_value = part.doc_date
+WHERE ((rtrim(To_Char(part.doc_date,'Month')) = ${monthParam}) AND (dt.fin_year = ${fyYearParam}) AND (part.invoice_amount != 0))
+GROUP BY to_char(part.doc_date,'dd-mm-yyyy'),cust.name, part.invoice_tally_no,amount_total, month_no,cust.comment, cust.id
+ORDER BY to_char(part.doc_date,'dd-mm-yyyy')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesTotalQuery" id="salesTotalQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="monthParam" name="monthParam" type="String"/>
+         <Parameter default="fyYearParam" name="fyYearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT count(a.*), sum(a.amount) FROM 
+ (SELECT DISTINCT part.id, part.doc_date, part.invoice_amount as amount 
+ FROM party_information part WHERE doc_comment != 'Write-Off') a
+ JOIN dim_date dt ON dt.date_value = a.doc_date
+WHERE (rtrim(To_Char(a.doc_date,'Month')) = ${monthParam}) AND dt.fin_year = ${fyYearParam}]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesChartQuery" id="salesChartQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="5" mode="exclude"/>
+      <Parameters>
+         <Parameter default="fyYearParam" name="fyYearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT x.Month, x.invoice_amount, payment.payment_amount as payment_and_credit, (payment.payment_amount + payment.credit_amount ) as payment_amount, payment.credit_amount * -1 as credit_amount, x.fin_month_number FROM
+(SELECT (rtrim(To_Char(b.doc_date,'Month'))) AS Month, sum(b.invoice_amount) AS invoice_amount, (rtrim(To_Char(b.doc_date,'Month'))) as month_no,
+  dt.fin_month_number 
+  FROM
+ (SELECT a.doc_date, sum(a.invoice_amount) as invoice_amount FROM party_information a
+ GROUP BY a.doc_date
+ ) b
+ JOIN dim_date dt ON dt.date_value = b.doc_date
+ WHERE dt.fin_year = ${fyYearParam}
+GROUP BY (rtrim(To_Char(b.doc_date,'Month'))), DATE_PART('Month',b.doc_date), dt.fin_month_number) x
+ LEFT JOIN 
+ (SELECT (rtrim(To_Char(p.doc_date,'Month'))) as dt,(sum(p.payment_amount)) as payment_amount, (sum(p.credit_amount)) as credit_amount FROM party_information p 
+ GROUP BY (rtrim(To_Char(p.doc_date,'Month')))) payment ON payment.dt = x.month_no
+ORDER BY cast (x.fin_month_number as  integer)]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="fyearQuery" id="fyearQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT DISTINCT dt.fin_year FROM dim_date dt
+  JOIN fact_invoice fi ON fi.invoice_date_key = dt.date_key]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesSummaryMDXQuery" id="salesSummaryMDXQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="FY 2015_2016" name="fyYearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[select NON EMPTY {[Measures].[Amount],[Measures].[Quantity]} ON COLUMNS,
+  NON EMPTY {Descendants([Time.Fiscal].[${fyYearParam}],[Time.Fiscal].[FY Months] , SELF_AND_AFTER)} ON ROWS
+from [Sales Analysis]]]></Query>
+   </DataAccess>
+</CDADescriptor>

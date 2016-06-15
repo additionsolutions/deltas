@@ -1,0 +1,125 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+  
+{% block hr_content %}
+	<div id="example">
+	<div><button id="next" class="k-primary rightbutton">Next</button></div><br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Family Details :</div>
+			</hr>
+			</hr>
+			<div id='familyDetails'>
+			</div>
+		        <p>*First two entries should be of Mother and Father.</br>
+            * Date of birth of each member to be given is mandatory.</br>
+* If you are married, Provide your spouse and kids details in column nos.</br>
+* If you are not married, provide your siblings details in enrty nos. 3, 4, 5, & 6. </p>
+		
+		</div>
+	</div>
+<style>
+		.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+
+		
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+		.rightbutton {
+              		float: right;
+                        padding: 1px;
+                        width: 10%;
+                        height:30px;
+                        margin-right: 5%;
+		 }
+               
+            </style>
+        </div>	
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+   
+	$('#message').delay(5000).fadeOut('slow');
+   
+    $('#familyDetails').kendoGrid({
+      dataSource: {
+    transport: {
+      read: {
+        url: '/hr/emp_family_details_read/',
+        contentType: 'application/json; charset=utf-8',
+        type: 'GET',
+        dataType: 'json'
+      },
+      
+    },
+    pageSize: 10
+      },
+      columns:[
+      	  {field:'employee_id',type:'number',defaultValue:{{request.session.new_emp_id}},hidden:true},
+		  {field:'relationship',title:'Relationship'},
+		  {field:'first_name',title:'First Name ',width:'15%'},
+		  {field:'middle_name',title:'Middle Name ',width:'15%'},
+		  {field:'last_name',title:'Last Name ',width:'15%'},
+		  {field:'dob',title:' Date of Birth ', format:"{0:dd-MM-yyyy}",type:'date'},
+		  {field:'occupation',title:'Occupation',},
+		  {field:'email_id',title:'Personal Email Id',},
+		  { command:{text:"Add" ,click: onClick}, title: "" }
+      	],
+   	editable:  "inline",
+    toolbar: ["create","cancel"],  
+	height: 350,
+    sortable: true,
+    pageable: true,   
+  });
+});
+
+
+
+
+function onClick(e) {
+					
+					var listOfObjects = [];
+					var tr = $(e.target).closest("tr");    // get the current table row (tr)
+  					var item = this.dataItem(tr);
+  					
+					var a = [item.employee_id, item.dob, item.first_name, item.middle_name, item.last_name, item.relationship,item.email_id,item.occupation];
+					
+					window.location = "/hr/emp_family_details_write/" + a ;
+					
+                }
+
+	function nextClick(e) {
+                       window.location="/hr/employee_medical_details/";
+                       
+               }
+       $("#next").kendoButton({
+                       click: nextClick
+                   });
+
+</script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+<h2>Employee List</h2>
+<div id='demo-section k-content'>
+	<input id="mgrList" style="width: 100%"/> 
+</div>
+<div class="box">                
+     <h4>Console log</h4>
+     <div class="console"></div>
+</div>
+<p>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+  $(document).ready(function() {
+	
+	function onSelect(e) {
+		if ("kendoConsole" in window) {
+		var dataItem = this.dataItem(e.item);
+		kendoConsole.log("event :: select (" + dataItem.text + " : " + dataItem.value + ")" );
+	     }
+		
+	};	
+
+	$("#mgrList").kendoDropDownList({
+		dataTextField: "name",
+		dataValueField: "id",
+		dataSource: {
+                            transport: {
+                                read: {
+                                    dataType: "json",
+                                    url: "/hr/emp-list",
+                                }
+                            }
+                        },
+		select: onSelect
+		});
+	
+  });
+</script>
+{% endblock %}

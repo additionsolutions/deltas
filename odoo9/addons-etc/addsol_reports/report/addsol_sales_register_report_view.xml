@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+   
+        <!-- <menuitem
+            id="menu_sales_marketing"
+            name="Sales and Marketing"
+            parent="base.menu_reporting"
+            sequence="0" /> -->
+            
+        <record id="view_addsol_sales_register_report_graph" model="ir.ui.view">
+            <field name="name">addsol.sales.register.report.graph</field>
+            <field name="model">addsol.sales.register.report</field>
+            <field name="arch" type="xml">
+                <graph string="Sales Register" type="pivot">
+                    <field name="party_name" type="row"/>
+                    <field name="date_invoice" type="col"/>
+                    <field name="amount_total" type="measure"/>
+                    <field name="quantity" type="measure"/>
+                </graph>
+             </field>
+        </record>
+        
+        <record id="view_addsol_sales_register_report_search" model="ir.ui.view">
+            <field name="name">addsol.sales.register.report.search</field>
+            <field name="model">addsol.sales.register.report</field>
+            <field name="arch" type="xml">
+                <search string="Sales Register">
+                    <field name="party_name"/>
+                    <field name="date_invoice"/>
+                    <field name="perticulars"/>
+                    <field name="tally_invoice"/>
+                    <field name="salesperson"/>
+                    <field name="st_name"/>
+                    <field name="amount_total"/>
+                    <field name="quantity"/>
+                    <field name="date_due"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="SalesTeam" name="SalesTeam" context="{'group_by':'st_name'}"/>
+                        <filter string="Salesperson" name="SalesPerson" context="{'group_by':'salesperson'}"/> 
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_addsol_sales_register_report_tree" model="ir.actions.act_window">
+            <field name="name">Sales Register</field>
+            <field name="res_model">addsol.sales.register.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_addsol_sales_register_report_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_addsol_sales_register_report_tree" id="menu_action_addsol_sales_register_report_tree" parent="menu_sales_marketing" sequence="7" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>
+

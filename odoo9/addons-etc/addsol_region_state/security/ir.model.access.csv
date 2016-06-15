@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_addsol_region_state,Region,model_addsol_region_state,base.group_addsol_director,1,1,1,1
+access_dr_qualification,Qualification,model_dr_qualification,base.group_addsol_director,1,1,1,1
+access_dr_speciality,Speciality,model_dr_speciality,base.group_addsol_director,1,1,1,1
+access_dr_speciality_product_line,Speciality wise product,model_dr_speciality_product_line,base.group_addsol_director,1,1,1,1
+access_res_partner_doctor_chemist_mapping,Doctor chemist mapping,model_res_partner_doctor_chemist_mapping,base.group_addsol_director,1,1,1,1
+access_res_partner_stockist_chemist_mapping,Stockist chemist mapping,model_res_partner_stockist_chemist_mapping,base.group_addsol_director,1,1,1,1
+access_res_partner_superstockist_stockist_mapping,SuperStockist stockist mapping,model_res_partner_superstockist_stockist_mapping,base.group_addsol_director,1,1,1,1

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load staticfiles %}
+	<link rel="icon" href="{% static "img/favicon.ico"%}">
+        <link href="{% static "kendo/styles/style.css"%}" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static "kendo/styles/kendo.common.min.css"%}" >
+        <link rel="stylesheet" href="{% static "kendo/styles/kendo.default.min.css"%}">
+	<script src="{% static "kendo/js/jquery.min.js"%}"></script>
+        <script src="{% static "kendo/js/kendo.all.min.js"%}"></script>
+	<script src="{% static "kendo/js/cultures/kendo.culture.en-IN.min.js"%}"></script>
+	<script>
+                //set current to the "en-IN" culture script
+                kendo.culture("en-IN");
+   		//alert(kendo.culture().name);
+        </script>
+
+
+	<title>{% block title %}Deltas Pharma{% endblock %}</title>
+    </head>
+    <body>
+	<div id="header">
+		{% block header %} {%endblock %}
+	</div>
+        <div id="content">
+               {% block content %}{% endblock %}
+        </div>
+        <div id="footer" align='right'>
+		{% block footer %} Copyrights- @2016 Deltas Pharma {% endblock%}
+	</div> 
+
+        {% block scripts %}{% endblock %}
+       	{% include 'session_security/all.html' %}
+    </body>
+</html>

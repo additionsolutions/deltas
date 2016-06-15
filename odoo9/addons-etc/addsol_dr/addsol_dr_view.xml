@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="Tour" parent="addsol_region_state.menu_pharma_root" id="menu_open_addsol_mr_tour" sequence="15"/>
+
+        <record id="view_mr_tour_plan_calendar" model="ir.ui.view">
+            <field name="name">MR Tour Plan</field>
+            <field name="model">mr.tour.plan</field>
+            <field name="arch" type="xml">
+                <calendar string="MR Tour Plan" color="employee_id"
+                            date_start="tour_date" date_stop="tour_date_to"
+                          quick_add="False" avatar_model="hr.employee">
+                    <field name="employee_id"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record id="view_mr_tour_plan_tree" model="ir.ui.view" >
+            <field name="name">mr.tour.plan.tree</field>
+            <field name="model">mr.tour.plan</field>
+            <field name="arch" type="xml">
+                <tree string="MR Tour Plan">
+                    <field name="employee_id"/>
+                    <field name="tour_date"/>
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="mr_tour_plan_view_form" model="ir.ui.view">
+            <field name="name">mr.tour.plan.view.form</field>
+            <field name="model">mr.tour.plan</field>
+            <field name="arch" type="xml">
+                <form string="MR Tour Plan">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" />
+                            </group>
+                            <group>
+                                <field name="tour_date"/>
+                            </group>
+                        </group>
+                        
+                        <notebook colspan="4">
+                            <page string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_mr_tour_plan" model="ir.actions.act_window">
+            <field name="name">MR Tour Plan</field>
+            <field name="res_model">mr.tour.plan</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="mr_tour_plan_view_form"/>
+        </record>
+
+        <record id="action_open_mr_tour_plan_calendar" model="ir.actions.act_window.view" >
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="view_mr_tour_plan_calendar"/>
+            <field name="act_window_id" ref="open_mr_tour_plan"/>
+        </record>
+
+        <record id="action_open_mr_tour_plan_tree" model="ir.actions.act_window.view" >
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_mr_tour_plan_tree"/>
+            <field name="act_window_id" ref="open_mr_tour_plan"/>
+        </record>
+
+        <record id="action_open_mr_tour_plan_form" model="ir.actions.act_window.view" >
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="mr_tour_plan_view_form"/>
+            <field name="act_window_id" ref="open_mr_tour_plan"/>
+        </record>
+
+        <menuitem parent="menu_open_addsol_mr_tour" id="menu_open_mr_tour_plan" action="open_mr_tour_plan" sequence="1"/>
+
+        <record id="view_mr_tour_plan_doctor_tree" model="ir.ui.view" >
+            <field name="name">mr.tour.plan.doctor.tree</field>
+            <field name="model">mr.tour.plan.doctor</field>
+            <field name="arch" type="xml">
+                <tree string="Tour Plan Doctor">
+                    <field name="tour_id"/>
+                    <field name="dr_partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mr_tour_plan_doctor_view_form" model="ir.ui.view">
+            <field name="name">mr.tour.plan.doctor.view.form</field>
+            <field name="model">mr.tour.plan.doctor</field>
+            <field name="arch" type="xml">
+                <form string="Tour Plan Doctor">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tour_id" required="1" />
+                            </group>
+                            <group>
+                                <field name="dr_partner_id" required="1" domain="[('doctor', '=', True)]"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="plan_doctor_work_with_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="employee_id" nolabel="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Product">
+                                <field name="plan_doctor_product_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Sample Product">
+                                <field name="plan_doctor_samples_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="sample_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Promotional Product">
+                                <field name="plan_doctor_promotional_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="promotional_qty"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_mr_tour_plan_doctor" model="ir.actions.act_window">
+            <field name="name">Tour Plan Doctor</field>
+            <field name="res_model">mr.tour.plan.doctor</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="mr_tour_plan_doctor_view_form"/>
+        </record>
+
+        <menuitem parent="menu_open_addsol_mr_tour" id="menu_open_mr_tour_plan_doctor" action="open_mr_tour_plan_doctor" sequence="2"/>
+
+        <record id="view_mr_tour_plan_chemist_tree" model="ir.ui.view" >
+            <field name="name">mr.tour.plan.chemist.tree</field>
+            <field name="model">mr.tour.plan.chemist</field>
+            <field name="arch" type="xml">
+                <tree string="Tour Plan Chemist">
+                    <field name="tour_id"/>
+                    <field name="chemist_partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mr_tour_plan_chemist_view_form" model="ir.ui.view">
+            <field name="name">mr.tour.plan.chemist.view.form</field>
+            <field name="model">mr.tour.plan.chemist</field>
+            <field name="arch" type="xml">
+                <form string="Tour Plan Chemist">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tour_id" required="1"/>
+                            </group>
+                            <group>
+                                <field name="chemist_partner_id" required="1" domain="[('chemist', '=', True)]"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="plan_chemist_work_with_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="employee_id" nolabel="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_mr_tour_plan_chemist" model="ir.actions.act_window">
+            <field name="name">Tour Plan Chemist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mr.tour.plan.chemist</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem parent="menu_open_addsol_mr_tour" id="menu_open_mr_tour_plan_chemist" action="open_mr_tour_plan_chemist" sequence="3"/>
+
+
+        <record id="view_mr_tour_plan_stockist_tree" model="ir.ui.view" >
+            <field name="name">mr.tour.plan.stockist.tree</field>
+            <field name="model">mr.tour.plan.stockist</field>
+            <field name="arch" type="xml">
+                <tree string="Tour Plan Stockist">
+                    <field name="tour_id"/>
+                    <field name="stockist_partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mr_tour_plan_stockist_view_form" model="ir.ui.view">
+            <field name="name">mr.tour.plan.stockist.view.form</field>
+            <field name="model">mr.tour.plan.stockist</field>
+            <field name="arch" type="xml">
+                <form string="Tour Plan Stockist">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tour_id" required="1" />
+                            </group>
+                            <group>
+                                <field name="stockist_partner_id" required="1" domain="[('stockist', '=', True)]"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Notes">
+                                <field name="notes" nolabel="1"/>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="plan_stockist_work_with_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="employee_id" nolabel="1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="open_mr_tour_plan_stockist" model="ir.actions.act_window">
+            <field name="name">Tour Plan Stockist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mr.tour.plan.stockist</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem parent="menu_open_addsol_mr_tour" id="menu_open_mr_tour_plan_stockist" action="open_mr_tour_plan_stockist" sequence="4"/>
+
+
+        <!-- Daily Doctor Call -->
+
+        <record model="ir.ui.view" id="mr_daily_doctor_call_view_form">
+            <field name="name">mr.daily.doctor.call.view.form</field>
+            <field name="model">mr.daily.doctor.call</field>
+            <field name="arch" type="xml">
+                <form string="Daily Call Of Doctor">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" />
+                                <field name="dr_partner_id" required="1" context="{'default_customer': 0, 'default_supplier': 0, 'default_stockist': 0, 'default_chemist': 0, 'search_default_doctor': 1, 'default_doctor': 1}"
+                                                domain="[('doctor', '=', True)]"/>
+                                <field name="telephonic_flag" />
+                            </group>
+                            <group>
+                                <field name="call_date" required="1" />
+                                <field name="unplanned_doctor" />
+                                <field name="reasons" attrs="{'invisible': [('telephonic_flag','!=',True)] }" />
+                            </group>
+                            
+                        </group>
+                        <notebook>
+                            <page string="Product">
+                                <field name="call_product_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="quantity" />
+                                        <field name="chemist_qty" />
+                                        <field name="stockist_qty" />
+                                        <field name="scheme_product_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="work_with_ids" nolabel="1" />
+                            </page>
+                            <page string="Remark">
+                                <field name="remark" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_mr_daily_doctor_call_tree">
+            <field name="name">mr.daily.doctor.call.tree</field>
+            <field name="model">mr.daily.doctor.call</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Call Of Doctor">
+                    <field name="employee_id"/>
+                    <field name="call_date"/>
+                    <field name="dr_partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_mr_daily_doctor_call" model="ir.actions.act_window">
+            <field name="name">Daily Call of Doctor</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mr.daily.doctor.call</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Daily Call" parent="addsol_region_state.menu_pharma_root" id="menu_open_mr_daily" sequence="20"/>
+        <menuitem name="Daily Call of Doctor" parent="menu_open_mr_daily" id="menu_open_view_mr_daily_doctor_call" action="open_view_mr_daily_doctor_call" sequence="1"/>
+        <!-- End -->
+
+        <!-- Daily Chemist Call -->
+
+        <record model="ir.ui.view" id="mr_daily_chemist_call_view_form">
+            <field name="name">mr.daily.chemist.call.view.form</field>
+            <field name="model">mr.daily.chemist.call</field>
+            <field name="arch" type="xml">
+                <form string="Daily Call Of Chemist">
+                    <header>
+                        <button string="Submit" name="plan_send" states="draft" type="object" class="oe_highlight" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" attrs="{'readonly': [('state','=','confirm')] }"/>
+                                <field name="partner_id" required="1" context="{'default_chemist': 1}"
+                                      domain="[('chemist', '=', True)]" attrs="{'readonly': [('state','=','confirm')] }" />
+                            </group>
+                            <group>
+                                <field name="call_date" required="1" attrs="{'readonly': [('state','=','confirm')] }" />
+                                <field name="telephonic_flag" attrs="{'readonly': [('state','=','confirm')] }"/>
+                                <field name="reasons" attrs="{'invisible': [('telephonic_flag','!=',True)], 'readonly': [('state','=','confirm')] }" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Inventory Product">
+                                <field name="inventory_product_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="inv_prod_quantity" />
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Order Product">
+                                <field name="order_product_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="ord_prod_quantity" />
+                                        <field name="last_mnth_qty"/>
+                                        <field name="till_date_quantity"/>
+                                        <field name="stockist_qty" />
+                                        <field name="scheme_product_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="chemist_work_with_ids" nolabel="1" />
+                            </page>
+                            <page string="Remark">
+                                <field name="remark" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_mr_daily_chemist_call_tree">
+            <field name="name">mr.daily.chemist.call.tree</field>
+            <field name="model">mr.daily.chemist.call</field>
+            <field name="arch" type="xml">
+                <tree string="Daily Call Of Chemist">
+                    <field name="employee_id"/>
+                    <field name="call_date"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_mr_daily_chemist_call" model="ir.actions.act_window">
+            <field name="name">Daily Call of Chemist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mr.daily.chemist.call</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Daily Call of Chemist" parent="menu_open_mr_daily" id="menu_open_view_mr_daily_chemist_call" action="open_view_mr_daily_chemist_call" sequence="2"/>
+        <!-- End -->
+
+        <!-- Weekly Stockist Call -->
+        <record model="ir.ui.view" id="weekly_stockist_call_view_form">
+            <field name="name">weekly.stockist.call.view.form</field>
+            <field name="model">weekly.stockist.call</field>
+            <field name="arch" type="xml">
+                <form string="Weekly Call Of Stockist">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="employee_id" required="1" />
+                                <field name="partner_id" required="1" context="{'default_stockist': 1}"
+                                      domain="[('stockist', '=', True)]"/>
+                            </group>
+                            <group>
+                                <field name="call_date" required="1" />
+                                <field name="telephonic_flag" />
+                                <field name="reasons" attrs="{'invisible': [('telephonic_flag','!=',True)] }" />
+                            </group>
+                        </group>
+                        <group invisible="1">
+                            <group>
+                                <field name="from_date"/>
+                            </group>
+                            <group>
+                                <field name="to_date" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Inventory Product">
+                                <field name="inventory_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="inv_prod_quantity" />
+                                        <field name="state" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Order Product">
+                                <field name="order_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="product_id"/>
+                                        <field name="ord_prod_quantity" />
+                                        <field name="last_mnth_qty"/>
+                                        <field name="till_date_quantity"/>
+                                        <field name="superstockist_qty" />
+                                        <field name="scheme_product_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Chemistwise Movement">
+                                <field name="chemistwise_product_line_ids" nolabel="1">
+                                    <tree editable="bottom">
+                                        <field name="chemist_partner_id" domain="[('chemist', '=', True)]"/>
+                                        <field name="product_id" />
+                                        <field name="quantity" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Work with whom">
+                                <field name="stockist_work_with_ids" nolabel="1" />
+                            </page>
+                            <page string="Remark">
+                                <field name="remark" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_weekly_stockist_call_tree">
+            <field name="name">weekly.stockist.call.tree</field>
+            <field name="model">weekly.stockist.call</field>
+            <field name="arch" type="xml">
+                <tree string="Weekly Call of Stockist">
+                    <field name="employee_id"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_view_weekly_stockist_call" model="ir.actions.act_window">
+            <field name="name">Weekly Call of Stockist</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">weekly.stockist.call</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Weekly Call of Stockist" parent="menu_open_mr_daily" id="menu_open_view_weekly_stockist_call" action="open_view_weekly_stockist_call" sequence="3"/>
+
+        <!-- End -->
+
+        <!-- Incentive -->
+        <record id="incentive_type_view_form" model="ir.ui.view" >
+            <field name="name">incentive.type.view.form</field>
+            <field name="model">incentive.type</field>
+            <field name="arch" type="xml">
+                <form string="Incentive Type">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="incentive_type_view_tree" model="ir.ui.view" >
+            <field name="name">incentive.type.view.tree</field>
+            <field name="model">incentive.type</field>
+            <field name="arch" type="xml">
+                <tree string="Incentive Type">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="open_view_incentive_type" model="ir.actions.act_window">
+            <field name="name">Incentive Type</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">incentive.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Incentive" parent="addsol_region_state.menu_pharma_root" id="menu_open_incentive" sequence="30"/>
+        <menuitem action="open_view_incentive_type" id="menu_open_view_incentive_type" parent="menu_open_incentive" sequence="1"/>
+
+        <record id="incentive_view_form" model="ir.ui.view" >
+            <field name="name">incentive.view.form</field>
+            <field name="model">incentive</field>
+            <field name="arch" type="xml">
+                <form string="Incentive">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="incentive_type_id"/>
+                            </group>
+                            <group>
+                                <field name="incentive_date"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="employee_id"/>
+                            </group>
+                            <group>
+                                <field name="amount"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="incentive_view_tree" model="ir.ui.view" >
+            <field name="name">incentive.view.tree</field>
+            <field name="model">incentive</field>
+            <field name="arch" type="xml">
+                <tree string="Incentive">
+                    <field name="incentive_type_id"/>
+                    <field name="incentive_date"/>
+                    <field name="employee_id"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="open_view_incentive_line" model="ir.actions.act_window">
+            <field name="name">Incentive</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">incentive</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="open_view_incentive_line" id="menu_open_view_incentive_line" parent="menu_open_incentive" sequence="2"/>
+
+        <record id="disbursement_view_form" model="ir.ui.view" >
+            <field name="name">disbursement.view.form</field>
+            <field name="model">disbursement</field>
+            <field name="arch" type="xml">
+                <form string="Disbursement">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="disbursement_date"/>
+                            </group>
+                            <group>
+                                <field name="employee_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="amount"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="remark"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="disbursement_view_tree" model="ir.ui.view" >
+            <field name="name">disbursement.view.tree</field>
+            <field name="model">disbursement</field>
+            <field name="arch" type="xml">
+                <tree string="Disbursement">
+                    <field name="disbursement_date"/>
+                    <field name="employee_id"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="open_view_disbursement_line" model="ir.actions.act_window">
+            <field name="name">Disbursement</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">disbursement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem action="open_view_disbursement_line" id="menu_open_view_disbursement_line" parent="menu_open_incentive" sequence="3"/>
+
+
+        <!-- End -->
+
+
+    </data>
+</openerp>

@@ -1,0 +1,1849 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:ExportManifest xmlns:ns2="http://www.pentaho.com/schema/">
+    <ExportManifestInformation exportDate="10-06-2016 01:21:48 EDT" exportBy="admin" rootFolder="/home/DeltasPharma/" manifestVersion="2"/>
+    <ExportManifestEntity path="Dashboards">
+        <ExportManifestProperty>
+            <EntityMetaData name="Dashboards" createdDate="2015-11-30T02:18:05.237-05:00" isFolder="true" path="Dashboards" isHidden="false" locale="en_US" title="Dashboards"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo">
+        <ExportManifestProperty>
+            <EntityMetaData name="AutomotiveCo" createdDate="2016-02-19T06:51:55.946-05:00" isFolder="true" path="Dashboards/AutomotiveCo" isHidden="false" locale="en_US" title="AutomotiveCo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2016-02-19T06:51:56.009-05:00" isFolder="true" path="Dashboards/AutomotiveCo/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/css/automotiveCo.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="automotiveCo.css" createdDate="2016-02-19T06:51:56.065-05:00" isFolder="false" path="Dashboards/AutomotiveCo/css/automotiveCo.css" isHidden="true" locale="en_US" title="automotiveCo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/files">
+        <ExportManifestProperty>
+            <EntityMetaData name="files" createdDate="2016-02-19T06:51:56.262-05:00" isFolder="true" path="Dashboards/AutomotiveCo/files" isHidden="false" locale="en_US" title="files"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/files/chartdata.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="chartdata.ktr" createdDate="2016-02-19T06:52:04.423-05:00" isFolder="false" path="Dashboards/AutomotiveCo/files/chartdata.ktr" isHidden="true" locale="en_US" title="chartdata"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/files/chartdata.xls">
+        <ExportManifestProperty>
+            <EntityMetaData name="chartdata.xls" createdDate="2016-02-19T06:52:04.829-05:00" isFolder="false" path="Dashboards/AutomotiveCo/files/chartdata.xls" isHidden="false" locale="en_US" title="chartdata"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2016-02-19T06:52:04.906-05:00" isFolder="true" path="Dashboards/AutomotiveCo/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/DeltasReport_Background.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasReport_Background.png" createdDate="2016-03-03T04:52:04.058-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/DeltasReport_Background.png" isHidden="true" locale="en_US" title="DeltasReport_Background"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/header-background.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="header-background.png" createdDate="2016-02-19T06:52:04.942-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/header-background.png" isHidden="true" locale="en_US" title="header-background"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="logo.png" createdDate="2016-03-03T04:52:18.221-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/logo.png" isHidden="true" locale="en_US" title="logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/pentaho-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.png" createdDate="2016-02-19T06:52:05.106-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/pentaho-logo.png" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/pentaho-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.svg" createdDate="2016-02-19T06:52:05.205-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/pentaho-logo.svg" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/selector-arrow.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="selector-arrow.png" createdDate="2016-02-19T06:52:05.346-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/selector-arrow.png" isHidden="true" locale="en_US" title="selector-arrow"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/selector-arrow.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="selector-arrow.svg" createdDate="2016-02-19T06:52:05.471-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/selector-arrow.svg" isHidden="true" locale="en_US" title="selector-arrow"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/title1.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="title1.png" createdDate="2016-03-03T04:52:39.034-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/title1.png" isHidden="true" locale="en_US" title="title1"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/webdetails-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.png" createdDate="2016-02-19T06:52:05.549-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/webdetails-logo.png" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/img/webdetails-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.svg" createdDate="2016-02-19T06:52:05.632-05:00" isFolder="false" path="Dashboards/AutomotiveCo/img/webdetails-logo.svg" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2016-02-19T06:52:05.732-05:00" isFolder="true" path="Dashboards/AutomotiveCo/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/js/automotiveCo.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="automotiveCo.js" createdDate="2016-02-19T06:52:05.765-05:00" isFolder="false" path="Dashboards/AutomotiveCo/js/automotiveCo.js" isHidden="true" locale="en_US" title="automotiveCo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/main.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.cda" createdDate="2016-02-19T06:52:05.972-05:00" isFolder="false" path="Dashboards/AutomotiveCo/main.cda" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/main.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.cdfde" createdDate="2016-02-19T06:52:06.134-05:00" isFolder="false" path="Dashboards/AutomotiveCo/main.cdfde" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/AutomotiveCo/main.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.wcdf" createdDate="2016-02-19T06:52:06.296-05:00" isFolder="false" path="Dashboards/AutomotiveCo/main.wcdf" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasPharma_Main" createdDate="2015-11-30T02:18:25.519-05:00" isFolder="true" path="Dashboards/DeltasPharma_Main" isHidden="false" locale="en_US" title="DeltasPharma_Main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <aces>
+                    <permissions>READ</permissions>
+                    <recipient>Authenticated</recipient>
+                    <recipientType>ROLE</recipientType>
+                </aces>
+                <aces>
+                    <permissions>READ</permissions>
+                    <permissions>WRITE</permissions>
+                    <recipient>dilip</recipient>
+                    <recipientType>USER</recipientType>
+                </aces>
+                <entriesInheriting>false</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2015-11-30T02:18:25.532-05:00" isFolder="true" path="Dashboards/DeltasPharma_Main/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/css/themepark.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="themepark.css" createdDate="2015-11-30T02:18:25.548-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/css/themepark.css" isHidden="true" locale="en_US" title="themepark"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/etc">
+        <ExportManifestProperty>
+            <EntityMetaData name="etc" createdDate="2015-12-16T23:41:37.743-05:00" isFolder="true" path="Dashboards/DeltasPharma_Main/etc" isHidden="false" locale="en_US" title="etc"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/home.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="home.cda" createdDate="2015-11-30T02:18:25.592-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/home.cda" isHidden="false" locale="en_US" title="home"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <aces>
+                    <permissions>READ</permissions>
+                    <recipient>Authenticated</recipient>
+                    <recipientType>ROLE</recipientType>
+                </aces>
+                <aces>
+                    <permissions>READ</permissions>
+                    <recipient>dilip</recipient>
+                    <recipientType>USER</recipientType>
+                </aces>
+                <entriesInheriting>false</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/home.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="home.cdfde" createdDate="2015-11-30T02:18:25.644-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/home.cdfde" isHidden="false" locale="en_US" title="home"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/home.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="home.wcdf" createdDate="2015-11-30T02:18:25.694-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/home.wcdf" isHidden="false" locale="en_US" title="home"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2015-11-30T02:18:25.738-05:00" isFolder="true" path="Dashboards/DeltasPharma_Main/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/DeltasReport_Background.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasReport_Background.png" createdDate="2016-03-03T01:54:14.862-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/DeltasReport_Background.png" isHidden="true" locale="en_US" title="DeltasReport_Background"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/calendar-ico.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="calendar-ico.png" createdDate="2015-11-30T02:18:25.756-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/calendar-ico.png" isHidden="true" locale="en_US" title="calendar-ico"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/calendar-ico.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="calendar-ico.svg" createdDate="2015-11-30T02:18:25.873-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/calendar-ico.svg" isHidden="true" locale="en_US" title="calendar-ico"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/filter1.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="filter1.png" createdDate="2016-03-04T07:01:04.054-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/filter1.png" isHidden="true" locale="en_US" title="filter1"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="logo.png" createdDate="2016-03-03T01:53:55.017-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/logo.png" isHidden="true" locale="en_US" title="logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/pentaho-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.png" createdDate="2015-11-30T02:18:25.923-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/pentaho-logo.png" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/pentaho-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.svg" createdDate="2015-11-30T02:18:25.975-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/pentaho-logo.svg" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/selector-arrow.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="selector-arrow.png" createdDate="2015-11-30T02:18:26.021-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/selector-arrow.png" isHidden="true" locale="en_US" title="selector-arrow"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/selector-arrow.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="selector-arrow.svg" createdDate="2015-11-30T02:18:26.090-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/selector-arrow.svg" isHidden="true" locale="en_US" title="selector-arrow"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/title1.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="title1.png" createdDate="2016-03-03T01:54:40.671-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/title1.png" isHidden="true" locale="en_US" title="title1"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/trend_down.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="trend_down.png" createdDate="2015-11-30T02:18:26.148-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/trend_down.png" isHidden="true" locale="en_US" title="trend_down"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/trend_down.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="trend_down.svg" createdDate="2015-11-30T02:18:26.198-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/trend_down.svg" isHidden="true" locale="en_US" title="trend_down"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/trend_up.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="trend_up.png" createdDate="2015-11-30T02:18:26.244-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/trend_up.png" isHidden="true" locale="en_US" title="trend_up"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/trend_up.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="trend_up.svg" createdDate="2015-11-30T02:18:26.295-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/trend_up.svg" isHidden="true" locale="en_US" title="trend_up"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/webdetails-logo-bak.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo-bak.png" createdDate="2015-11-30T02:18:26.345-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/webdetails-logo-bak.png" isHidden="true" locale="en_US" title="webdetails-logo-bak"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/webdetails-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.png" createdDate="2015-11-30T02:18:26.393-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/webdetails-logo.png" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/img/webdetails-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.svg" createdDate="2015-11-30T02:18:26.447-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/img/webdetails-logo.svg" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2015-11-30T02:18:26.496-05:00" isFolder="true" path="Dashboards/DeltasPharma_Main/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/DeltasPharma_Main/js/themeparkJS.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="themeparkJS.js" createdDate="2015-11-30T02:18:26.513-05:00" isFolder="false" path="Dashboards/DeltasPharma_Main/js/themeparkJS.js" isHidden="true" locale="en_US" title="themeparkJS"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Fund_Flow.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="Fund_Flow.cda" createdDate="2015-12-28T01:59:20.486-05:00" isFolder="false" path="Dashboards/Fund_Flow.cda" isHidden="false" locale="en_US" title="Fund_Flow.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Fund_Flow.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Fund_Flow.cdfde" createdDate="2015-12-25T07:35:04.336-05:00" isFolder="false" path="Dashboards/Fund_Flow.cdfde" isHidden="false" locale="en_US" title="Fund_Flow.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Fund_Flow.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="Fund_Flow.wcdf" createdDate="2015-12-25T07:34:44.597-05:00" isFolder="false" path="Dashboards/Fund_Flow.wcdf" isHidden="false" locale="en_US" title="Fund_Flow"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/HQ_Analysis.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="HQ_Analysis.cda" createdDate="2016-03-01T00:52:16.354-05:00" isFolder="false" path="Dashboards/HQ_Analysis.cda" isHidden="false" locale="en_US" title="HQ_Analysis.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/HQ_Analysis.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="HQ_Analysis.cdfde" createdDate="2016-03-01T00:52:16.246-05:00" isFolder="false" path="Dashboards/HQ_Analysis.cdfde" isHidden="false" locale="en_US" title="HQ_Analysis.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/HQ_Analysis.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="HQ_Analysis.wcdf" createdDate="2016-03-01T00:52:16.161-05:00" isFolder="false" path="Dashboards/HQ_Analysis.wcdf" isHidden="false" locale="en_US" description="Detailed analysis of sales teams." title="HQ Analysis"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne">
+        <ExportManifestProperty>
+            <EntityMetaData name="NumberOne" createdDate="2016-02-19T07:56:03.788-05:00" isFolder="true" path="Dashboards/NumberOne" isHidden="false" locale="en_US" title="NumberOne"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2016-02-19T07:56:03.834-05:00" isFolder="true" path="Dashboards/NumberOne/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/css/numberOne.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="numberOne.css" createdDate="2016-02-19T07:56:03.878-05:00" isFolder="false" path="Dashboards/NumberOne/css/numberOne.css" isHidden="true" locale="en_US" title="numberOne"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2016-02-19T07:56:04.047-05:00" isFolder="true" path="Dashboards/NumberOne/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/finish.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="finish.png" createdDate="2016-02-19T07:56:04.105-05:00" isFolder="false" path="Dashboards/NumberOne/img/finish.png" isHidden="true" locale="en_US" title="finish"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/finish.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="finish.svg" createdDate="2016-02-19T07:56:04.232-05:00" isFolder="false" path="Dashboards/NumberOne/img/finish.svg" isHidden="true" locale="en_US" title="finish"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/header-background.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="header-background.png" createdDate="2016-02-19T07:56:04.361-05:00" isFolder="false" path="Dashboards/NumberOne/img/header-background.png" isHidden="true" locale="en_US" title="header-background"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/number-one-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="number-one-logo.png" createdDate="2016-02-19T07:56:04.514-05:00" isFolder="false" path="Dashboards/NumberOne/img/number-one-logo.png" isHidden="true" locale="en_US" title="number-one-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/number-one-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="number-one-logo.svg" createdDate="2016-02-19T07:56:04.678-05:00" isFolder="false" path="Dashboards/NumberOne/img/number-one-logo.svg" isHidden="true" locale="en_US" title="number-one-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/pentaho-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.png" createdDate="2016-02-19T07:56:04.803-05:00" isFolder="false" path="Dashboards/NumberOne/img/pentaho-logo.png" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/pentaho-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="pentaho-logo.svg" createdDate="2016-02-19T07:56:04.928-05:00" isFolder="false" path="Dashboards/NumberOne/img/pentaho-logo.svg" isHidden="true" locale="en_US" title="pentaho-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1984.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1984.png" createdDate="2016-02-19T07:56:05.080-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1984.png" isHidden="true" locale="en_US" title="senna-car-1984"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1984.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1984.svg" createdDate="2016-02-19T07:56:05.232-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1984.svg" isHidden="true" locale="en_US" title="senna-car-1984"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1985.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1985.png" createdDate="2016-02-19T07:56:05.363-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1985.png" isHidden="true" locale="en_US" title="senna-car-1985"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1985.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1985.svg" createdDate="2016-02-19T07:56:05.456-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1985.svg" isHidden="true" locale="en_US" title="senna-car-1985"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1986.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1986.png" createdDate="2016-02-19T07:56:05.579-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1986.png" isHidden="true" locale="en_US" title="senna-car-1986"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1986.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1986.svg" createdDate="2016-02-19T07:56:05.677-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1986.svg" isHidden="true" locale="en_US" title="senna-car-1986"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1987.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1987.png" createdDate="2016-02-19T07:56:05.752-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1987.png" isHidden="true" locale="en_US" title="senna-car-1987"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1987.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1987.svg" createdDate="2016-02-19T07:56:05.832-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1987.svg" isHidden="true" locale="en_US" title="senna-car-1987"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1988.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1988.png" createdDate="2016-02-19T07:56:05.934-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1988.png" isHidden="true" locale="en_US" title="senna-car-1988"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1988.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1988.svg" createdDate="2016-02-19T07:56:06.038-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1988.svg" isHidden="true" locale="en_US" title="senna-car-1988"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1989.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1989.png" createdDate="2016-02-19T07:56:06.127-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1989.png" isHidden="true" locale="en_US" title="senna-car-1989"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1989.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1989.svg" createdDate="2016-02-19T07:56:06.230-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1989.svg" isHidden="true" locale="en_US" title="senna-car-1989"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1990.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1990.png" createdDate="2016-02-19T07:56:06.338-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1990.png" isHidden="true" locale="en_US" title="senna-car-1990"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1990.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1990.svg" createdDate="2016-02-19T07:56:06.408-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1990.svg" isHidden="true" locale="en_US" title="senna-car-1990"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1991.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1991.png" createdDate="2016-02-19T07:56:06.475-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1991.png" isHidden="true" locale="en_US" title="senna-car-1991"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1991.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1991.svg" createdDate="2016-02-19T07:56:06.585-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1991.svg" isHidden="true" locale="en_US" title="senna-car-1991"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1992.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1992.png" createdDate="2016-02-19T07:56:06.713-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1992.png" isHidden="true" locale="en_US" title="senna-car-1992"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1992.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1992.svg" createdDate="2016-02-19T07:56:06.849-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1992.svg" isHidden="true" locale="en_US" title="senna-car-1992"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1993.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1993.png" createdDate="2016-02-19T07:56:06.980-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1993.png" isHidden="true" locale="en_US" title="senna-car-1993"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/senna-car-1993.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-car-1993.svg" createdDate="2016-02-19T07:56:07.131-05:00" isFolder="false" path="Dashboards/NumberOne/img/senna-car-1993.svg" isHidden="true" locale="en_US" title="senna-car-1993"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/webdetails-logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.png" createdDate="2016-02-19T07:56:07.292-05:00" isFolder="false" path="Dashboards/NumberOne/img/webdetails-logo.png" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/img/webdetails-logo.svg">
+        <ExportManifestProperty>
+            <EntityMetaData name="webdetails-logo.svg" createdDate="2016-02-19T07:56:07.427-05:00" isFolder="false" path="Dashboards/NumberOne/img/webdetails-logo.svg" isHidden="true" locale="en_US" title="webdetails-logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2016-02-19T07:56:07.548-05:00" isFolder="true" path="Dashboards/NumberOne/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/js/numberOne.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="numberOne.js" createdDate="2016-02-19T07:56:07.601-05:00" isFolder="false" path="Dashboards/NumberOne/js/numberOne.js" isHidden="true" locale="en_US" title="numberOne"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/main.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.cda" createdDate="2016-02-19T07:56:07.776-05:00" isFolder="false" path="Dashboards/NumberOne/main.cda" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/main.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.cdfde" createdDate="2016-02-19T07:56:07.898-05:00" isFolder="false" path="Dashboards/NumberOne/main.cdfde" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/main.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="main.wcdf" createdDate="2016-02-19T07:56:08.044-05:00" isFolder="false" path="Dashboards/NumberOne/main.wcdf" isHidden="false" locale="en_US" title="main"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries">
+        <ExportManifestProperty>
+            <EntityMetaData name="queries" createdDate="2016-02-19T07:56:08.167-05:00" isFolder="true" path="Dashboards/NumberOne/queries" isHidden="false" locale="en_US" title="queries"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries/senna-overview.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-overview.ktr" createdDate="2016-02-19T07:56:17.889-05:00" isFolder="false" path="Dashboards/NumberOne/queries/senna-overview.ktr" isHidden="true" locale="en_US" title="senna-overview"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries/senna-poles.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-poles.ktr" createdDate="2016-02-19T07:56:25.548-05:00" isFolder="false" path="Dashboards/NumberOne/queries/senna-poles.ktr" isHidden="true" locale="en_US" title="senna-poles"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries/senna-pontosEmGps.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-pontosEmGps.ktr" createdDate="2016-02-19T07:56:33.586-05:00" isFolder="false" path="Dashboards/NumberOne/queries/senna-pontosEmGps.ktr" isHidden="true" locale="en_US" title="senna-pontosEmGps"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries/senna-posicao.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna-posicao.ktr" createdDate="2016-02-19T07:56:41.299-05:00" isFolder="false" path="Dashboards/NumberOne/queries/senna-posicao.ktr" isHidden="true" locale="en_US" title="senna-posicao"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/NumberOne/queries/senna.xls">
+        <ExportManifestProperty>
+            <EntityMetaData name="senna.xls" createdDate="2016-02-19T07:56:08.211-05:00" isFolder="false" path="Dashboards/NumberOne/queries/senna.xls" isHidden="false" locale="en_US" title="senna"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Outstanding.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="Outstanding.cda" createdDate="2016-03-01T01:12:04.146-05:00" isFolder="false" path="Dashboards/Outstanding.cda" isHidden="false" locale="en_US" title="Outstanding"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Outstanding.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Outstanding.cdfde" createdDate="2016-03-01T01:12:28.533-05:00" isFolder="false" path="Dashboards/Outstanding.cdfde" isHidden="false" locale="en_US" title="Outstanding"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Outstanding.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="Outstanding.wcdf" createdDate="2016-03-01T01:12:54.471-05:00" isFolder="false" path="Dashboards/Outstanding.wcdf" isHidden="false" locale="en_US" title="Outstanding"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Party_Information.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="Party_Information.cda" createdDate="2016-01-17T23:30:23.363-05:00" isFolder="false" path="Dashboards/Party_Information.cda" isHidden="false" locale="en_US" title="Party_Information.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Party_Information.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Party_Information.cdfde" createdDate="2015-12-25T05:53:50.294-05:00" isFolder="false" path="Dashboards/Party_Information.cdfde" isHidden="false" locale="en_US" title="Party_Information.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Party_Information.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="Party_Information.wcdf" createdDate="2015-12-25T05:53:50.206-05:00" isFolder="false" path="Dashboards/Party_Information.wcdf" isHidden="false" locale="en_US" description="Party_Information" title="Party_Information"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy">
+        <ExportManifestProperty>
+            <EntityMetaData name="Product Sales-copy" createdDate="2015-11-30T02:18:05.282-05:00" isFolder="true" path="Dashboards/Product Sales-copy" isHidden="false" locale="en_US" title="Product Sales-copy"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/DP_RevenueExpenses.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="DP_RevenueExpenses.cda" createdDate="2015-11-30T02:18:05.454-05:00" isFolder="false" path="Dashboards/Product Sales-copy/DP_RevenueExpenses.cda" isHidden="false" locale="en_US" title="DP_RevenueExpenses"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/DP_RevenueExpenses.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="DP_RevenueExpenses.cdfde" createdDate="2015-11-30T02:18:05.548-05:00" isFolder="false" path="Dashboards/Product Sales-copy/DP_RevenueExpenses.cdfde" isHidden="false" locale="en_US" title="DP_RevenueExpenses"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/DP_RevenueExpenses.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="DP_RevenueExpenses.wcdf" createdDate="2015-11-30T02:18:05.656-05:00" isFolder="false" path="Dashboards/Product Sales-copy/DP_RevenueExpenses.wcdf" isHidden="false" locale="en_US" title="DP_RevenueExpenses"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2015-11-30T02:18:05.314-05:00" isFolder="true" path="Dashboards/Product Sales-copy/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/css/productSales.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="productSales.css" createdDate="2015-11-30T02:18:05.372-05:00" isFolder="false" path="Dashboards/Product Sales-copy/css/productSales.css" isHidden="true" locale="en_US" title="productSales"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/files">
+        <ExportManifestProperty>
+            <EntityMetaData name="files" createdDate="2015-11-30T02:18:05.740-05:00" isFolder="true" path="Dashboards/Product Sales-copy/files" isHidden="false" locale="en_US" title="files"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/files/aov_data.xls">
+        <ExportManifestProperty>
+            <EntityMetaData name="aov_data.xls" createdDate="2015-11-30T02:18:05.776-05:00" isFolder="false" path="Dashboards/Product Sales-copy/files/aov_data.xls" isHidden="false" locale="en_US" title="aov_data"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/files/aov_import.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="aov_import.ktr" createdDate="2015-11-30T02:18:15.343-05:00" isFolder="false" path="Dashboards/Product Sales-copy/files/aov_import.ktr" isHidden="true" locale="en_US" title="aov_import"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/files/aov_import_sales.ktr">
+        <ExportManifestProperty>
+            <EntityMetaData name="aov_import_sales.ktr" createdDate="2015-11-30T02:18:25.155-05:00" isFolder="false" path="Dashboards/Product Sales-copy/files/aov_import_sales.ktr" isHidden="true" locale="en_US" title="aov_import_sales"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2015-11-30T02:18:25.442-05:00" isFolder="true" path="Dashboards/Product Sales-copy/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2015-11-30T02:18:25.456-05:00" isFolder="true" path="Dashboards/Product Sales-copy/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Product Sales-copy/js/productSales.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="productSales.js" createdDate="2015-11-30T02:18:25.473-05:00" isFolder="false" path="Dashboards/Product Sales-copy/js/productSales.js" isHidden="true" locale="en_US" title="productSales"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/ProductAnalysis.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="ProductAnalysis.cda" createdDate="2016-03-22T06:01:45.447-04:00" isFolder="false" path="Dashboards/ProductAnalysis.cda" isHidden="false" locale="en_US" title="ProductAnalysis.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/ProductAnalysis.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="ProductAnalysis.cdfde" createdDate="2016-03-22T06:01:45.362-04:00" isFolder="false" path="Dashboards/ProductAnalysis.cdfde" isHidden="false" locale="en_US" title="ProductAnalysis.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/ProductAnalysis.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="ProductAnalysis.wcdf" createdDate="2016-03-22T06:01:45.287-04:00" isFolder="false" path="Dashboards/ProductAnalysis.wcdf" isHidden="false" locale="en_US" description="Sales analysis in detail" title="ProductAnalysis"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/SalesTeamAnalysis.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="SalesTeamAnalysis.cda" createdDate="2015-12-29T01:47:34.348-05:00" isFolder="false" path="Dashboards/SalesTeamAnalysis.cda" isHidden="false" locale="en_US" title="SalesTeamAnalysis.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/SalesTeamAnalysis.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="SalesTeamAnalysis.cdfde" createdDate="2015-12-29T01:22:29.171-05:00" isFolder="false" path="Dashboards/SalesTeamAnalysis.cdfde" isHidden="false" locale="en_US" title="SalesTeamAnalysis.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/SalesTeamAnalysis.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="SalesTeamAnalysis.wcdf" createdDate="2015-12-29T01:22:29.114-05:00" isFolder="false" path="Dashboards/SalesTeamAnalysis.wcdf" isHidden="false" locale="en_US" description="SalesTeamAnalysis" title="SalesTeamAnalysis"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Sales_Register.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="Sales_Register.cda" createdDate="2015-12-28T01:22:40.928-05:00" isFolder="false" path="Dashboards/Sales_Register.cda" isHidden="false" locale="en_US" title="Sales_Register.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Sales_Register.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Sales_Register.cdfde" createdDate="2015-12-25T07:28:40.580-05:00" isFolder="false" path="Dashboards/Sales_Register.cdfde" isHidden="false" locale="en_US" title="Sales_Register.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Sales_Register.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="Sales_Register.wcdf" createdDate="2015-12-25T07:28:40.505-05:00" isFolder="false" path="Dashboards/Sales_Register.wcdf" isHidden="false" locale="en_US" description="Party Collection report" title="Sales_Register"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Sample Dashboards">
+        <ExportManifestProperty>
+            <EntityMetaData name="Sample Dashboards" createdDate="2016-02-19T06:52:38.338-05:00" isFolder="true" path="Dashboards/Sample Dashboards" isHidden="false" locale="en_US" title="Sample Dashboards"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Target_Analysis.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="Target_Analysis.cda" createdDate="2016-02-02T23:48:51.057-05:00" isFolder="false" path="Dashboards/Target_Analysis.cda" isHidden="false" locale="en_US" title="Target_Analysis.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Target_Analysis.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Target_Analysis.cdfde" createdDate="2016-02-02T23:48:50.992-05:00" isFolder="false" path="Dashboards/Target_Analysis.cdfde" isHidden="false" locale="en_US" title="Target_Analysis.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Target_Analysis.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="Target_Analysis.wcdf" createdDate="2016-02-02T23:48:50.937-05:00" isFolder="false" path="Dashboards/Target_Analysis.wcdf" isHidden="false" locale="en_US" description="Detailed analysis of sales teams." title="Target_Analysis"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/Territory_Analysis.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="Territory_Analysis.cdfde" createdDate="2016-01-27T06:01:01.725-05:00" isFolder="false" path="Dashboards/Territory_Analysis.cdfde" isHidden="false" locale="en_US" title="Territory_Analysis.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/TourPlan.cda">
+        <ExportManifestProperty>
+            <EntityMetaData name="TourPlan.cda" createdDate="2016-04-12T09:10:03.472-04:00" isFolder="false" path="Dashboards/TourPlan.cda" isHidden="false" locale="en_US" title="TourPlan.cda"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/TourPlan.cdfde">
+        <ExportManifestProperty>
+            <EntityMetaData name="TourPlan.cdfde" createdDate="2016-04-12T09:10:03.435-04:00" isFolder="false" path="Dashboards/TourPlan.cdfde" isHidden="false" locale="en_US" title="TourPlan.cdfde"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/TourPlan.wcdf">
+        <ExportManifestProperty>
+            <EntityMetaData name="TourPlan.wcdf" createdDate="2016-04-12T09:10:03.392-04:00" isFolder="false" path="Dashboards/TourPlan.wcdf" isHidden="false" locale="en_US" description="Detailed analysis of sales teams." title="TourPlan"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/css">
+        <ExportManifestProperty>
+            <EntityMetaData name="css" createdDate="2015-12-25T06:04:24.845-05:00" isFolder="true" path="Dashboards/css" isHidden="false" locale="en_US" title="css"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/css/backgroundReport.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="backgroundReport.css" createdDate="2016-03-01T01:14:02.423-05:00" isFolder="false" path="Dashboards/css/backgroundReport.css" isHidden="true" locale="en_US" title="backgroundReport"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/css/jquery-ui.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="jquery-ui.css" createdDate="2016-01-05T23:57:39.343-05:00" isFolder="false" path="Dashboards/css/jquery-ui.css" isHidden="true" locale="en_US" title="jquery-ui"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/css/team_hierarchy.css">
+        <ExportManifestProperty>
+            <EntityMetaData name="team_hierarchy.css" createdDate="2016-01-06T06:50:27.839-05:00" isFolder="false" path="Dashboards/css/team_hierarchy.css" isHidden="true" locale="en_US" title="team_hierarchy"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img">
+        <ExportManifestProperty>
+            <EntityMetaData name="img" createdDate="2015-12-25T06:05:02.521-05:00" isFolder="true" path="Dashboards/img" isHidden="false" locale="en_US" title="img"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/DeltasPharmaLogo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasPharmaLogo.png" createdDate="2015-12-25T06:06:03.629-05:00" isFolder="false" path="Dashboards/img/DeltasPharmaLogo.png" isHidden="true" locale="en_US" title="DeltasPharmaLogo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/DeltasPharma_Logo.jpg">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasPharma_Logo.jpg" createdDate="2015-12-25T06:14:53.649-05:00" isFolder="false" path="Dashboards/img/DeltasPharma_Logo.jpg" isHidden="true" locale="en_US" title="DeltasPharma_Logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/DeltasReport_Background.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="DeltasReport_Background.png" createdDate="2016-03-01T01:14:57.577-05:00" isFolder="false" path="Dashboards/img/DeltasReport_Background.png" isHidden="true" locale="en_US" title="DeltasReport_Background"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/filter1.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="filter1.png" createdDate="2016-03-04T06:36:19.863-05:00" isFolder="false" path="Dashboards/img/filter1.png" isHidden="true" locale="en_US" title="filter1"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/go_button.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="go_button.png" createdDate="2016-03-01T01:16:53.196-05:00" isFolder="false" path="Dashboards/img/go_button.png" isHidden="true" locale="en_US" title="go_button"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/logo.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="logo.png" createdDate="2016-03-01T01:15:27.055-05:00" isFolder="false" path="Dashboards/img/logo.png" isHidden="true" locale="en_US" title="logo"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/title1.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="title1.png" createdDate="2016-03-01T01:16:00.066-05:00" isFolder="false" path="Dashboards/img/title1.png" isHidden="true" locale="en_US" title="title1"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/img/vertical_line_2.png">
+        <ExportManifestProperty>
+            <EntityMetaData name="vertical_line_2.png" createdDate="2016-03-01T01:16:20.136-05:00" isFolder="false" path="Dashboards/img/vertical_line_2.png" isHidden="true" locale="en_US" title="vertical_line_2"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/js">
+        <ExportManifestProperty>
+            <EntityMetaData name="js" createdDate="2016-01-05T23:56:05.155-05:00" isFolder="true" path="Dashboards/js" isHidden="false" locale="en_US" title="js"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/js/jquery-1.11.3.min.js">
+        <ExportManifestProperty>
+            <EntityMetaData name="jquery-1.11.3.min.js" createdDate="2016-01-05T23:56:52.033-05:00" isFolder="false" path="Dashboards/js/jquery-1.11.3.min.js" isHidden="true" locale="en_US" title="jquery-1.11.3.min"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+    <ExportManifestEntity path="Dashboards/salesteamPivot.xjpivot">
+        <ExportManifestProperty>
+            <EntityMetaData name="salesteamPivot.xjpivot" createdDate="2016-01-05T08:22:46.805-05:00" isFolder="false" path="Dashboards/salesteamPivot.xjpivot" isHidden="false" locale="en_US" title="salesteamPivot"/>
+        </ExportManifestProperty>
+        <ExportManifestProperty>
+            <EntityAcl>
+                <entriesInheriting>true</entriesInheriting>
+                <owner>admin</owner>
+                <ownerType>USER</ownerType>
+            </EntityAcl>
+        </ExportManifestProperty>
+    </ExportManifestEntity>
+</ns2:ExportManifest>

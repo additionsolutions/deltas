@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+
+<data noupdate="0">
+
+    <record model="ir.rule" id="addsol_mr_tour_plan_mr_rule">
+        <field name="name">MR Rule</field>
+        <field name="model_id" ref="model_mr_tour_plan"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_addsol_mr'))]"/>
+    </record>
+
+    <record model="ir.rule" id="addsol_mr_tour_plan_asm_rule">
+        <field name="name">ASM Rule</field>
+        <field name="model_id" ref="model_mr_tour_plan"/>
+        <field name="domain_force">['|',('employee_id.user_id','=',user.id), ('employee_id.parent_id.user_id','child_of',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_addsol_asm'))]"/>
+    </record>
+
+    <record model="ir.rule" id="addsol_mr_tour_plan_rsm_rule">
+        <field name="name">RSM Rule</field>
+        <field name="model_id" ref="model_mr_tour_plan"/>
+        <field name="domain_force">['|',('employee_id.user_id','=',user.id), ('employee_id.parent_id.user_id','child_of',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_addsol_rsm'))]"/>
+    </record>
+
+    <record model="ir.rule" id="addsol_mr_tour_plan_zsm_rule">
+        <field name="name">ZSM Rule</field>
+        <field name="model_id" ref="model_mr_tour_plan"/>
+        <field name="domain_force">['|',('employee_id.user_id','=',user.id), ('employee_id.parent_id.user_id','child_of',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_addsol_zsm'))]"/>
+    </record>
+
+    <record model="ir.rule" id="addsol_mr_tour_plan_dgm_rule">
+        <field name="name">DGM Rule</field>
+        <field name="model_id" ref="model_mr_tour_plan"/>
+        <field name="domain_force">['|',('employee_id.user_id','=',user.id), ('employee_id.parent_id.user_id','child_of',user.id)]</field>
+        <field name="groups" eval="[(4,ref('base.group_addsol_dgm'))]"/>
+    </record>
+
+</data>
+</openerp>

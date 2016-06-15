@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="salesTeamQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesTeamQuery_old" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="yearQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrLocationQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesTeamProductsTotalAmtQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesTeamProductsAmtQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesTeamProductsQuery" type="mondrian.jndi">
+         <Catalog>mondrian:/DeltasPharma_Cube</Catalog>
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="salesTeamQuery" id="salesTeamQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="yearParam" name="yearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT  mr.rsm_name,mr.asm_name,mr.mr_name, sum(finv.price_subtotal) as Amount
+FROM fact_invoice finv 
+    JOIN dim_salesteam mr ON mr.id = finv.user_id
+    JOIN dim_date dt ON dt.date_key = finv.invoice_date_key
+WHERE dt.fin_year = ${yearParam} AND mr.to_date is NULL
+GROUP BY mr.mr_name,mr.asm_name,mr.rsm_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesTeamQuery_old" id="salesTeamQuery_old"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="yearParam" name="yearParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT  mr.rsm_name,mr.asm_name,mr.mr_name, sum(finv.price_subtotal) as Amount
+FROM fact_invoice finv 
+    JOIN dim_mr mr ON mr.id = finv.user_id
+    JOIN dim_date dt ON dt.date_key = finv.invoice_date_key
+WHERE dt.fin_year = ${yearParam}
+GROUP BY mr.mr_name,mr.asm_name,mr.rsm_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="yearQuery" id="yearQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT DISTINCT dt.fin_year FROM dim_date dt
+  JOIN fact_invoice fi ON fi.invoice_date_key = dt.date_key]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrLocationQuery" id="mrLocationQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT mr.mr_name, loc.region FROM dim_location loc
+    LEFT JOIN dim_salesteam mr ON mr.region_id = loc.id
+WHERE mr.mr_name = ${mr} AND mr.to_date IS NULL]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesTeamProductsTotalAmtQuery"
+               id="salesTeamProductsTotalAmtQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="0,1,3,2,5,4,6,9,8,7,11,10,12" mode=""/>
+      <Parameters>
+         <Parameter default="yearParam" name="yearParam" type="String"/>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="productParam" name="productParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+SET [~FILTER] AS
+    {[SalesTeam].[MR].[${mrParam}]}
+SET [~COLUMNS] AS
+    {Descendants([Time.Fiscal].[${yearParam}], [Time.Fiscal].[FY Months], SELF)}
+SET [~ROWS] AS
+    {[Product].[Type].&[product]}
+SELECT
+CrossJoin([~COLUMNS], {[Measures].[SubTotal]}) ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Sales Analysis]
+WHERE [~FILTER]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesTeamProductsAmtQuery"
+               id="salesTeamProductsAmtQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="0,1,3,2,5,4,6,9,8,7,11,10,12" mode=""/>
+      <Parameters>
+         <Parameter default="yearParam" name="yearParam" type="String"/>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+         <Parameter default="productParam" name="productParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+SET [~FILTER] AS
+    {[SalesTeam].[MR].[${mrParam}]}
+SET [~COLUMNS] AS
+    {Descendants([Time.Fiscal].[${yearParam}], [Time.Fiscal].[FY Months], SELF)}
+SET [~ROWS] AS
+    {[Product].[Product].[${productParam}]}
+SELECT
+CrossJoin([~COLUMNS], {[Measures].[SubTotal]}) ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Sales Analysis]
+WHERE [~FILTER]]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesTeamProductsQuery" id="salesTeamProductsQuery"
+               type="mdx">
+      <BandedMode>compact</BandedMode>
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="0,1,3,2,5,4,6,9,8,7,11,10,12" mode=""/>
+      <Parameters>
+         <Parameter default="yearParam" name="yearParam" type="String"/>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[WITH
+SET [~FILTER] AS
+    {[SalesTeam].[MR].[${mrParam}]}
+SET [~COLUMNS] AS
+    {Descendants([Time.Fiscal].[${yearParam}], [Time.Fiscal].[FY Months], SELF)}
+SET [~ROWS] AS
+    {Descendants([Product].[Type].&[product], [Product].[Category], AFTER)}
+SELECT
+CrossJoin([~COLUMNS], {[Measures].[Quantity]}) ON COLUMNS,
+NON EMPTY [~ROWS] ON ROWS
+FROM [Sales Analysis]
+WHERE [~FILTER]]]></Query>
+   </DataAccess>
+</CDADescriptor>

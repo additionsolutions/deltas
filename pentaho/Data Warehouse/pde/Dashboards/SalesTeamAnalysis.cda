@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="rsmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="asmSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="locationQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrDetailsQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrTotalQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrAvgQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="rsmSQLQuery" id="rsmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT a.rsm_name FROM 
+(SELECT rsm_name FROM dim_salesteam WHERE to_date is null
+UNION
+SELECT '- All -' as rsm_name) a
+WHERE a.rsm_name is NOT Null
+ORDER BY convert_to(a.rsm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="asmSQLQuery" id="asmSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="rsmParam" name="rsm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.asm_name FROM
+(SELECT asm_name from dim_salesteam where rsm_name = ${rsm} and to_date is null
+UNION
+SELECT  '- All -' as asm_name) a
+ORDER BY convert_to(a.asm_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrSQLQuery" id="mrSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="asmParam" name="asm" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.mr_name FROM
+(SELECT mr_name from dim_salesteam WHERE asm_name = ${asm} AND to_date is null
+UNION
+SELECT  '- All -' as mr_name) a
+ORDER BY convert_to(a.mr_name, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="locationQuery" id="locationQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="#null" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT loc.region FROM dim_location loc
+     LEFT JOIN dim_salesteam mr ON mr.region_id = loc.id
+WHERE mr_name = ${mr} and mr.to_date is null]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrDetailsQuery" id="mrDetailsQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>totalExpenses</Name>
+            <Formula>=[salary]+[other_expenses]+[promotional_expenses]+[ppp]+[sample]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>performance</Name>
+            <Formula>=[sales]-[totalExpenses]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Output indexes="1" mode="exclude"/>
+      <Parameters>
+         <Parameter default="#null" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT details.month, cast(details.month_no as numeric), coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,
+    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,
+    coalesce(sum(details.sample),0) as sample
+FROM (SELECT mr.user_id as user_id, to_char(mr.expense_date, 'Month') as month, dt.fin_month_number as month_no, 
+        sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,
+		sum(mr.sample_amount) as sample, 0 as sales, 0 as collection
+	 FROM mr_expenses mr 
+		JOIN dim_date dt ON dt.date_value = mr.expense_date
+	 WHERE mr.expense_date between '2015-04-01' and '2016-03-31'		
+	 GROUP BY mr.user_id, dt.fin_month_number, to_char(mr.expense_date, 'Month')
+	UNION ALL
+	SELECT part.user_id as user_id, to_char(part.doc_date, 'Month') as month, dt.fin_month_number as month_no, 
+		0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,
+		coalesce (sum(part.invoice_amount),0) as sales,  
+		coalesce (sum(part.payment_amount),0) as collection
+	 FROM party_information part 
+		JOIN dim_date dt ON dt.date_key = part.date_key
+	 WHERE part.doc_date between '2015-04-01' and '2016-03-31'
+	GROUP BY to_char(part.doc_date, 'Month') , dt.fin_month_number, part.user_id) details
+	JOIN dim_salesteam mr ON mr.id = details.user_id
+WHERE mr.mr_name = ${mr} and mr.to_date is null
+GROUP BY details.month, details.month_no, mr.mr_name
+ORDER BY cast(details.month_no as numeric)]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrTotalQuery" id="mrTotalQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>total_expenses</Name>
+            <Formula>=[salary]+[other_expenses]+[promotional_expenses]+[ppp]+[sample]</Formula>
+         </CalculatedColumn>
+         <CalculatedColumn>
+            <Name>performance</Name>
+            <Formula>=[sales]-[total_expenses]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Parameters>
+         <Parameter default="mrParam" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,
+    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,
+    coalesce(sum(details.sample),0) as sample
+FROM (SELECT mr.user_id as user_id, sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,
+        sum(mr.sample_amount) as sample, 0 as sales, 0 as collection
+     FROM mr_expenses mr WHERE mr.expense_date between '2015-04-01' and '2016-03-31'
+	 GROUP BY mr.user_id
+	UNION ALL
+	SELECT part.user_id as user_id,	0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,
+		coalesce (sum(part.invoice_amount),0) as sales,  
+		coalesce (sum(part.payment_amount),0) as collection
+	 FROM party_information part WHERE part.doc_date between '2015-04-01' and '2016-03-31'
+	GROUP BY to_char(part.doc_date, 'Month') , DATE_PART('month',part.doc_date), part.user_id) details
+	JOIN dim_salesteam mr ON mr.id = details.user_id 
+WHERE mr.mr_name = ${mr} AND mr.to_date is null]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrAvgQuery" id="mrAvgQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="mrParam" name="mrParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT avg(sales/12) as avg_sales, avg(collection/12) as avg_collection, avg(salary/12) as avg_salary, avg(other_expenses/12) as avg_other,
+    avg(promotional_expenses/12) as avg_promotional, avg(ppp/12) as avg_ppp, avg(sample/12) as avg_sample
+FROM (SELECT coalesce(sum(details.sales),0) as sales, coalesce(sum(details.collection),0) as collection,
+    coalesce(sum(details.salary),0) as salary, coalesce(sum(details.other_expenses),0) as other_expenses, coalesce(sum(details.promotional_expenses),0) as promotional_expenses, coalesce(sum(details.ppp),0) as ppp,
+    coalesce(sum(details.sample),0) as sample
+FROM (SELECT mr.user_id as user_id, sum(mr.salary_amount) as salary, sum(mr.other_expenses) as other_expenses, sum(mr.promotional_amount) as promotional_expenses, sum(mr.ppp) as ppp,
+        sum(mr.sample_amount) as sample, 0 as sales, 0 as collection
+	 FROM mr_expenses mr WHERE mr.expense_date between '2015-04-01' and '2016-03-31'
+	 GROUP BY mr.user_id
+	UNION ALL
+	SELECT part.user_id as user_id,	0 as salary, 0 as other_expenses, 0 as promotional_expenses, 0 as ppp, 0 as sample,
+		coalesce (sum(part.invoice_amount),0) as sales,  
+		coalesce (sum(part.payment_amount),0) as collection
+	 FROM party_information part WHERE part.doc_date between '2015-04-01' and '2016-03-31'
+	GROUP BY to_char(part.doc_date, 'Month') , DATE_PART('month',part.doc_date), part.user_id) details
+	JOIN dim_salesteam mr ON mr.id = details.user_id
+WHERE mr.mr_name = ${mrParam} AND mr.to_date is null) avg_details]]></Query>
+   </DataAccess>
+</CDADescriptor>

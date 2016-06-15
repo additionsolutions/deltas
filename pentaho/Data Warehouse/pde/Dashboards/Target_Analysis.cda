@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="dataSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="mrSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="dataSQLQuery" id="dataSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Output indexes="0,1,3" mode="exclude"/>
+      <Parameters>
+         <Parameter default="" name="mr" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT dt.user_id, dt.month_number,  dt.month, dt.product_id, dt.name, dt.quantity,
+  (SELECT coalesce(sum(tar.target_qty),0) as target_qty 
+    FROM dim_target tar 
+	WHERE tar.product_id = dt.product_id AND cast(month_number as double precision) = dt.month_number
+  )as target_qty
+FROM (
+ SELECT fi.user_id, DATE_PART('Month', fi.invoice_date) as month_number,TO_Char(fi.invoice_date, 'Month') as month,
+	fi.product_id, prod.name, sum(fi.quantity) as quantity
+ FROM fact_invoice fi
+	JOIN dim_product prod ON prod.id = fi.product_id
+ WHERE fi.invoice_date > '2015-03-31'
+ GROUP BY fi.user_id, fi.product_id, prod.name, DATE_PART('Month', fi.invoice_date),TO_Char(fi.invoice_date, 'Month')
+ )dt
+  JOIN dim_mr mr ON mr.id = dt.user_id 
+WHERE mr.mr_name = ${mr}
+ORDER BY dt.month_number]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="mrSQLQuery" id="mrSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT mr_name FROM dim_mr ORDER BY mr_name]]></Query>
+   </DataAccess>
+</CDADescriptor>

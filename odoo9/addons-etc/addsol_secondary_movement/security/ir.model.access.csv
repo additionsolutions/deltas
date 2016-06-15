@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_addsol_secondary_movement,Secondary Sales,model_addsol_secondary_movement,base.group_addsol_director,1,1,1,1
+access_addsol_secondary_movement_line,Secondary Sales Line,model_addsol_secondary_movement_line,base.group_addsol_director,1,1,1,1

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="stateQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="hqSQLQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalSecondarySalesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalTertiarySalesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="tertiarySalesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="secondarySalesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalExpensesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="expensesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="doctorQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="totalPPPSalesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="pppSalesChartQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="salesPersonNameQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="stateQuery" id="stateQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters/>
+      <Query><![CDATA[SELECT DISTINCT state from dim_location ORDER BY state]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="hqSQLQuery" id="hqSQLQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.region FROM 
+(SELECT region FROM dim_location
+WHERE state = ${stateParam}
+UNION
+SELECT '- All -' as region) a
+ORDER BY convert_to(a.region, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalSecondarySalesQuery"
+               id="totalSecondarySalesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(finv.amount_total)
+FROM fact_summary_invoice finv
+    JOIN dim_customer_location custloc ON custloc.partner_id = finv.partner_id 
+	JOIN dim_customer cust ON cust.id = custloc.partner_id 
+	JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+        AND (to_char(invoice_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam})
+        AND (cust.type = 'Stockist'))]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalTertiarySalesQuery"
+               id="totalTertiarySalesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(finv.amount_total)
+FROM fact_summary_invoice finv
+    JOIN dim_customer_location custloc ON custloc.partner_id = finv.partner_id 
+	JOIN dim_customer cust ON cust.id = custloc.partner_id 
+	JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+        AND (to_char(invoice_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam})
+        AND (cust.type IN ('Doctor','Chemist','Other')))]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="tertiarySalesQuery" id="tertiarySalesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT cust.name, sum(finv.amount_total)
+FROM fact_summary_invoice finv
+    JOIN dim_customer_location custloc ON custloc.partner_id = finv.partner_id 
+	JOIN dim_customer cust ON cust.id = custloc.partner_id 
+	JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+        AND (to_char(invoice_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam})
+        AND (cust.type IN ('Doctor','Chemist','Other')))
+GROUP BY cust.name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="secondarySalesQuery" id="secondarySalesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT cust.name, sum(finv.amount_total)
+FROM fact_summary_invoice finv
+    JOIN dim_customer_location custloc ON custloc.partner_id = finv.partner_id 
+	JOIN dim_customer cust ON cust.id = custloc.partner_id 
+	JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+        AND (to_char(invoice_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam})
+        AND (cust.type = 'Stockist'))
+GROUP BY cust.name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalExpensesQuery" id="totalExpensesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>totalExpenses</Name>
+            <Formula>=[salary_amount]+[other_expenses]+[promotional_amount]+[sample_amount]+[ppp]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(exp.salary_amount) as salary_amount, sum(exp.other_expenses) as other_expenses, sum(exp.promotional_amount) as promotional_amount,
+sum(exp.sample_amount) as sample_amount, sum(exp.ppp) as ppp
+FROM mr_expenses exp
+RIGHT JOIN dim_salesteam mr ON mr.id = exp.user_id
+JOIN dim_location loc ON loc.id = mr.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+ AND (to_char(expense_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam}))]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="expensesQuery" id="expensesQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>totalExpenses</Name>
+            <Formula>=[salary_amount]+[other_expenses]+[promotional_amount]+[sample_amount]+[ppp]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT mr.mr_name, sum(exp.salary_amount) as salary_amount, sum(exp.other_expenses) as other_expenses, sum(exp.promotional_amount) as promotional_amount,
+sum(exp.sample_amount) as sample_amount, sum(exp.ppp) as ppp
+FROM mr_expenses exp
+RIGHT JOIN dim_salesteam mr ON mr.id = exp.user_id
+JOIN dim_location loc ON loc.id = mr.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+ AND (to_char(expense_date, 'yyyy-mm-dd') BETWEEN ${startDateParam} AND ${endDateParam})) 
+GROUP BY mr.mr_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="doctorQuery" id="doctorQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT a.doctor FROM 
+(SELECT cust.name as doctor
+FROM dim_customer cust
+    JOIN dim_customer_location custloc ON custloc.partner_id = cust.id
+	JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}) 
+	AND cust.type = 'Doctor')                           
+UNION
+SELECT '- All -' as doctor) a
+ORDER BY convert_to(a.doctor, 'SQL_ASCII')]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="totalPPPSalesQuery" id="totalPPPSalesQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="drParam" name="drParam" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(Sale_Amount) as Sale_Amount, sum(PPP_Amount) as PPP_Amount FROM
+(SELECT sum(amount_total) as Sale_Amount, 0 as PPP_Amount
+FROM fact_summary_invoice
+WHERE partner_id IN 
+(SELECT chemist_id 
+ FROM dim_doctor_chemist chem
+    JOIN dim_customer cust ON cust.id = chem.doctor_id
+	JOIN dim_customer_location custloc ON custloc.partner_id = cust.id
+	JOIN dim_location loc ON loc.id = custloc.region_id
+ WHERE ((cust.name = ${drParam} OR '- All -' = ${drParam}) AND (loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}))
+ )
+UNION ALL
+SELECT 0 as Sale_Amount, sum(ppp) as PPP_Amount
+FROM mr_expenses exp
+	JOIN dim_customer cust ON cust.id = exp.doctor_id
+	JOIN dim_customer_location custloc ON custloc.partner_id = cust.id
+	JOIN dim_location loc ON loc.id = custloc.region_id
+ WHERE ((cust.name = ${drParam} OR '- All -' = ${drParam}) AND (loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}))
+ ) dt]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="pppSalesChartQuery" id="pppSalesChartQuery"
+               type="sql">
+      <Cache duration="" enabled="true"/>
+      <Columns/>
+      <Output indexes="1" mode="exclude"/>
+      <Parameters>
+         <Parameter default="hqParam" name="region" type="String"/>
+         <Parameter default="drParam" name="drParam" type="String"/>
+         <Parameter default="stateParam" name="stateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT  dt.month, DATE_PART('Month',dt.datekey), sum(Sale_Amount) as Sale_Amount, sum(PPP_Amount) as PPP_Amount FROM
+(SELECT rtrim(TO_Char(invoice_date, 'Month')) as Month, invoice_date as datekey, sum(amount_total) as Sale_Amount, 0 as PPP_Amount
+FROM fact_summary_invoice
+WHERE partner_id IN 
+(SELECT chemist_id 
+ FROM dim_doctor_chemist chem
+    JOIN dim_customer cust ON cust.id = chem.doctor_id
+ JOIN dim_customer_location custloc ON custloc.partner_id = cust.id
+ JOIN dim_location loc ON loc.id = custloc.region_id
+ WHERE ((cust.name = ${drParam} OR '- All -' = ${drParam}) AND (loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}))
+ )
+GROUP BY invoice_date
+UNION ALL
+SELECT rtrim(TO_Char(expense_date, 'Month')) as Month , expense_date as datekey, 0 as Sale_Amount, sum(ppp) as PPP_Amount
+FROM mr_expenses exp
+ JOIN dim_customer cust ON cust.id = exp.doctor_id
+ JOIN dim_customer_location custloc ON custloc.partner_id = cust.id
+ JOIN dim_location loc ON loc.id = custloc.region_id
+WHERE ((cust.name = ${drParam} OR '- All -' = ${drParam}) AND (loc.region = ${region} OR '- All -' = ${region}) AND (loc.state = ${stateParam}))
+ GROUP BY expense_date) dt 
+  JOIN dim_date dt1 ON dt1.date_value = dt.datekey
+ GROUP BY dt.month, DATE_PART('Month',dt.datekey),cast(dt1.fin_month_number as Integer)
+ ORDER BY cast(dt1.fin_month_number as Integer)]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="salesPersonNameQuery" id="salesPersonNameQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="drParam" name="drParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sales_person_name FROM dim_customer
+WHERE name = ${drParam}]]></Query>
+   </DataAccess>
+</CDADescriptor>

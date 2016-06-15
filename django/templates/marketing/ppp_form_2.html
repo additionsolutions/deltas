@@ -1,0 +1,339 @@
+{% extends "mktg_layout.html" %}
+ 
+{% block mktg_content %}
+	<div id="example">
+            <div class="demo-section k-content">           
+		<p class="title">PRODUCT PROMOTIONAL PROGRAM</p><br/>
+		<div class="center">
+		<div id="formheader">	(To be filled by ASM and to be sent to ZSM/RSM for authorization) </div>
+		<p>
+		<div class="box"> Step 2: Product and other details
+		</div>
+		<br>
+                <form id="pppForm_2" action="{% url "ppp_new_process_2" ppp  %}"  method="post" >
+			{% csrf_token %}
+			<div class="formmain">
+				<div> <b><u>Products </u></b>
+					<select id="products" name="product_ids"></select>
+                        	</div>
+                        	<br/>
+
+				<div class="left">
+					<ul id="fieldlist">
+                        			<li>
+							<label for="id_nature">Nature:</label>
+							<input name="nature" id="natureList" value="counter promotion"/>
+                        			</li>
+						 <li>
+                                                        <label for="id_period">Period:</label>
+                                                        <input name="period" id="periodList" />
+                                                </li>
+						<li id="id_cmnt">
+                                                        <label for="id_comment">Comment</label>
+                                                        <input type="text" class="k-textbox" name="comment" id="id_comment" />
+                                                </li>
+						<li>
+                                                        <label for="id_percentage">Allowance Percentage:</label>
+                                                        <input name="allowancePercentage" id="id_percentage" value="0.05" style="width: 50%;"/>
+                                                </li>
+
+					</ul>
+				</div>
+				<div class="right">
+					<ul id="fieldlist">
+						<li>
+                            				<label for="id_amount">Total Expected Amount:</label>
+                            				<input type="text" class="k-textbox" name="totalAmount" id="id_amount" required="required" />
+                        			</li>
+						 <li>
+                                                        <label for="id_allowance">Allowance Nature:</label>
+                                                        <input name="allowanceNature" id="allowanceList"/>
+                                                </li>
+						 <li id="id_othr">
+                                                        <label for="id_other">If Other category Selected in Allowance Nature</label>
+                                                        <input type="text" class="k-textbox" name="other" id="id_other" />
+                                                </li>
+						<li>
+                                                        <label for="remark">Special Note on Doctor:</label>
+                                                        <input type="text" class="k-textbox" name="remark" id="remark" />
+                                                </li>
+						<input type="hidden" name="sel_products" id="sel_products" />	
+
+					</ul>
+                        	</div>
+				<button id="back" class="k-primary leftbutton">Back</button>
+				<button id="submit" class="k-primary rightbutton" >Submit</button>
+			</div>
+                </form>
+		</div>
+            </div>               
+
+<style>
+		.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+
+		#header {
+    			color:white;
+    			text-align:center;
+    			padding:5px;
+		}
+
+		#footer {
+    			background-color:black;
+    			color:white;
+    			clear:both;
+    			text-align:center;
+    			padding:5px; 
+		}
+		#formheader {
+			text-align:center;
+			padding: 10px;
+		}
+           	.center {
+    			margin: auto;
+    			width: 60%;
+    			border: 3px solid #d3d3d3;
+    			padding: 10px;
+			background-color: #fdfdfd;
+		}	 
+   		.formmain {
+			margin: auto;
+			width: 100%;
+			padding: 2px;
+			height: 400px;
+		}
+		.right {
+    			float: right;
+    			padding: 10px;
+			width: 45%;
+		}
+		.rightbutton {
+                        float: right;
+                        padding: 10px;
+                        width: 25%;
+			margin-right: 192px;
+                }
+		.leftbutton {
+                        float: left ;
+                        padding: 10px;
+                        width: 25%;
+			margin-right: 250px;
+                }
+		.left {
+    			float: left;
+    			padding: 10px;
+			width: 45%;
+		}
+		.text {
+			float: left;
+			width: 80%;
+		}
+		.lineleft {
+			float: left;
+			width: 50%
+			
+		}
+		.linecenter {
+                        float: left;
+                        width: 20%
+
+                }
+		.lineright {
+                        float: right;
+                        width: 25%
+
+                }
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+
+                #fieldlist {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #fieldlist li {
+                    list-style: none;
+                    padding-bottom: .7em;
+                    text-align: left;
+                }
+
+                #fieldlist label {
+                    display: block;
+                    padding-bottom: .3em;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    color: #444;
+                }
+
+                #fieldlist li .k-widget:not(.k-tooltip),
+                #fieldlist li .k-textbox {
+                    margin: 0 5px 5px 0;
+                }
+
+                span.k-widget.k-tooltip-validation {
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }
+                
+                .k-tooltip-validation .k-warning {
+                    display: none;
+                }
+            </style>
+        </div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+
+	$("#pppForm").kendoValidator();
+
+	$(document).ready(function() {  
+
+		function backClick(e) {
+		 	window.location="/mktg/ppp_new_process";
+		}
+
+		$("#back").kendoButton({
+                        click: backClick
+                    });
+		
+		function submitClick(e) {
+			var a = document.getElementById("sel_products");
+			a.value = products_sel.value();
+			window.location="/mktg/ppp_new_process_2/" + {{ ppp }};
+                }
+		
+                $("#submit").kendoButton({
+                        	click: submitClick
+                    });
+
+
+		var products_sel = $("#products").kendoMultiSelect({
+                	placeholder: "Select products...",
+                	dataTextField: "product_name",
+                	dataValueField: "product_id",
+                	autoBind: true,
+                	dataSource: {
+                    		type: "json",
+				filter: { field: "ppp", operator: "eq", value: "True" },
+                    		transport: {
+                        		read: {
+                            			url: "/helper/product-list",
+						contentType: 'application/json; charset=utf-8',
+                                        	type: 'GET',
+                                        	dataType: 'json'
+                       			 }
+                   		 },		
+                	}
+            	}).data("kendoMultiSelect");
+		
+			
+		var list_nature = [
+                         	  { text: "Campaign", value: "campaign" },
+				  { text: "Industry Promotion", value: "industry promotion" },
+				  { text: "RoadShow", value: "roadshow" },
+				  { text: "Counter Promotion", value: "counter promotion" },
+				];
+
+		// create DropDownList from input HTML element
+		$("#natureList").kendoDropDownList({
+			dataTextField: "text",
+			dataValueField: "value",
+			dataSource: list_nature,
+			index: 0,
+		});
+
+   		$("#id_cmnt").attr("style", "display: none;");                
+    		var period_list = [
+		  		  { text: "15 Days", value: "15 Days" },
+               			  { text: "Monthly", value: "Monthly" },
+               			  { text: "Quarterly", value: "Quarterly" },
+               		          {text: "Half Yearly", value: "Half Yearly" },
+               			  { text: "Yearly", value: "Yearly"},
+				];
+
+		// create DropDownList from input HTML element
+		$("#periodList").kendoDropDownList({
+			dataTextField: "text",
+			dataValueField: "value",
+			dataSource: period_list,
+			index: 0,
+      			change:onChange
+		});
+		
+		$("#id_othr").attr("style", "display: none;");	
+		var list_allowance = [
+			             { text: "Cash", value: "cash" },
+				     { text: "Gift", value: "gift" },
+				     { text: "Other", value: "other" }
+				    ];
+
+		// create DropDownList from input HTML element
+		$("#allowanceList").kendoDropDownList({
+			dataTextField: "text",
+			dataValueField: "value",
+			dataSource: list_allowance,
+			index: 0,
+			change:onChange
+		});
+		
+		$("#id_amount").kendoNumericTextBox({
+			format: "c2"
+		});
+		
+		// create Percentage NumericTextBox from input HTML element
+                $("#id_percentage").kendoNumericTextBox({
+                        format: "p0",
+                        min: 0,
+                        max: 0.2,
+                        step: 0.01
+                    });
+
+		function onChange()
+		{
+      			var value = $("#periodList").val();
+			if ((value=="Quarterly") || (value=="Half Yearly") || (value=="Yearly"))
+        		{	
+				alert("Period is greater than 3 Months, You need to provide explaination in Comment box.");	
+				$("#id_cmnt").attr("style", "display: TRUE;");
+        		}
+			else
+        		{
+		        	$("#id_cmnt").attr("style", "display: none;");        
+        		}
+                           
+      			var value = $("#allowanceList").val();
+			if (value=="other")
+        		{
+				$("#id_othr").attr("style", "display: TRUE;");
+        		}
+			else
+        		{
+        			$("#id_othr").attr("style", "display: none;");
+        		}
+		}
+
+  });
+	
+
+</script>    
+{% endblock %}

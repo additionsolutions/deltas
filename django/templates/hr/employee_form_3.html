@@ -1,0 +1,132 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+ 
+{% block hr_content %}
+<div id="example">
+	<div><button id="next" class="k-primary rightbutton">Next</button></div><br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Employee Education Details:</div>
+			</hr>
+			</hr>
+			<div id='eduDetails'>
+			</div>
+			<br><br>*Please mention degree / diploma in detail (for eg. B.Com, Diploma in fashion designing, BSC, MBA, 10th, HSC, etc.).</br>
+*Starting date and Completion date of the particular degree / diploma done is mandatory.
+		
+		</div>
+	</div>
+	
+<style>
+		.box {
+    				border: 2px solid gray;
+    				background-color:#333333;
+				color:white;
+				padding: 2px;
+				margin: 2px;
+		}
+
+		
+		.title {
+				font-size: 14px;
+				font-weight: bold;
+				color: #67462e;
+				background-color: #fbb24a;
+				padding: 6px 30px;
+				text-align: center;
+				margin: 0;
+	        }
+		.rightbutton {
+                		float: right;
+                       		padding: 1px;
+                       		width: 10%;
+                       		height:30px;
+                        	margin-right: 5%;
+		}
+               
+            </style>			
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+   
+	$('#message').delay(5000).fadeOut('slow');
+	
+    $('#eduDetails').kendoGrid({
+      dataSource: {
+    transport: {
+      read: {
+        url: '/hr/emp_edu_details_read/',
+        contentType: 'application/json; charset=utf-8',
+        type: 'GET',
+        dataType: 'json'
+      },
+      
+    },
+    pageSize: 10
+      },
+      columns:[
+		  {field:'employee_id',type:'number',defaultValue:{{request.session.new_emp_id }},hidden:true},
+		  {field:'degree',title:'Degree / Diploma'},
+		  {field:'branch',title:'Branch of Study'},
+		  {field:'college_name',title:'College/ School/Institution ',width:'20%'},
+		  {field:'university_name',title:'University'},
+		  {field:'from_date',title:'From (MM/YYYY)', format:"{0:MM-yyyy}",editor: dateTimeEditor},
+		  {field:'to_date',title:' To (MM/YYYY)', format:"{0:MM-yyyy}",editor: dateTimeEditor},
+		  {field:'percentage',title:'Percentage of Marks',type:'number'},
+		  { command:{text:"Add" ,click: onClick}, title: "" }
+      	],
+   	editable:  "inline",
+    toolbar: ["create","cancel"],  
+	height: 350,
+    sortable: true,
+    pageable: true,   
+  });
+});
+
+
+function dateTimeEditor(container, options) {
+    $('<input data-text-field="' + options.field + '" data-value-field="' + options.field + '" data-bind="value:' + options.field + '" data-format="' + options.format + '"/>')
+            .appendTo(container)
+            .kendoDatePicker({// defines the start view
+                    start: "year",
+
+                    // defines when the calendar should return date
+                    depth: "year",
+
+                    // display month and year in the input
+                    format: "MMMM yyyy"});
+}
+
+function onClick(e) {
+					
+					var listOfObjects = [];
+					var tr = $(e.target).closest("tr");    // get the current table row (tr)
+  					var item = this.dataItem(tr);
+  					
+					var a = [item.employee_id, (item.degree).replace(/\,/g," "), (item.branch).replace(/\,/g," "),(item.college_name).replace(/\,/g," "),(item.university_name).replace(/\,/g," "),item.from_date,item.to_date,item.percentage,];
+					
+					window.location = "/hr/emp_edu_details_write/" + a ;
+					
+                }
+function nextClick(e) {
+                        window.location="/hr/employee_previous_details/";
+                        
+                }
+        $("#next").kendoButton({
+                        click: nextClick
+                    });
+</script>
+{% endblock %}

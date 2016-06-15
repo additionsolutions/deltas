@@ -1,0 +1,259 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+  
+{% block hr_content %}
+	<div id="example">
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		<p>
+		<div class="box"> Other Details : 
+		</div><br><br>
+                <form id="otherDetailsForm" action="{% url "employee_medical_details_process" %}" method="post" >
+			{% csrf_token %}
+			<div class="formmain">
+			<div class="left">
+				<div class="box_right"> Bank Details :</div>
+				<br>
+				<ul id="fieldlist">
+					<li>
+		                        	<label for="id_bankName">Bank Name:</label>
+                         			<input type="text" class="k-textbox" name="bankName" id="id_bankName" />
+                        		</li>
+					<li>
+                            			<label for="id_acNo">Bank A/c No:</label>
+                            			<input type="text" class="k-textbox" name="acNo" id="id_acNo" />
+                        		</li>
+                    			<li>
+                            			<label for="id_branch">Bank Branch:</label>
+                            			<input type="text" class="k-textbox" name="branch" id="id_branch" />
+                        		</li>
+                    			<li>
+                            			<label for="id_ifsc">Ifsc code.:</label>
+                            			<input type="text" class="k-textbox" id="id_ifsc" name="ifsc"  />
+                        		</li>    	
+					 <li>
+                                        	<label for="id_pan">PAN No.:</label>
+                                        	<input type="text" class="k-textbox" id="id_pan" name="pan"  />
+                                        </li>
+	
+				</ul>
+			
+			</div>
+			<div class="right" >
+						<div class="box_left"> Medical Details : </div>
+			<br>
+				<ul id="fieldlist">
+                        		<li>
+                            			<label for="id_height">Height <font class="sub">(in centimeters):</font></label>
+                            			<input type="text" class="k-textbox" id="id_height" name="height"  />                            		
+                        		</li>
+					<li>
+                            			<label for="id_weight">Weight <font class="sub">(in kilograms):</font></label>
+                            			<input type="text" class="k-textbox" name="weight" id="id_weight" />
+                        		</li>
+					<li>
+                            			<label for="id_bloodGroup">Blood Group <font class="sub">(for emergencies):</label>
+                            			<input type="text" class="k-textbox" id="id_bloodGroup" name="bloodGroup"  />
+                        		</li>
+				</ul>
+				
+                        </div>
+						
+						<br/>
+						
+						<button id="submit" class="k-primary rightbutton">Submit</button>
+			</div>
+                </form>
+			</div>
+            </div>               
+
+
+<style>
+		.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+		.box_left {
+    			border: 2px solid gray;
+    			background-color:#fbb24a;
+			color:#67462E;
+			padding: 2px;
+			margin: 2px;
+		}
+		.box_right {
+    			border: 2px solid gray;
+    			background-color:#fbb24a;
+			color:#67462E;
+			padding: 2px;
+			margin: 2px;
+		}
+		#header_ {
+    			background-color:black;
+    			color:white;
+    			text-align:center;
+    			padding:5px;
+		}
+
+		#footer_ {
+    			background-color:black;
+    			color:white;
+    			clear:both;
+    			text-align:center;
+    			padding:5px; 
+		}
+		#formheader {
+			text-align:center;
+			padding: 10px;
+		}
+           	.center {
+    			margin: auto;
+    			width: 60%;
+    			border: 3px solid #d3d3d3;
+    			padding: 10px;
+			background-color: #fdfdfd;
+		}	 
+   		.formmain {
+			margin: auto;
+			width: 100%;
+			padding: 2px;
+			height: 400px;
+		}
+		.right {
+    			float: right;
+    			padding: 10px;
+			width: 45%;
+		}
+		.rightbutton {
+                        float: right;
+                        padding: 10px;
+                        width: 27%;
+			margin-right: 150px;
+                }
+		.leftbutton {
+                        float: left;
+                        padding: 10px;
+                        width: 25%;
+                }
+		.left {
+    			float: left;
+    			padding: 10px;
+			width: 45%;
+		}
+		.sub {
+			color:grey;
+		}
+		.full_c {
+                        margin-top: 220px;
+                        margin-bottom: 0px;
+                        margin-right: 0px;
+                        margin-left: 0px;
+                        padding: 10px;
+                        width:90%;
+                        height: 100px;
+                        border: 1px solid #BBBBBB;
+                }
+		.lineleft {
+			float: left;
+			width: 50%
+			
+		}
+		.linecenter {
+                        float: left;
+                        width: 20%
+
+                }
+		.lineright {
+                        float: right;
+                        width: 25%
+
+                }
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+
+                #fieldlist {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #fieldlist li {
+                    list-style: none;
+                    padding-bottom: .7em;
+                    text-align: left;
+                }
+
+                #fieldlist label {
+                    display: block;
+                    padding-bottom: .3em;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    color: #444;
+                }
+
+                #fieldlist li .k-widget:not(.k-tooltip),
+                #fieldlist li .k-textbox {
+                    margin: 0 5px 5px 0;
+                }
+
+                span.k-widget.k-tooltip-validation {
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }
+                
+                .k-tooltip-validation .k-warning {
+                    display: none;
+                }
+            </style>
+        </div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+
+	//$("#otherDetailsForm").kendoValidator();
+	$('#message').delay(5000).fadeOut('slow');
+
+	$(document).ready(function() {  
+		
+		
+		function submitClick(e) {
+                        window.location="/hr/employee_medical_details_process/";
+                }
+		
+                $("#submit").kendoButton({
+                        	click: submitClick
+                    });
+
+	 
+
+  });
+	
+
+</script>    
+{% endblock %}

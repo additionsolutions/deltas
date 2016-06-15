@@ -1,0 +1,64 @@
+{% extends "hr_layout.html" %}
+
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+ 
+{% block hr_content %}
+<h2>Employee List</h2>
+<div id='empGrid'>
+</div>
+<div class="demo-section k-content">
+</div>
+
+<p>
+<button id="newEmployeeButton" class="k-primary">Add Employee</button>
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+
+   $('#message').delay(5000).fadeOut('slow');
+    
+   $('#empGrid').kendoGrid({
+      dataSource: {
+    transport: {
+      read: {
+        url: '/hr/emp-list/',
+        contentType: 'application/json; charset=utf-8',
+        type: 'GET',
+        dataType: 'json'
+      }
+    },
+    pageSize: 10
+      },
+      columns: [
+    {
+      field: 'name',
+      title: 'Name'
+    },
+      ],
+      height: 350,
+      sortable: true,
+      pageable: true
+    });
+
+    function newEmployee() {
+               window.location="/hr/employee_new";
+            }
+
+    $("#newEmployeeButton").kendoButton({
+                        click: newEmployee
+                    });
+
+
+  });
+</script>
+{% endblock %}

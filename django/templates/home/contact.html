@@ -1,0 +1,114 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+<div id="mpage">
+	<div id="menu">
+	</div>
+	<div id="toolbar">
+	</div>
+	<div id="contents">
+		<h2> Contact Us </h2>
+		Dear <b> {{ request.session.user_name }} </b>, Please fill form below. Choose appropriate department , mention your query and submit the form 
+	</div>
+<hr/>
+<hr/>
+<form id="contact_form"  role="form" action= {% url "send_mail"%} method="post"  >
+{% csrf_token %}
+<table id="contact" width=100%>
+	<tr id="row"> 
+		<td id="field1" align="left">From</td>
+		<td id="field2" align="center">:</td>
+		<td id="field3" align="left"><input id="from" type="text" style="width: 30%;height:100%" value="{{ request.session.user_name }}" disabled="disabled" /></td>
+	</tr>
+	<tr id="row">
+                <td id="field1" align="left">To</td>
+                <td id="field2" align="center">:</td>
+                <td id="field3" align="left"><input id="email_to" name="email_to" type="text" style="width: 30%;height:100%" /></td>
+        </tr>
+	<tr id="row">
+                <td id="field1" align="left">Subject</td>
+                <td id="field2" align="center">:</td>
+                <td id="field3" align="left"><input id = "subject" name = "subject" type = "text"style = "width: 60%;height:100%" required = "required" /></td>
+        </tr>
+        <tr id="row">
+                <td id="field1" align="left">Message</td>
+                <td id="field2" align="center">:</td>
+                <td id="field3" align="left">
+			<textarea id="message" name="message" rows = "10" cols = "88" style = "height:220px" required = "required"> </textarea>
+        </tr>
+        <tr id="row">
+                <td id="field1" align="left"></td>
+                <td id="field2" align="center"></td>
+                <td id="field3" align="left"><button class="k-primary" id="send" style="width: 22%; height:100%;" />Send</button></td>
+        </tr>
+</table>
+</form>
+<hr/>
+</div>
+{% endblock %}
+ 
+{% block scripts %}
+
+<script>
+$(document).ready(function() {
+ $("#contact_form").kendoValidator();                  
+                  
+    var list_department = [
+                            { text: "IT", value: "IT"},
+                            { text: "HR", value: "HR"},
+                            { text: "PPP", value:"PPP"},
+                            { text: "Marketing", value: "MKTG"},
+                            
+                            ];
+
+        $("#email_to").kendoDropDownList({
+                        dataTextField: "text",
+                    	dataValueField: "value",
+                    	dataSource: list_department,
+                    	index: 0,
+                        });    
+                        
+          
+
+   function send_mail() {
+               
+              window.location="/home/send_mail";
+              alert("Mail sent");
+           }
+
+   $("#send").kendoButton({
+                       click: send_mail
+                        });
+                        
+    });                    
+</script>
+<style>
+		#contact {
+			font-size: 20px;
+		}
+		
+		#row {
+			height: 40px;
+		}
+
+               #field1 {
+                   	padding-left: 150px;
+			width: 20%;
+               }
+
+	       #field2 {
+                        width: 2%;
+               }
+		
+		#field3 {
+                        padding-left: 5px;
+                        width: 75%;
+               }
+		#text_data {
+			height: 22px;	
+                        padding-left: 5px;
+		}
+</style>
+
+
+{% endblock %}

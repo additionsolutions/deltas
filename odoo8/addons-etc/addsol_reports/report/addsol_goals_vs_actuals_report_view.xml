@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+   
+        <!-- <menuitem
+            id="menu_sales_marketing"
+            name="Sales and Marketing"
+            parent="base.menu_reporting"
+            sequence="0" /> -->
+            
+        <record id="view_addsol_goals_vs_actuals_report_graph" model="ir.ui.view">
+            <field name="name">addsol.goals.vs.actuals.report.graph</field>
+            <field name="model">goals.vs.actuals.report</field>
+            <field name="arch" type="xml">
+                <graph string="Goals Vs Actuals" type="pivot">
+                    <field name="sales_team" type="row"/>
+                    <field name="projection" type="measure"/>
+                    <field name="goal" type="measure"/>
+                    <field name="actual" type="measure"/>
+                    <field name="mon" type="row"/>
+                </graph>
+             </field>
+        </record>
+        
+        <record id="view_addsol_goals_vs_actuals_report_search" model="ir.ui.view">
+            <field name="name">addsol.goals.vs.actuals.report.search</field>
+            <field name="model">goals.vs.actuals.report</field>
+            <field name="arch" type="xml">
+                <search string="Goals Vs Actuals">
+                    <field name="salesperson"/>
+                    <field name="sales_team"/>
+                    <field name="name"/>
+                    <field name="projection"/>
+                    <field name="goal"/>
+                    <field name="actual"/>
+                    <separator/>
+                    <group expand="1" string="Group By">
+                        <filter string="ProductName" name="ProductName" context="{'group_by':'name'}"/>
+                        <filter string="SalesTeam" name="SalesTeam" context="{'group_by':'sales_team'}"/>
+                        <separator/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+       <record id="action_addsol_goals_vs_actuals_report_tree" model="ir.actions.act_window">
+            <field name="name">Goals Vs Actuals</field>
+            <field name="res_model">goals.vs.actuals.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">graph</field>
+            <field name="search_view_id" ref="view_addsol_goals_vs_actuals_report_search"/>
+            <field name="context">{'group_by_no_leaf':1,'group_by':[]}</field>
+        </record>
+
+        <menuitem action="action_addsol_goals_vs_actuals_report_tree" id="menu_addsol_goals_vs_actuals_report_tree" parent="menu_sales_marketing" sequence="4" groups="base.group_sale_manager"/>
+
+    </data>
+</openerp>
+

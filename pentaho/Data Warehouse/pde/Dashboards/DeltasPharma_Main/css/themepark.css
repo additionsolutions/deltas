@@ -1,0 +1,748 @@
+/*  Theme Park CSS
+
+    1. fonts
+    2. icons/imgs
+    3. general
+    4. charts
+    5. tables
+    6. tooltips
+    7. date selectors
+    8. footer
+
+*/
+
+/*                          1. fonts                                */
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src:  local('Open Sans Light'),
+        local('OpenSans-Light'),
+        /* EE */
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-light.eot') format('embedded-opentype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-light.woff') format('woff'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-light.ttf') format('truetype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-light.svg#OpenSansLight') format('svg'),
+        /* CE */
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-light.eot') format('embedded-opentype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-light.woff') format('woff'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-light.ttf') format('truetype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-light.svg#OpenSansLight') format('svg'),
+        /* Internal git */
+        url('../../../system/common-ui/resources/themes/crystal/opensans-light.eot') format('embedded-opentype'),
+        url('/../../../system/common-ui/resources/themes/crystal/opensans-light.woff') format('woff'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-light.ttf') format('truetype'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-light.svg#OpenSansLight') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src:  local('Open Sans'),
+        local('OpenSans'),
+        /* EE */
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-regular.eot') format('embedded-opentype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-regular.woff') format('woff'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-regular.ttf') format('truetype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-regular.svg#OpenSansRegular') format('svg'),
+        /* CE */
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-regular.eot') format('embedded-opentype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-regular.woff') format('woff'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-regular.ttf') format('truetype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-regular.svg#OpenSansRegular') format('svg'),
+        /*  Internal git */
+        url('../../../system/common-ui/resources/themes/crystal/opensans-regular.eot') format('embedded-opentype'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-regular.woff') format('woff'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-regular.ttf') format('truetype'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-regular.svg#OpenSansRegular') format('svg');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src:  local('Open Sans Semibold'),
+        local('OpenSans-Semibold'),
+        /* EE */
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-semibold.eot') format('embedded-opentype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-semibold.woff') format('woff'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-semibold.ttf') format('truetype'),
+        url('../../../../system/common-ui/resources/themes/crystal/opensans-semibold.svg#OpenSansSemibold') format('svg'),
+        /* CE */
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-semibold.eot') format('embedded-opentype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-semibold.woff') format('woff'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-semibold.ttf') format('truetype'),
+        url('../../../../../system/common-ui/resources/themes/crystal/opensans-semibold.svg#OpenSansSemibold') format('svg'),
+        /*  Internal git */
+        url('../../../system/common-ui/resources/themes/crystal/opensans-semibold.eot') format('embedded-opentype'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-semibold.woff') format('woff'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-semibold.ttf') format('truetype'),
+        url('../../../system/common-ui/resources/themes/crystal/opensans-semibold.svg#OpenSansSemibold') format('svg');
+}
+
+h1,h2,h3,h4 {
+    font-weight: 400;
+    color: #343E47;
+    
+}
+
+h1{ font-size: 30px; }
+
+h2{ font-size: 16px; }
+
+h3{ font-size: 14px; }
+
+span.info { 
+    font-size: 10px; 
+    margin-top: 4px;
+    margin-left: 15px;
+}
+
+bold{ font-weight: 600; }
+
+.light{ font-weight: 300; }
+
+.gray{  color: #676767; }
+
+.blue{  color: #015DA6; }
+
+.ui-data-title{ color: #616262; }
+
+p.breakDownTableLabel{
+    margin-top: 10px;
+    font-size: 12px;
+    font-weight: 300;
+    width: 70px;
+    line-height: 38px;
+}
+
+img{
+     margin-left: 90px; 
+     margin-top: 25px;
+}
+.chart-label{
+    margin: 20px 0px -32px 12px;
+}
+
+/*                          2. icons / imgs                         */
+
+#datechooser{
+    padding-left: 30px;
+    background-size: 20px 26px;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.svg #datechooser{
+    background-image: url('../img/calendar-ico.svg');
+}
+
+.no-svg #datechooser{
+    background-image: url('../img/calendar-ico.png');
+    background-size: 23px 20px;
+}
+
+
+/*                          3. layout                               */
+
+.overviewRow{
+    border-bottom: 1px solid #E6E6E5;
+    background-color: transparent !important;
+}
+
+.bodyPanel{ 
+    background-color: transparent !important;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px #ababab;
+}
+
+.dateCol{
+    margin-top: -12px;
+    margin-bottom: 5px;
+}
+
+.container {
+    max-width: 1140px !important;
+    min-width: 1140px !important;
+}
+
+.overviewTitle *{
+    margin-top: 0px;
+    display: block;
+    float: left;
+}
+
+.overviewTitle > h2{
+    margin-right: 10px;
+}
+
+.overviewTitle > span{
+    margin-top: 3px;
+}
+
+.bodyPanel > div{   
+    margin: 0 5px 0 5px;
+}
+
+.headerRow{
+    margin-left:-90px;
+    margin-right: -90px;
+    background-image: url('../img/title1.png');
+    background-repeat: no repeat;
+}
+
+.menuRow{
+         margin-left: -90px;
+         margin-right: -90px;
+}
+
+.usernameRow{   margin-top: 33px;   }
+
+.datechooser {
+    float: right;
+}
+
+.datechooser > div {
+    display: block;
+    float: left;
+}
+
+.footerRow{
+    margin-top: 20px;
+}
+
+.footer-links{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footerRow > div.col-xs-6{
+    padding: 0px;
+}
+
+.footer-links li{
+    display: inline-block;
+}
+
+.footer-links li:nth-child(2){
+    border-left: 1px solid #E5E5E4;
+    padding-left: 10px;
+    margin-left: 10px;
+}
+
+.fansBreakdown, .bestsellerBreakdown, .popularBreakdown{
+    border-bottom: 1px solid #E5E5E4;
+}
+
+.popularBreakdown {
+    padding-bottom: 13px;
+    margin-top: 7px;
+}
+
+.popularBreakdownx {
+    display: none;
+}
+
+.breakdownCharts{
+    margin-top: 50px !important;
+}
+
+.breakdownChartsx{
+    display: none;
+}
+
+.fanClub, .bestSeller, .mostPopular{
+    margin-right: 20px;
+}
+
+.fanClubx, .bestSellerx, .mostPopularx{
+    display: none;
+}
+
+#selectedDate{
+    border: 0px none;
+}
+
+#dateSelector{
+    padding: 0 0 10px 0;
+    width: 110px;
+}
+
+.bodyPanel .totalsRow{
+    margin-top: 30px;
+}
+
+/*                          3. general                              */
+
+*:focus {
+    outline: 0;
+}
+
+input:focus, button:focus{
+    outline: 0;
+}
+
+
+a, a:hover, a:active, a:visited{
+    text-decoration: none;
+    color: white;
+    filter:none;
+}
+
+body {  
+     background-image: url('../img/DeltasReport_Background.png');
+    font-family: 'Open Sans';
+}
+
+/*                          4. charts                               */
+
+#mostpopularChart{
+    margin-top: -20px;
+}
+
+/*                          5. tables                               */
+
+.mostpopularTableBreakdown {
+    /*position: absolute; */
+}
+
+.fanTotal table tbody tr td,
+.bestsellerTotal table tbody tr td,
+.mostPopularTable table tbody tr td{
+    padding-bottom: 5px;
+}
+
+#visitsTableTable:hover{
+    cursor: pointer;
+}
+
+tr.selected > td{
+    border: 1px solid #656666;    
+}
+
+thead{
+    display: none;
+}
+
+.stateTable{
+       background-color: transparent !important;
+}
+
+.stateTable thead{
+    display: table-header-group;
+    background-color:#fbb24a;
+}
+
+#mrTableTable >tbody>tr>td,
+#fanTotalTableTable>tbody>tr>td,
+#bestSellerTableTable>tbody>tr>td,
+#mostPopularTableTable>tbody>tr>td{
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.fanTotal, .bestsellerTotal, .mostpopularTotal{
+    border-top: 1px solid #E5E5E4;
+    border-bottom: 1px solid #E5E5E4;
+    height: 42px;
+}
+
+
+.dataTables_length, .dataTables_info, .dataTables_paginate,
+.dataTables_filter
+{    }
+
+/*trendArrows*/
+
+.svg .trend.down.good{
+    background: url("../img/trend_down.svg") no-repeat !important;
+}
+
+.svg .trend.up.good{
+    background: url("../img/trend_up.svg") no-repeat !important;
+}
+
+.no-svg .trend.down.good{
+    background: url("../img/trend_down.png") no-repeat !important;
+}
+
+.no-svg .trend.up.good{
+    background: url("../img/trend_up.png") no-repeat !important;
+}
+
+.table-bordered {
+    border: none !important
+}
+
+.table-bordered > tbody > tr > td{
+    border: none !important;
+    border-bottom: 1px solid #E5E5E4 !important;
+    border-top: 1px solid transparent !important;
+}
+
+.dataTable tr{
+    background-color: transparent !important;
+}
+
+.visitsRow .visitsTable table tr td{
+    background-color: transparent !important;
+}
+
+
+
+#mostpopularTableBreakdownTable>tbody>tr>td{
+    border:none !important;
+}
+
+.column1.value{
+    font-size: 24px;
+}
+
+.column2.trendArrow > div.value{
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+#visitsTableTable td.title{
+    font-weight: 300;
+    font-size: 12px;
+    padding: 18px 8px 8px 8px;
+}
+
+.mostpopularTableBreakdown {
+    margin-top: 20px;
+}
+
+.mostpopularTableBreakdown table tbody {
+    font-size: 12px;
+}
+
+.mostpopularTableBreakdown table td.column0 {
+    width: 120px;
+}
+
+.mostpopularTableBreakdown table td.column1 {
+    width: 30px;
+    font-size: 16px;
+}
+
+#mostpopularTableBreakdownTable{
+    border-collapse: separate;
+    border-spacing: 10px;
+    width: 188px !important;
+}
+
+#mostpopularTableBreakdownTable > tbody > tr:nth-child(1) > td.column0 {
+    border-left: 2px solid #005DA7 !important;
+}
+
+#mostpopularTableBreakdownTable > tbody > tr:nth-child(2) > td.column0 {
+    border-left: 2px solid #337DB9 !important;
+}
+
+#mostpopularTableBreakdownTable > tbody > tr:nth-child(3) > td.column0 {
+    border-left: 2px solid #669ECA !important;
+}
+
+#mostpopularTableBreakdownTable > tbody > tr:nth-child(4) > td.column0 {
+    border-left: 2px solid #99BEDC !important;
+}
+
+.mostpopularTableBreakdown .table>tbody>tr>td{
+    padding: 3px;
+    padding-left: 5px;
+    background-color: transparent !important;
+}
+
+
+td.column1.trendArrow{
+    line-height: 10px;
+}
+
+td.column0.numeric{
+    font-size: 24px;
+}
+
+.trend {
+    margin-top: 16px;
+}
+
+td.column2.trendArrow{
+    line-height: 10px;
+}
+
+.fanTotalTable table td.column0.string,
+.bestSellerTable table td.column0.string,
+.mostPopularTable table td.column0.string{
+    display: none;
+}
+
+.fanTotalTable table td.column1.numeric,
+.bestSellerTable table td.column1.numeric,
+.mostPopularTable table td.column1.numeric{
+    font-size: 12px;
+    padding-top: 12px;
+}
+
+.fanTotalTable table td.column2.trendArrow > div.value,
+.bestSellerTable table td.column2.trendArrow > div.value,
+.mostPopularTable table td.column2.trendArrow > div.value{
+    font-size: 10px;    
+}
+
+
+.visitsTable table{
+    
+}
+
+.visitsRow .visitsTable table tr:hover > td.column0{
+    padding-left: 7px !important;
+    border-left: 1px solid #656666 !important;
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;
+}
+
+.visitsRow .visitsTable table tr:hover > td.column1{
+    
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;  
+    border-left: 1px transparent !important;
+    border-right: 1px transparent !important;
+}
+
+.visitsRow .visitsTable table tr:hover > td.column2{
+    padding-right: 7px !important;
+    border-right: 1px solid #656666 !important;
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;
+}
+
+
+.visitsRow .visitsTable table tr.selected > td.column0{
+    padding-left: 7px !important;
+    border-left: 1px solid #656666 !important;
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;
+}
+
+.visitsRow .visitsTable table tr.selected > td.column1{
+    
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;  
+    border-left: 1px transparent !important;
+    border-right: 1px transparent !important;
+}
+
+.visitsRow .visitsTable table tr.selected > td.column2{
+    padding-right: 7px !important;
+    border-right: 1px solid #656666 !important;
+    border-top: 1px solid #656666 !important;
+    border-bottom: 1px solid #656666 !important;
+}
+
+
+
+.visitsRow .visitsTable table tr.selected > td{
+    background-color: #FFFFFF !important;
+}
+
+.visitsTable table tr{
+    padding: 0px;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th,
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th{
+    background-color: transparent;
+}
+
+
+/*                          6. tooltips                             */
+
+
+td.ccc-tt-dimRoles{
+    visibility: hidden;  
+}
+
+/*                        7. date selectors                       */
+
+.monthSelector, .yearSelector{
+    padding-right: 5px;
+}
+.monthSelector > div, .yearSelector > div, .chzn-drop{
+    width: 90px !important;
+}
+
+.chzn-search > input{
+    display:none;
+}
+
+
+.chzn-container {
+    display: block;
+    width: 100% !important;
+}
+
+.chzn-container,
+.chzn-container-single .chzn-single {
+    outline: 0 none !important;
+}
+
+.chzn-container-single .chzn-single {
+    background: #fff;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    border: 1px solid #CCC;
+    height: 32px;
+    line-height: 30px;
+    padding: 0 0 0 10px;
+    color: #4d4d4d;
+    box-shadow: none !important;
+    filter: none;
+}
+
+.chzn-container-single .chzn-single div {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    background: #FFF;
+    border: none;
+    width: 22px;
+    filter: none;
+}
+
+.chzn-container-single .chzn-single div b {
+    width: 20px;
+    height: 18px;
+    background: none;
+    position: absolute;                 
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.chzn-container-single .chzn-single div b:before {
+    border: none;
+    content: '';
+    display: block;
+    height: 8px;
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    position: absolute;
+    vertical-align: top;
+    width: 10px;
+    background: url(../img/selector-arrow.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.no-svg .chzn-container-single .chzn-single div b:before {
+    background: url(../img/selector-arrow.png);
+}
+
+.chzn-container-single .chzn-single-with-drop div b:before {
+    background-position: right center;
+}
+
+.chzn-container-single .chzn-drop {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    width: 100% !important;
+    border: 1px solid #CCC;
+    border-top: 0;
+    margin-top: 1px;
+    box-shadow: 1px 1px 5px rgba(0,0,0,.1);
+}
+
+.chzn-container-single .chzn-drop .chzn-search {
+    display: none;
+}
+
+.chzn-container .chzn-results .highlighted {
+    background: #005ca7;
+    color: #fff;
+}
+
+.chzn-container .chzn-results {
+    padding: 5px;
+    margin: 0;
+}
+
+.submitDateBtn > button{
+    border: 1px solid #CCC;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    background-color: #FFFFFF;
+    height: 32px; 
+    color: #4d4d4d;
+}
+
+.submitDateBtn > button:hover{
+    background-color: #005DA6; 
+    color: #FFFFFF;
+}
+
+.chzn-container .chzn-results .active-result.highlighted{
+    background-color: #005DA6;
+    color: #FFFFFF;
+}
+
+
+/*                          8. footer                            
+
+.footerInfo a{
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.webdetails-link a {
+    width: 110px;
+    height: 30px;
+    margin-top: 1px;
+    background: url(../img/webdetails-logo.svg);
+    display: block;
+}
+
+.footerInfo{
+    line-height: 32px;
+}
+
+.no-svg .webdetails-link a {
+    background: url(../img/webdetails-logo.png);
+}
+
+.footerRow .footerInfo div.horizontalSeparator {
+    display: block;
+    float: left;
+    width: 1px;
+    height: 20px;
+    background: #e5e5e4;
+    margin: 6px 10px;
+    position: relative;
+}
+
+.pentaho-link a {
+    width: 105px;
+    height: 30px;
+    margin-top: 1px;
+    background: url(../img/pentaho-logo.svg);
+    display: block;
+}
+
+.no-svg .pentaho-link a {
+    background: url(../img/pentaho-logo.png);   
+  
+}
+
+   */

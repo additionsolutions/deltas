@@ -1,0 +1,22 @@
+div.ex1 {
+    width: 500px;
+    margin: auto;
+    border: 3px solid #73AD21;
+}
+
+.hidden{
+display:none;
+} 
+
+tr {
+   padding: 25px;
+   background-color: #f2f2f2;
+   height: 30px;
+   border: 1px;
+} 
+
+th {
+   padding: 15px;
+   background-color: #f3f3f3;
+   height: 50px;
+} 

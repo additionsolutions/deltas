@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDADescriptor>
+   <DataSources>
+      <Connection id="paymentQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="expensesQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="expensesTotalQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+      <Connection id="paymentTotalQuery" type="sql.jndi">
+         <Jndi>DeltasPharmaDataSource</Jndi>
+      </Connection>
+   </DataSources>
+   <DataAccess access="public" connection="paymentQuery" id="paymentQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT partner_name, sum(payment_amount) AS amount
+FROM party_information
+WHERE payment_amount != 0 AND doc_date BETWEEN ${startDateParam} AND ${endDateParam}
+GROUP BY partner_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="expensesQuery" id="expensesQuery" type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns>
+         <CalculatedColumn>
+            <Name>totalExpenses</Name>
+            <Formula>=[salary]+[other_expenses]+[promotional_expenses]+[ppp]</Formula>
+         </CalculatedColumn>
+      </Columns>
+      <Parameters>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT mr.mr_name, COALESCE(sum(exp.salary_amount), 0) as salary, 
+        COALESCE(sum(exp.other_expenses), 0) as other_expenses,
+    	0.00 as promotional_expenses,
+		0.00 as ppp
+FROM mr_expenses exp
+JOIN dim_mr mr ON mr.id = exp.user_id
+WHERE (to_char(expense_date, 'yyyy-MM-dd') >= ${startDateParam} 
+AND to_char(expense_date, 'yyyy-MM-dd') <= ${endDateParam})
+GROUP BY  mr.mr_name]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="expensesTotalQuery" id="expensesTotalQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT COALESCE(sum(exp.salary_amount), 0) 
+FROM mr_expenses exp
+WHERE (to_char(expense_date, 'yyyy-MM-dd') >= ${startDateParam} 
+    AND to_char(expense_date, 'yyyy-MM-dd') <= ${endDateParam})]]></Query>
+   </DataAccess>
+   <DataAccess access="public" connection="paymentTotalQuery" id="paymentTotalQuery"
+               type="sql">
+      <Cache duration="3600" enabled="true"/>
+      <Columns/>
+      <Parameters>
+         <Parameter default="startDateParam" name="startDateParam" type="String"/>
+         <Parameter default="endDateParam" name="endDateParam" type="String"/>
+      </Parameters>
+      <Query><![CDATA[SELECT sum(payment_amount)
+FROM party_information
+WHERE (to_char(doc_date, 'yyyy-MM-dd') >= ${startDateParam} 
+AND to_char(doc_date, 'yyyy-MM-dd') <= ${endDateParam})]]></Query>
+   </DataAccess>
+</CDADescriptor>

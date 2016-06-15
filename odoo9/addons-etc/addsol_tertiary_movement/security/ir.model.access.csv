@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_addsol_tertiary_movement,Tertiary Sales,model_addsol_tertiary_movement,base.group_addsol_director,1,1,1,1
+access_addsol_tertiary_movement_line,Tertiary Sales Line,model_addsol_tertiary_movement_line,base.group_addsol_director,1,1,1,1
+

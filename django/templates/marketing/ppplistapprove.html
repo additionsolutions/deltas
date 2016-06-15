@@ -1,0 +1,127 @@
+{% extends "mktg_layout.html" %}
+
+{% block mktg_content %}
+<h2>PPP List Approval</h2>
+ 
+<div id='pppGrid'>
+</div>
+<div>
+	
+</div>
+{% endblock %}
+ 
+{% block scripts %}
+<script>
+
+		
+
+  $(document).ready(function() {
+
+    $('#pppGrid').kendoGrid({
+      dataSource: {
+        transport: {
+                read: {
+                url: '/mktg/ppp-list-approve/',
+                contentType: 'application/json; charset=utf-8',
+                type: 'GET',
+                dataType: 'json'
+                },
+        },
+        pageSize: 10
+      },
+      columns: [
+      	{
+        field: 'id',
+        hidden: true,
+        
+        
+        },
+        {
+        field: 'date',
+        title: 'Date',
+        
+        
+        },
+        {
+        field: 'hq',
+        title: 'HQ',
+        
+        },
+        {
+        field: 'mr',
+        title: 'MR',
+        
+        },
+        {
+        field: 'doctor',
+        title: 'Name',
+        
+        },
+     {
+	field: 'expected_amount',
+	title: 'Expected amount',
+        
+	},
+	{
+	field: 'promotional_allowance',
+	title: 'Allowance',
+        
+	},
+	
+	{
+	field: 'status',
+	title: 'Status',
+        
+	},
+	{ command:{text:"Approve" ,click: onClick}, title: "Approve", width: "250px" }
+      ],
+      editable: "inline",
+      selectable: "cell",
+      height: 450,
+      sortable: true,
+      pageable: true
+   });
+   		
+   		wnd = $("#details").kendoWindow({
+                            title: "Customer Details",
+                            modal: true,
+                            visible: false,
+                            resizable: false,
+                            width: 300
+                        }).data("kendoWindow");
+
+		
+
+    function onClick(e) {
+                     	var tr = $(e.target).closest("tr");    // get the current table row (tr)
+			var item = this.dataItem(tr); 
+  			var appId = item.id;         // get the date of this row
+			var appstatus = item.status;
+			if (appstatus=="approve")
+				{alert('Request already approved');}
+			else		
+				window.location = "/mktg/ppp-approve/" + appId ;
+                }
+
+    
+
+});
+
+</script>
+
+
+<style>
+                .demo-section p {
+                    margin: 0 0 30px;
+                    line-height: 50px;
+                }
+                .demo-section p .k-button {
+                    margin: 0 10px 0 0;
+                }
+                .k-primary {
+                    min-width: 150px;
+                }                
+</style>
+
+
+{% endblock %}

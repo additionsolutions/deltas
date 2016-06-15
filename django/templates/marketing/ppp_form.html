@@ -1,0 +1,349 @@
+{% extends "mktg_layout.html" %}
+ 
+{% block mktg_content %}
+	<div id="example">
+            <div class="demo-section k-content">           
+		<p class="title">PRODUCT PROMOTIONAL PROGRAM</p><br/>
+		<div class="center">
+		<div id="formheader">	(To be filled by ASM and to be sent to ZSM/RSM for authorization) </div>
+		<p>
+		<div class="box"> Step 1: Selection 
+		</div>
+                <form id="pppForm" action="{% url "ppp_new_process" %}" method="post" >
+			{% csrf_token %}
+			<div class="formmain">
+			<div class="left">
+				<ul id="fieldlist">
+                        		<li>
+                            		<label for="id_pppDate">Date:</label>
+                            		<input type="text"  id="id_pppDate" name="pppDate"  />
+                            		
+                        		</li>
+					<li>
+                            		<label for="id_asm">ASM:</label>
+                            		<input name="asm" id="asmList" required="required" />
+                        		</li>
+					<li>
+                            		<label for="id_customer">Name:</label>
+                            		<input id="customerList" name="customer" required="required" />
+                        		</li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul id="fieldlist">
+					<li>
+		                        <label for="id_mode">Mode:</label>
+                         		<input name="mode" id="modeList" />
+                        		</li>
+					<li>
+                            		<label for="id_mr">MR:</label>
+                            		<input name="mr" id="mrList" required="required" />
+                        		</li>
+					<li>
+                            		<label for="id_hq">HQ:</label>
+                            		<input id="hqList" name="hq"  />
+                        		</li>
+				</ul>
+                        </div>
+			<div class="full_c">
+				<div id="chemist_grid"></div> 	
+			</div>
+			<br/>
+			<button id="back" class="k-primary leftbutton">Back</button>
+			<button id="submit" class="k-primary rightbutton">Next</button>
+			</div>
+                </form>
+			</div>
+            </div>               
+
+
+<style>
+		.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+
+		#header_ {
+    			background-color:black;
+    			color:white;
+    			text-align:center;
+    			padding:5px;
+		}
+
+		#footer_ {
+    			background-color:black;
+    			color:white;
+    			clear:both;
+    			text-align:center;
+    			padding:5px; 
+		}
+		#formheader {
+			text-align:center;
+			padding: 10px;
+		}
+           	.center {
+    			margin: auto;
+    			width: 60%;
+    			border: 3px solid #d3d3d3;
+    			padding: 10px;
+			background-color: #fdfdfd;
+		}	 
+   		.formmain {
+			margin: auto;
+			width: 100%;
+			padding: 2px;
+			height: 400px;
+		}
+		.right {
+    			float: right;
+    			padding: 10px;
+			width: 45%;
+		}
+		.rightbutton {
+                        float: right;
+                        padding: 10px;
+                        width: 25%;
+			margin-right: 172px;
+                }
+		.leftbutton {
+                        float: left;
+                        padding: 10px;
+                        width: 25%;
+                }
+		.left {
+    			float: left;
+    			padding: 10px;
+			width: 45%;
+		}
+		.text {
+			float: left;
+			width: 80%;
+		}
+		.full_c {
+                        margin-top: 220px;
+                        margin-bottom: 0px;
+                        margin-right: 0px;
+                        margin-left: 0px;
+                        padding: 10px;
+                        width:90%;
+                        height: 100px;
+                        border: 1px solid #BBBBBB;
+                }
+		.lineleft {
+			float: left;
+			width: 50%
+			
+		}
+		.linecenter {
+                        float: left;
+                        width: 20%
+
+                }
+		.lineright {
+                        float: right;
+                        width: 25%
+
+                }
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+
+                #fieldlist {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                #fieldlist li {
+                    list-style: none;
+                    padding-bottom: .7em;
+                    text-align: left;
+                }
+
+                #fieldlist label {
+                    display: block;
+                    padding-bottom: .3em;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    color: #444;
+                }
+
+                #fieldlist li .k-widget:not(.k-tooltip),
+                #fieldlist li .k-textbox {
+                    margin: 0 5px 5px 0;
+                }
+
+                span.k-widget.k-tooltip-validation {
+                    text-align: left;
+                    border: 0;
+                    padding: 0;
+                    margin: 0;
+                    background: none;
+                    box-shadow: none;
+                    color: red;
+                }
+                
+                .k-tooltip-validation .k-warning {
+                    display: none;
+                }
+            </style>
+        </div>
+
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+
+	$("#pppForm").kendoValidator();
+
+	$(document).ready(function() {  
+		var chemist_dataSource = new kendo.data.DataSource({
+                        transport: {
+                                read: {
+                                        url: '/helper/chemist-list/',
+                                        contentType: 'application/json; charset=utf-8',
+                                        type: 'GET',
+                                        dataType: 'json'
+                                        }
+                                },
+                        pageSize: 10,
+                });
+		
+		$("#id_pppDate").kendoDatePicker({
+   			 format: "dd/MM/yyyy",
+   		         value:new Date()
+		});
+
+		var data = [
+					{ text: "After", value: "After" },
+					{ text: "Before", value: "Before" }
+                    ];
+
+		// create DropDownList from input HTML element
+		$("#modeList").kendoDropDownList({
+			dataTextField: "text",
+			dataValueField: "value",
+			dataSource: data,
+			index: 0,
+		});
+		
+
+		$("#asmList").kendoDropDownList({
+                	dataTextField: "name",
+                	dataValueField: "id",
+                	dataSource: {
+                            transport: {
+                                read: {
+                                    dataType: "json",
+                                    url: "/helper/asm-list",
+                                }
+                            }
+                        },
+                });				
+
+
+		function filterChemistGrid() {
+                	chemist_dataSource.filter([
+                	{ field: "doctor_id", operator: "equals", value: $("#customerList").val()  }
+                	]);
+            	}
+		
+
+		$("#mrList").kendoDropDownList({
+                	dataTextField: "name",
+                	dataValueField: "mr_id",
+			optionLabel: "Select MR...",
+                	dataSource: {
+                            transport: {
+                                read: {
+                                    dataType: "json",
+                                    url: "/helper/mr-list",
+                                }
+                            }
+                        },
+                });
+
+		$("#hqList").kendoDropDownList({
+			autoBind: false,
+                	cascadeFrom: "mrList",
+                	dataTextField: "name",
+                	dataValueField: "id",
+                	dataSource: {
+                            transport: {
+                                read: {
+                                    dataType: "json",
+                                    url: "/helper/hq-list" ,
+                                }
+                            }
+                        },
+                });
+
+
+		var doctor_dataSource = new kendo.data.DataSource({
+                        transport: {
+                                read: {
+                                        url: '/helper/doctor-list/',
+                                        contentType: 'application/json; charset=utf-8',
+                                        type: 'GET',
+                                        dataType: 'json',
+					cache: false
+                                        }
+                                },
+                });
+
+		$("#customerList").kendoDropDownList({
+                	dataSource: doctor_dataSource,
+			template: '#= name #',
+			autoBind: false,
+			cascadeFrom: "mrList",
+			change: filterChemistGrid,
+			optionLabel: "Select Customer",
+                	dataTextField: "id",
+                	dataValueField: "id",
+                });
+
+		function backClick(e) {
+		 	window.location="/mktg/ppp";
+		}
+		
+		$("#back").kendoButton({
+                        click: backClick
+                    });
+		
+		function submitClick(e) {
+                        window.location="/mktg/ppp_new_process";
+                }
+		
+                $("#submit").kendoButton({
+                        	click: submitClick
+                    });
+
+	 	$('#chemist_grid').kendoGrid({
+			dataSource: chemist_dataSource,
+      			columns: [
+        			{
+        			field: 'name',
+        			title: 'Chemist'
+        			},
+        			{
+        			field: 'chemist_type',
+        			title: 'Type'
+        			}
+      			],
+      			height: 100,
+   		});
+
+  });
+	
+
+</script>    
+{% endblock %}

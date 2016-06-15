@@ -1,0 +1,77 @@
+{% extends "mktg_layout.html" %}
+ 
+{% block mktg_content %}
+<h2>PPP Record List</h2>
+ 
+<div id='pppRecordGrid'>
+</div>
+<div>
+	<p> .</p>
+	<button id="pppRecordButton" class="k-primary">New PPP Record</button>
+</div>
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('#pppRecordGrid').kendoGrid({
+      dataSource: {
+    transport: {
+      read: {
+        url: '/mktg/pppRecord-list/',
+        contentType: 'application/json; charset=utf-8',
+        type: 'GET',
+        dataType: 'json'
+      }
+    },
+    pageSize: 10
+      },
+      columns: [
+    {
+      field: 'date',
+      title: 'Date'
+    },
+    {
+      field: 'mr',
+      title: 'MR'
+    },
+    {
+      field: 'amount',
+      title: 'Amount',
+      
+    }
+      ],
+      height: 450,
+      sortable: true,
+      pageable: true
+    });
+
+    function pppClick(e) {
+			 window.location="/mktg/ppp_new_record";
+                    }
+
+    $("#pppRecordButton").kendoButton({
+                        click: pppClick
+                    });
+
+
+  });
+
+</script>
+
+<style>
+                .demo-section p {
+                    margin: 0 0 30px;
+                    line-height: 50px;
+                }
+                .demo-section p .k-button {
+                    margin: 0 10px 0 0;
+                }
+                .k-primary {
+                    min-width: 150px;
+                }                
+</style>
+
+
+{% endblock %}

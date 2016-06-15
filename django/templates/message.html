@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h3>Error: <br/>{{ message }}</h3>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    alert('{{ message }}');
+</script>
+{% endblock %}
