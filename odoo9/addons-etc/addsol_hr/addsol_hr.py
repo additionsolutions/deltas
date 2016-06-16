@@ -84,6 +84,9 @@ class addsol_employee_family_details(models.Model):
 	
 	employee_id = fields.Many2one('hr.employee')
 	name = fields.Char("Name")
+	firstName = fields.Char("First Name")
+	middleName = fields.Char("Middle Name")
+	lastName = fields.Char("Last Name")
 	relationship = fields.Char("Relationship")
 	dob = fields.Date("Date of Birth")
 	occupation = fields.Char("Occupation")
