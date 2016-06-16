@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^mpage/', views.mpage, name='mpage'),
     url(r'^contact/', views.contact, name='contact'),
     url(r'^send_mail/', views.send_mail, name='send_mail'),
+    url(r'^help/', views.help, name='help'),
 	
 ]
