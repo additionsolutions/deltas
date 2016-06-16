@@ -1,0 +1,155 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+  
+{% block hr_content %}
+
+
+	<div id="example">
+			<div><button id="next" class="k-primary rightbutton">Next</button></div>
+			<br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Personal details :</div>
+			</hr>
+			</hr>
+			<div id='personalDetails'>
+			</div>
+		     
+		</div>
+	</div>
+	
+	<div id="example">
+			
+			<br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Address details :</div>
+			</hr>
+			</hr>
+			<div id='addressDetails'>
+			</div>
+		     
+		</div>
+	</div>
+<style>
+		.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+			color:white;
+			padding: 2px;
+			margin: 2px;
+		}
+
+		
+		.title {
+			font-size: 14px;
+			font-weight: bold;
+			color: #67462e;
+			background-color: #fbb24a;
+			padding: 6px 30px;
+			text-align: center;
+			margin: 0;
+	        }
+		.rightbutton {
+                       float: right;
+                       padding: 1px;
+                       width: 10%;
+                       height:30px;
+                        margin-right: 5%;
+               }
+               
+            </style>
+        </div>	
+{% endblock %}
+ 
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+   
+	$('#message').delay(5000).fadeOut('slow');
+   
+    $('#personalDetails').kendoGrid({
+      dataSource: {
+    transport: {
+		  read: {
+		    url: '/hr/employee_view_1/',
+		    contentType: 'application/json; charset=utf-8',
+		    type: 'GET',
+		    dataType: 'json'
+		  },
+      
+    			},
+    pageSize: 10,
+      				},
+      columns:[
+      	  {field:'name_related',title:'Name',attributes : {style:"text-align:center"}},
+		  {field:'birthday',title:'Date of birth',attributes : {style:"text-align:center"}},
+		  {field:'place_of_birth',title:'Place of birth',attributes : {style:"text-align:center"}},
+		  {field:'state',title:'Birth state',attributes : {style:"text-align:center"}},
+		  {field:'country',title:'Birth country',attributes : {style:"text-align:center"}},
+		  {field:'gender',title:'Gender',attributes : {style:"text-align:center"}},
+		  {field:'religion',title:'Religion',attributes : {style:"text-align:center"}},
+		  {field:'marital',title:'Marital status',attributes : {style:"text-align:center"}},
+		  {field:'mother_tongue',title:'Mother tongue',attributes : {style:"text-align:center"}},
+		  {field:'marraige_date',title:'Marraige date',attributes : {style:"text-align:center"}},
+     
+			],
+        
+  });
+
+
+
+$('#addressDetails').kendoGrid({
+      dataSource: {
+    transport: {
+		  read: {
+		    url: '/hr/employee_view_2/',
+		    contentType: 'application/json; charset=utf-8',
+		    type: 'GET',
+		    dataType: 'json'
+		  },
+      
+    			},
+    pageSize: 10,
+      				},
+      columns:[
+      	  {field:'street',title:'street'},
+		  {field:'street2',title:'street2'},
+		  {field:'city',title:'city',width:'10%',attributes : {style:"text-align:center"}},
+		  {field:'zip',title:'zip',width:'8%',attributes : {style:"text-align:center"}},
+		  {field:'state',title:'state',width:'13%',attributes : {style:"text-align:center"}},
+		  {field:'phone',title:'phone',width:'10%',attributes : {style:"text-align:center"}},
+		  {field:'mobile',title:'mobile',width:'10%',attributes : {style:"text-align:center"}},
+		  {field:'country',title:'country',width:'10%',attributes : {style:"text-align:center"}},
+		  
+     
+			],
+        sortable: true,
+    	pageable:true,
+  });
+});
+
+
+	function nextClick(e) {
+                       window.location="/hr/employee_view_details_2/";
+                       
+               }
+       $("#next").kendoButton({
+                       click: nextClick
+                   });
+
+</script>
+{% endblock %}

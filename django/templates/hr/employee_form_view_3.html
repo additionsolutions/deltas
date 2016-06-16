@@ -1,0 +1,98 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+ 
+{% block hr_content %}
+<div id="example">
+<div><button id="next" class="k-primary rightbutton">Next</button></div>
+			<br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Employee Previous Employer Details:</div>
+			</hr>
+			</hr>
+			<div id='prevDetails'>
+			</div>
+				</div>
+	</div>
+<style>
+.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+				color:white;
+				padding: 2px;
+				margin: 2px;
+		}
+
+		
+		.title {
+				font-size: 14px;
+				font-weight: bold;
+				color: #67462e;
+				background-color: #fbb24a;
+				padding: 6px 30px;
+				text-align: center;
+				margin: 0;
+	        }
+.rightbutton {
+                       float: right;
+                       padding: 1px;
+                       width: 10%;
+                       height:30px;
+                        margin-right: 5%;
+               }
+               
+            </style>			
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+   
+	$('#message').delay(5000).fadeOut('slow');
+       $('#prevDetails').kendoGrid({
+           dataSource:{
+               transport:{
+                   read:{
+                       url:'/hr/emp_prev_employer_details_view/',
+                       contentType:'application/json;charset=utf-8',
+                       type:'GET',
+                       dataType:'json'
+                   },
+               }, 
+               pageSize:10
+           },
+           columns:[
+               {field:'from_date',title:'From',width:'10%'},
+                {field:'to_date',title:'To',width:'10%'},
+                {field:'company_name',title:'Company Name'},
+                
+                {field:'job_title',title:'Job Title'},
+                {field:'responsibilities',title:'Responsibilities'},
+                {field:'city',title:'City'},
+               
+                {field:'industry',title:'Industry'},
+                {field:'previous_salary',title:'Previous Salary',width:'10%'}
+                                   
+           ],
+           
+       });
+   });
+    function nextClick(e) {
+                        window.location="/hr/employee_view_details_4/";
+                        
+                }
+        $("#next").kendoButton({
+                        click: nextClick
+                    });
+</script>
+{% endblock %}

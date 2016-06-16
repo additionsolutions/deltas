@@ -1,0 +1,118 @@
+{% extends "hr_layout.html" %}
+ 
+{% block messaging %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+ 
+{% block hr_content %}
+<div id="example">
+
+			<br><br>
+            <div class="demo-section k-content">           
+		
+		<div class="center">
+		
+		<div class="box"> Employee Bank Details:</div>
+			</hr>
+			</hr>
+			<div id='bankDetails'>
+			</div>
+    
+				</div>
+<br>
+<br>
+	<div class="center">
+		
+		<div class="box"> Employee Medical Details:</div>
+			</hr>
+			</hr>
+			<div id='medDetails'>
+			</div>
+    
+				</div>
+	</div>
+<style>
+.box {
+    			border: 2px solid gray;
+    			background-color:#333333;
+				color:white;
+				padding: 2px;
+				margin: 2px;
+		}
+
+		
+		.title {
+				font-size: 14px;
+				font-weight: bold;
+				color: #67462e;
+				background-color: #fbb24a;
+				padding: 6px 30px;
+				text-align: center;
+				margin: 0;
+	        }
+.rightbutton {
+                       float: right;
+                       padding: 1px;
+                       width: 10%;
+                       height:30px;
+                        margin-right: 5%;
+               }
+               
+            </style>			
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+   $(document).ready(function() {
+       $('#message').delay(5000).fadeOut('slow');
+        $('#bankDetails').kendoGrid({
+             dataSource:{
+               transport:{
+                   read:{
+                       url:'/hr/emp_bank_details_view/',
+                       contentType:'application/json;charset=utf-8',
+                       type:'GET',
+                       dataType:'json'
+                   },
+               }, 
+               pageSize:10
+           },
+            columns:[
+                {field:'name',title:'Bank name'},
+                {field:'bic',title:'Ifsc code'},
+                {field:'street',title:'Branch'},
+                {field:'acc',title:'Bank account Id'},
+              
+                
+            ],
+        });
+       $('#medDetails').kendoGrid({
+             dataSource:{
+               transport:{
+                   read:{
+                       url:'/hr/emp_medical_details_view/',
+                       contentType:'application/json;charset=utf-8',
+                       type:'GET',
+                       dataType:'json'
+                   },
+               }, 
+               pageSize:10
+           },
+            columns:[
+                {field:'height',title:'Height'},
+                {field:'weight',title:'Weight'},
+                {field:'bloodgroup',title:'Blood Group'},
+               
+              
+                
+            ],
+        });
+   });
+    
+</script>
+{% endblock %}
