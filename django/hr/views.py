@@ -512,3 +512,144 @@ def date_formater(date,flag):#for input through calender in kendo to change from
     print datef," ",type(datef)
     return datef
 
+@login_required
+def employee_view_details(request):
+	return render(request, 'hr/employee_form_view_1.html')
+
+def employee_view_1(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    sys_password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    sys_uid = settings.GLOBAL_SETTINGS['UID']
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    emp_data = models.execute_kw(db, sys_uid, sys_password, 'hr.employee', 'search_read', [[['id','=',request.session['emp_id']],]], {'fields':['resource_id', 'name_related', 'birthday', 'place_of_birth', 'birth_state_id', 'birth_country_id', 'gender', 'religion', 'marital', 'mother_tongue', 'marraige_date']})
+    if emp_data[0]['marital']=="single":
+    	emp_data[0]['marraige_date']="-"
+    
+    state_name=emp_data[0]['birth_state_id'][1]
+    country_name=emp_data[0]['birth_country_id'][1]
+    emp_data[0].update({"state":state_name})
+    emp_data[0].update({"country":country_name})
+    data = json.dumps(emp_data)
+    index=1
+    return HttpResponse(data,content_type='application/javascript')
+
+def employee_view_2(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    partner_id = models.execute_kw(db, uid , password, 'res.users', 'search_read', [[['id','=',request.session['uid']],]], {'fields':['partner_id']})
+    pid= partner_id[0]['partner_id'][0]
+    emp_data = models.execute_kw(db, uid , password, 'res.partner', 'search_read', [[['id','=',pid],]], {'fields':['street', 'street2' , 'city' , 'zip' , 'state_id','phone', 'mobile', 'country_id']})
+    state_name=emp_data[0]['state_id'][1]
+    country_name=emp_data[0]['country_id'][1]
+    emp_data[0].update({"state":state_name})
+    emp_data[0].update({"country":country_name})
+    
+    emp_data1 = models.execute_kw(db, uid , password, 'res.partner', 'search_read', [[['parent_id','=',pid],]], {'fields':['street', 'street2' , 'city' , 'zip' , 'state_id','phone', 'mobile', 'country_id']})
+    state_name1=emp_data1[0]['state_id'][1]
+    country_name1=emp_data1[0]['country_id'][1]
+    emp_data1[0].update({"state":state_name1})
+    emp_data1[0].update({"country":country_name1})
+    emp_data1[1].update({"state":state_name1})
+    emp_data1[1].update({"country":country_name1})
+    
+    data = json.dumps(emp_data+emp_data1)
+    
+    return HttpResponse(data,content_type='application/javascript')
+
+@login_required
+def employee_view_details_2(request):
+	return render(request, 'hr/employee_form_view_2.html')
+
+def emp_edu_details_view(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']    
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    
+    emp_data = models.execute_kw(db, uid, password, 'addsol.employee.education', 'search_read', [[['employee_id','=',request.session['emp_id']],]],{'fields':['id','employee_id','degree','branch','college_name','university_name','from_date','to_date','percentage']})
+    data = json.dumps(emp_data)
+    
+    return HttpResponse(data,content_type='application/javascript')
+
+@login_required    
+def employee_view_details_3(request):
+    return render(request,'hr/employee_form_view_3.html')
+
+def emp_prev_employer_details_view(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']    
+    
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    emp_data = models.execute_kw(db, uid, password, 'addsol.previous.employer.details', 'search_read', [[['employee_id','=',request.session['emp_id']],]],{'fields':['id','employee_id','industry' ,'job_title','company_name','city','responsibilities','from_date','to_date','previous_salary']})
+    data = json.dumps(emp_data)
+    return HttpResponse(data,content_type='application/javascript')
+
+@login_required    
+def employee_view_details_4(request):
+    return render(request,'hr/employee_form_view_4.html')
+
+def emp_family_details_view(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']    
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    
+    emp_data = models.execute_kw(db, uid, password, 'addsol.employee.family.details', 'search_read', [[['employee_id','=',request.session['emp_id']],]],{'fields':['id','employee_id','dob','name','firstName','middleName','lastName','relationship','occupation','personal_emailid']})
+    
+    data = json.dumps(emp_data)
+    return HttpResponse(data,content_type='application/javascript')
+
+@login_required
+def employee_view_details_5(request):
+      return render(request,'hr/employee_form_view_5.html')
+    
+    
+def emp_medical_details_view(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']    
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    emp_data1=models.execute_kw(db, uid, password, 'hr.employee', 'search_read', [[['id','=',request.session['emp_id']],]],{'fields':['bank_account_id','height','weight','bloodgroup']})
+    
+    data = json.dumps(emp_data1)
+    return HttpResponse(data,content_type='application/javascript')
+
+def emp_bank_details_view(request):
+    url = settings.GLOBAL_SETTINGS['URL'] 
+    db = settings.GLOBAL_SETTINGS['DB'] 
+    username = settings.GLOBAL_SETTINGS['USER_NAME'] 
+    password = settings.GLOBAL_SETTINGS['PASSWORD'] 
+    uid = settings.GLOBAL_SETTINGS['UID']    
+
+    models =xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    emp_data1=models.execute_kw(db, uid, password, 'hr.employee', 'search_read', [[['id','=',request.session['emp_id']],]],{'fields':['bank_account_id','height','weight','bloodgroup']})
+    bank_ac_id=emp_data1[0]['bank_account_id'][0]
+    emp_data = models.execute_kw(db, uid, password, 'res.partner.bank', 'search_read', [[['id','=',bank_ac_id],]],{'fields':['bank_id','acc_number']})
+    acc=emp_data[0]['acc_number']
+    
+    bank_id=emp_data[0]['bank_id'][0]
+   
+    emp_data2 = models.execute_kw(db, uid, password, 'res.bank', 'search_read', [[['id','=',bank_id],]],{'fields':['name' , 'bic' ,'street']})
+    emp_data2[0].update({"acc":acc})
+    data = json.dumps(emp_data2)
+    return HttpResponse(data,content_type='application/javascript')
