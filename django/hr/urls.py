@@ -36,4 +36,21 @@ urlpatterns = [
     url(r'^employee_medical_details/$', views.employee_medical_details, name='employee_medical_details'),
     url(r'^employee_medical_details_process/$', views.employee_medical_details_process, name='employee_medical_details_process'),
 
+    url(r'^employee_view_details/$', views.employee_view_details, name='employee_view_details'),
+    url(r'^employee_view_1/$', views.employee_view_1, name='employee_personal_details'),
+    url(r'^employee_view_2/$', views.employee_view_2, name='employee_address_details'),
+    
+    url(r'^employee_view_details_2/$', views.employee_view_details_2, name='employee_edu_view'),
+    url(r'^emp_edu_details_view/$', views.emp_edu_details_view, name='employee_edu_view_details'),
+    
+    url(r'^employee_view_details_3/$', views.employee_view_details_3, name='prev_employer_view_details'),
+    url(r'^emp_prev_employer_details_view/$', views.emp_prev_employer_details_view, name='prev_employer_view_details'),
+    
+    url(r'^employee_view_details_4/$',views.employee_view_details_4, name='employee_family_view'),
+    url(r'^emp_family_details_view/$',views.emp_family_details_view, name='emp_family_details_view'),
+    
+    url(r'^employee_view_details_5/$',views.employee_view_details_5, name='employee_medical_view'),
+    url(r'^emp_medical_details_view/$',views.emp_medical_details_view, name='emp_medical_details_view'),
+    url(r'^emp_bank_details_view/$',views.emp_bank_details_view, name='emp_medical_details_view')
+    
 ]
