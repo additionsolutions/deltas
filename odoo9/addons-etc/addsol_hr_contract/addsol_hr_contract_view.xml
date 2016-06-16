@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Inherit Contract form -->
+        <record id="addsol_hr_contract_view_form" model="ir.ui.view">
+            <field name="name">addsol.hr_contract.view</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/notebook/page/group/group/field[@name='wage']" position="after">
+					<field name="da"/>
+                    <field name="ta"/>
+                </xpath>
+            </field>
+        </record>
+		
+		
+		
+    </data>
+</openerp>
