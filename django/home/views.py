@@ -28,6 +28,9 @@ def mpage(request):
 def contact(request):
     return render_to_response('home/contact.html', RequestContext(request))
 
+@login_required
+def help(request):
+    return render_to_response('home/help.html', RequestContext(request))
 
 def intra_login(request):
     if request.user.is_authenticated():
